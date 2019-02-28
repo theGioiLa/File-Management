@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=”UTF-8">
+  <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+  <meta name=”viewport” content=”width=device-width, initial-scale=1">
+  <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <br><br>
+
+    <h2>Index of: ~<%- username %> /</h2>
+    <ul>
+        <% files.forEach(function(file) {
+            if (file.filename) { %> 
+                <% 
+                    var downloadLink = username + '/download/' + file.filename; 
+                    var deleteLink = username + '/delete/' + file.filename;
+                
+                %>
+                <li>
+                    <a href=<%- downloadLink %>><%- file.filename %></a>
+                    <button class="delete" data-target=<%- deleteLink %> data-method="DELETE" data-disabled="true">Delete</button>
+                </li>
+        <% } else {%>
+            <% var link = '/' + file.filepath %>
+                <li><a href=<%- link %>> <%- file.filepath %> </a></li>
+        <% }}); %>
+    </ul>
+
+    <br><br>
+
+    <% var path_newfolder = '/files/' + username + '/newFolder'; %>
+    <form method="POST" action=<%= path_newfolder %> >
+        Create Folder: <input type='text' name='newFolder'><br><br>
+        <input type='submit' value='New Folder'/>
+    </form>   
+
+    <br><br><br>
+
+    <% var path_upload = '/files/' + username + '/upload'; %>
+    <form method="POST" action=<%= path_upload %> enctype="multipart/form-data">
+        Upload File: <input type='file' name='upload' multiple><br><br>
+        <input type='submit' value='Upload'/>
+    </form>   
+
+    <br><br><br>
+
+    <br><br><br>
+
+    <form method="GET" action="/user/logout">
+        <input type='submit' value='Logout'/>
+    </form>   
+
+</body>
+</html>

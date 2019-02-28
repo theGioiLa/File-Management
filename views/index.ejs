@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=”UTF-8">
+  <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+  <meta name=”viewport” content=”width=device-width, initial-scale=1">
+  <title>File Upload Task</title>
+</head>
+<body>
+    <h1><%= topicHead %></h1>
+
+    <form method="POST" action="/users/upload/single" enctype="multipart/form-data">
+        Single upload: <input type='file' name='single_upload'/><br><br>
+        <input type='submit' value='Single Upload'/>
+    </form>   
+
+    <br><br>
+    <br><br>
+
+    <form method="POST" action="/users/upload/multiple" enctype="multipart/form-data">
+        Multiple upload: <input type='file' name='multi_upload' multiple><br><br>
+        <input type='submit' value='Multiple Upload'/>
+    </form>   
+
+</body>
+</html>

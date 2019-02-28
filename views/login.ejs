@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=”UTF-8">
+  <meta http-equiv=”X-UA-Compatible” Content-type=”text/htlm">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1">
+  <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+
+    <form method="POST" action="/user/login">
+        Username: <input type='text' name='username'/><br><br>
+        Password: <input type='password' name='password'/><br><br>
+        <input type='submit' value='Login'>
+    </form>   
+    <br>
+
+    <form method="GET" action="/user/register"> 
+    <input type='submit' value='Register'>
+    </form>  
+    <br>
+
+    <form method="GET" action="/reset"> 
+    <input type='submit' value='Reset'>
+    </form>  
+</body>
+</html>
