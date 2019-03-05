@@ -1,0 +1,52 @@
+<div class="col-md-6">
+    <% var path_newfolder = '/files/' + username + '/newFolder'; %>
+    <form method="POST" action=<%= path_newfolder %> >
+        <div class="form-control">
+        <label for="create_folder">Create Folder</label> 
+        <input type="text" class="form-control" name='newFolder'>
+        <button type="submit" class="btn btn-info">New Folder</button>
+        </div>
+    </form>   
+</div>
+
+<div class="col-md-6">
+    <% var path_upload = '/files/' + username + '/upload'; %>
+    <form method="POST" action=<%= path_upload %> enctype="multipart/form-data">
+        <div class="form-control">
+        <label for="upload">Upload Simple</label> 
+        <input type='file' class="form-control" name='upload' id="filesToUpload" multiple onchange="makeList();">
+
+        <br>
+        <ul id="fileList">
+        </ul>
+
+        <button type="submit" class="btn btn-info">Upload</button>
+        </ul>
+        </div>
+    </form>   
+</div>
+
+<script>
+    function makeList() {
+        var input = document.getElementById('filesToUpload');
+        var list = document.getElementById('fileList');
+
+        while (list.hasChildNodes()) {
+        list.removeChild(list.firstChild);
+        }
+
+        if (input.files.length > 12) {
+        alert('So luong file toi da ho tro la 12');
+        input.files = [];
+        return;
+        }
+        
+        for (var i = 0; i < input.files.length; i++) {
+        let li = document.createElement('li');
+        li.innerHTML = input.files[i].name;
+        list.appendChild(li);
+        }
+    }
+</script>
+
+
