@@ -1,11 +1,20 @@
 var express = require('express');
+var fs = require('fs');
 var UserModel = require('../models/User');
-var router = express.Router(); /* GET users listing. */ router.get('/login', function(req, res, next){
-    res.render('login', {title: 'Login'});
+var FileModel = require('../models/File');
+var router = express.Router(); 
+
+/* GET users listing. */ 
+router.get('/login', function(req, res, next){
+    res.render('login', {title: 'Login', message:''});
 });
 
 router.get('/register', function(req, res, next){
     res.render('register', {title: 'Register'});
+});
+
+router.get('/profile/:username', function(req, res) {
+    res.render('user_profile', {title: 'File Manager', username: req.params.username});
 });
 
 router.post('/login', function(req, res, next) {
@@ -36,6 +45,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
+    console.log(req.body.username);
     var user = new UserModel({ 
         username: req.body.username,
         password: req.body.password
@@ -51,6 +61,41 @@ router.get('/logout', function(req, res) {
     req.session.destroy(function(err) {
         if (err) throw err;
         res.redirect('login');
+    });
+});
+
+router.get('/reset', function(req, res) {
+    UserModel.findById(req.session.user.id).populate('files').exec(function(err, user) {
+        if (err) throw err;
+
+        let filesId = [];
+        user.files.forEach(element => {
+            var upload_dir = __dirname + '/../uploads/';
+            if (element.filename) {
+                fs.unlink(upload_dir + element.filename, function(err) {
+                    if (err) throw err;
+                });
+            }
+
+            filesId.push(element._id);
+
+            element.remove(function(err, file) {
+                if (err) throw err;
+            });
+        });
+
+        UserModel.update(
+            { _id: user._id},
+            {$pullAll: {files: filesId}},
+            {multi: true}, 
+
+            function(err, raw) {
+                if (err) throw err;
+
+            }
+        );
+
+        res.redirect('/user/logout');
     });
 });
 
