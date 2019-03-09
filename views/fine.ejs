@@ -75,12 +75,21 @@
                 concurrent: {
                     enabled: true, 
                 },
-                enabled: true,
+                enabled: false,
 
 
                 success: {
                     endpoint: '/fines/success',
-                    jsonPayload: true
+                    jsonPayload: true,
+                    params: function(fileId) {
+                        console.log(manualUploader.getFile(fileId));
+                        return {
+                            file: {
+
+
+                            }
+                        }
+                    }
                 }
             },
 

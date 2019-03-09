@@ -1,61 +1,79 @@
-<div class="col-6">
-    <div class="panel panel-default">
-        <div class="panel-heading"><strong>Upload Files</strong></div> 
-        <div class="panel-body">
+<!-- Fine Uploader DOM Element
+====================================================================== -->
+<div id="fine-uploader-manual-trigger"></div>
 
-            <!-- Drop Zone -->
-            <h4>Drag and drop files below</h4>
-            <div class="upload-drop-zone" id="drop-zone">
-                Just drag and drop files here
-            </div>
+<!-- Fine Uploader Thumbnails template w/ customization
+====================================================================== -->
+<%- include('templates/simple-thumbnails.html'); %>
 
-            <!-- Progress Bar -->
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    <span class="sr-only">60% Complete</span>
-                </div>
-            </div>
-
-            <!-- Upload Finished -->
-            <div class="js-upload-finished">
-                <h3>Processed files</h3>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-                    <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
+====================================================================== -->
 <script>
-    var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('js-upload-form');
+    var xhr = new XMLHttpRequest();
+    var manualUploader = new qq.FineUploader({
+        element: document.getElementById('fine-uploader-manual-trigger'),
+        template: 'qq-template-manual-trigger',
 
-    var startUpload = function(files) {
-        console.log(files)
-    }
+        request: {
+            endpoint: '/files/<%-username%>/upload',
+        },
+        debug: true,
+        autoUpload: false,
 
-    uploadForm.addEventListener('submit', function(e) {
-        var uploadFiles = document.getElementById('js-upload-files').files;
-        e.preventDefault()
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/placeholders/waiting-generic.png',
+                notAvailablePath: '/placeholders/not_available-generic.png'
+            },
+        },
 
-        startUpload(uploadFiles)
-    })
+        maxConnections: 2,
 
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
+        // Upload Parallel
+        chunking: {
+            concurrent: {
+                enabled: true, 
+            },
+            enabled: true,
+        },
 
-        startUpload(e.dataTransfer.files)
-    }
+        deleteFile: {
+            enabled: true,
+            forceConfirm: true,
+            endpoint: '/files/<%-username%>/delete',
+        },
 
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    }
+        resume: {
+            enabled: true,
+            recordsExpireIn: 1
+        },
 
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
-    }
+        retry: {
+            enableAuto: false,
+            showButton: true
+        },
+
+        cors: {
+            enabled: true
+        },
+
+        callbacks: {
+            onCancel: function(id, filename) {
+                xhr.open('DELETE', '/files/<%-username%>/cancel', true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send(this.getUuid(id));
+
+                return true;
+            },
+
+            onAllComplete: function(successedIds, failedIds) {
+                console.log('AllComplete');
+            }
+        }
+    });
+
+    qq(document.getElementById("trigger-upload")).attach("click", function() {
+        manualUploader.uploadStoredFiles();
+    });
+
 </script>

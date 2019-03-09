@@ -6,6 +6,7 @@ var session = require('express-session');
 var FileStorage = require('session-file-store')(session);
 var uuid = require('uuid/v4');
 var fs = require('fs');
+var rimraf = require('rimraf');
 var db = require('./db');
 
 var UserModel = require('./models/User');
@@ -33,14 +34,9 @@ app.use(session({
 }));
 
 app.use('/reset', function(req, res, next) {
-  var upload_dir = path.join(__dirname, 'uploads');
-  fs.readdir(upload_dir, function(err, files) {
+  var upload_dir = path.join(__dirname, 'uploads/*');
+  rimraf(upload_dir, function(err) {
     if (err) throw err;
-    files.forEach(function(file) {
-      fs.unlink(path.join(upload_dir, file), function(err) {
-        if (err) throw err;
-      });
-    });
 
     FileModel.remove({}, function(err) {
       if (err) throw err;

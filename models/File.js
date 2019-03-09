@@ -34,8 +34,8 @@ module.exports.newFolder = function(folder, callback) {
     folder.save(callback);
 };
 
-module.exports.newFile = function(files, callback) {
-    File.insertMany(files, callback);
+module.exports.newFile = function(file, callback) {
+    File.insert(file, callback);
 };
 
 module.exports.delete = function(filename, isDir, callback) {

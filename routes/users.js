@@ -1,8 +1,7 @@
 var express = require('express');
-var fs = require('fs');
 var UserModel = require('../models/User');
-var FileModel = require('../models/File');
-var router = express.Router(); 
+var rimraf = require('rimraf');
+var router = express.Router();
 
 /* GET users listing. */ 
 router.get('/login', function(req, res, next){
@@ -69,16 +68,16 @@ router.get('/reset', function(req, res) {
         if (err) throw err;
 
         let filesId = [];
+        var upload_dir = __dirname + '/../uploads/' + user.username;
+        console.log(upload_dir);
+
+        rimraf(upload_dir, function(err) {
+            console.log(upload_dir);
+            if (err) throw err;
+        });
+
         user.files.forEach(element => {
-            var upload_dir = __dirname + '/../uploads/';
-            if (element.filename) {
-                fs.unlink(upload_dir + element.filename, function(err) {
-                    if (err) throw err;
-                });
-            }
-
             filesId.push(element._id);
-
             element.remove(function(err, file) {
                 if (err) throw err;
             });
