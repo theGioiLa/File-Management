@@ -52,7 +52,7 @@ app.use('/reset', function(req, res, next) {
 
 app.use('/user', require('./routes/users'));
 app.use('/files', require('./routes/files'));
-app.use('/fines', require('./routes/fines'));
+// app.use('/fines', require('./routes/fines'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
