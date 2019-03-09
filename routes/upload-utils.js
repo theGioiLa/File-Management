@@ -2,7 +2,8 @@ var rimraf = require('rimraf'),
     mkdirp = require('mkdirp'),
     fs = require('fs');
 
-var _maxFileSize, _uploadedFilesPath, _chunkDirName;
+var _maxFileSize, _uploadedFilesPath, _chunkDirName; 
+var _currTotalParts = 0;
 
 module.exports = {
     init: function(option) {
@@ -53,25 +54,34 @@ module.exports = {
             };
 
         file.name = fields.qqfilename;
+        _currTotalParts++;
+        console.log('Id ', index, _currTotalParts);
 
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
                 // success
                 function() {
-                    if (index < totalParts - 1) {
+                    if (index < totalParts - 1 && _currTotalParts < totalParts) {
                         responseData.success = true;
                         res.send(responseData);
                     }
                     else {
-                        combineChunks(file, uuid, owner, function() {
-                                onSaved(file);
-                                responseData.success = true;
-                                res.send(responseData);
-                            },
-                            function() {
-                                responseData.error = "Problem conbining the chunks!";
-                                res.send(responseData);
-                            });
+                        if (_currTotalParts == totalParts) {
+                            combineChunks(file, uuid, owner, function() {
+                                    _currTotalParts = 0;
+                                    onSaved(file);
+                                    responseData.success = true;
+                                    res.send(responseData);
+                                },
+                                function() {
+                                    responseData.error = "Problem conbining the chunks!";
+                                    res.send(responseData);
+                                }
+                            );
+                        } else {
+                            responseData.success = true;
+                            res.send(responseData);
+                        }
                     }
                 },
 

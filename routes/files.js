@@ -1,4 +1,4 @@
-var fs = require('fs'),
+var rimraf = require('rimraf');
     router = require('express').Router(),
     FileModel = require('../models/File'),
     UserModel = require('../models/User'),
@@ -102,26 +102,54 @@ router.get('/:username/preview/:id', function(req, res) {
 });
 
 router.get('/:username/delete/:id', function(req, res) {
-    FileModel.findById(req.params.id, 'filename', function(err, file) {
+    FileModel.findOneAndDelete({_id: req.params.id}, function(err, file) {
         if (err) throw err;
         let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
         let filepath = upload_dir + file.filename;
 
         if (file.filename) {
-            fs.unlink(filepath);
+            rimraf(filepath, function(err) {
+                if (err) throw err;
+            });
         }
 
-        FileModel.delete(req.params.id, function(err, doc) {
-            if (err) throw err;
+        UserModel.update(
+            {_id: file.owner}, 
+            {$pull: {files: file._id}}, 
+            function(err, raw) {
+                if (err)  throw err;
+                res.redirect('/files/' + req.params.username);
+            }
+        );
+    });
+});
+
+router.delete('/:username/delete/:uuid', function(req, res) {
+    FileModel.findOneAndDelete({uuid: req.params.uuid}, function(err, file) {
+        if (err) throw err;
+        if (file) {
+            let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
+            let filepath = upload_dir + file.filename;
+
+            if (file.filename) {
+                rimraf(filepath, function(err) {
+                    if (err) throw err;
+                });
+            }
+
             UserModel.update(
-                {_id: doc.owner}, 
-                {$pull: {files: doc._id}}, 
+                {_id: file.owner}, 
+                {$pull: {files: file._id}}, 
                 function(err, raw) {
                     if (err)  throw err;
-                    res.redirect('/files/' + req.params.username);
+                    res.status(200);
+                    res.end();
                 }
             );
-        });
+        } else {
+            res.status(204);
+            res.end();
+        }
     });
 });
 
@@ -137,11 +165,17 @@ router.delete('/:username/cancel', function(req, res) {
 });
 
 router.head('/:username/success', function(req, res) {
-    if (req.get('OK')) res.render('/files/' + req.params.username);
+    /*
+    if (req.get('OK')) res.redirect('/files/' + req.params.username);
     else {
         res.status(500);
         res.end('Failed onAllComplete callback!');
     }
+    */
+
+    console.log(req.get('OK'));
+    res.redirect('/user/login');
+    // res.end('Done');
 });
 
 
@@ -149,9 +183,9 @@ function normalize(fileSizeInBytes) {
     let i = -1;
     let byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
     do {
-        fileSizeInBytes = fileSizeInBytes / 1024;
+        fileSizeInBytes = fileSizeInBytes / 1000;
         i++;
-    } while (fileSizeInBytes > 1024);
+    } while (fileSizeInBytes > 1000);
 
     return Math.max(fileSizeInBytes, 0.1).toFixed(2) + byteUnits[i];
 }

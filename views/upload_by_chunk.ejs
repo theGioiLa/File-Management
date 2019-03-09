@@ -9,7 +9,6 @@
 <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
 ====================================================================== -->
 <script>
-    var xhr = new XMLHttpRequest();
     var manualUploader = new qq.FineUploader({
         element: document.getElementById('fine-uploader-manual-trigger'),
         template: 'qq-template-manual-trigger',
@@ -59,6 +58,7 @@
 
         callbacks: {
             onCancel: function(id, filename) {
+                var xhr = new XMLHttpRequest();
                 xhr.open('DELETE', '/files/<%-username%>/cancel', true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send(this.getUuid(id));
@@ -67,6 +67,10 @@
             },
 
             onAllComplete: function(successedIds, failedIds) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('HEAD', '/files/<%-username%>/success');
+                xhr.setRequestHeader("OK", 1);
+                xhr.send();
                 console.log('AllComplete');
             }
         }
