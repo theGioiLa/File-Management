@@ -65,7 +65,7 @@ router.post('/:username/upload/', (req, res) => {
 
     function onSaved(file) {
         var doc = new FileModel({
-            uuid: file.qquuid,
+            uuid: file.uuid,
             filename: file.name,
             size: normalize(file.size),
             mimetype: file.mimetype,
@@ -85,53 +85,44 @@ router.post('/:username/upload/', (req, res) => {
     }
 });
 
-router.get('/:username/download/:filename', function(req, res) {
-    let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
-    res.download(upload_dir + req.params.filename);
-});
-
-router.get('/:username/preview/:filename', function(req, res) {
-    let upload_dir = __dirname + '/../uploads/' + req.params.username;
-    let filename = req.params.filename;
-    res.sendFile(filename, {root: upload_dir});
-});
-
-router.get('/:username/delete/:filename', function(req, res) {
-    let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
-    let file = upload_dir + req.params.filename;
-    fs.access(file, fs.constants.F_OK, function(err) {
-        if (!err) {
-            fs.unlink(file);
-            FileModel.delete(req.params.filename, false, function(err, doc) {
-                if (err) throw err;
-                UserModel.update(
-                    {_id: doc.owner}, 
-                    {$pull: {files: doc._id}}, 
-                    function(err, raw) {
-                        if (err)  throw err;
-                        res.redirect('/files/' + req.params.username);
-                    }
-                );
-            });
-        } else {
-            FileModel.delete('/' + req.params.filename, true, function(err, doc) {
-                if (err) throw err;
-                if (!doc) {
-                    res.redirect('/files/' + req.params.username);
-                    return;
-                }
-                UserModel.update(
-                    {_id: doc.owner}, 
-                    {$pull: {files: doc._id}}, 
-                    function(err, raw) {
-                    if (err)  throw err;
-                        res.redirect('/files/' + req.params.username);
-                    }
-                );
-            });
-        }
+router.get('/:username/download/:id', function(req, res) {
+    FileModel.findById(req.params.id, 'filename', function(err, file) {
+        if (err) throw err;
+        let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
+        res.download(upload_dir + file.filename);
     });
+});
 
+router.get('/:username/preview/:id', function(req, res) {
+    FileModel.findById(req.params.id, 'filename', function(err, file) {
+        if (err) throw err;
+        let upload_dir = __dirname + '/../uploads/' + req.params.username;
+        res.sendFile(file.filename, {root: upload_dir});
+    });
+});
+
+router.get('/:username/delete/:id', function(req, res) {
+    FileModel.findById(req.params.id, 'filename', function(err, file) {
+        if (err) throw err;
+        let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
+        let filepath = upload_dir + file.filename;
+
+        if (file.filename) {
+            fs.unlink(filepath);
+        }
+
+        FileModel.delete(req.params.id, function(err, doc) {
+            if (err) throw err;
+            UserModel.update(
+                {_id: doc.owner}, 
+                {$pull: {files: doc._id}}, 
+                function(err, raw) {
+                    if (err)  throw err;
+                    res.redirect('/files/' + req.params.username);
+                }
+            );
+        });
+    });
 });
 
 router.delete('/:username/cancel', function(req, res) {

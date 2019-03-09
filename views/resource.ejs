@@ -91,7 +91,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Table List</a>
+            <a class="navbar-brand" href="<%-index%>">Table List</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -171,7 +171,7 @@
                           <td>
                             <% 
                             if (file.filename) { 
-                              let preview_path = '/files/' + username + '/preview/' + file.filename;
+                              let preview_path = '/files/' + username + '/preview/' + file._id;
                             %>
                             <a href="<%-preview_path%>"><%- file.filename %></a>
                             <% } else { %>
@@ -191,8 +191,8 @@
                             <% 
                               let delete_path = '/files/' + username + '/delete';
                               if (file.filename) {
-                                delete_path += '/' + file.filename;
-                                let download_path = '/files/' + username + '/download/' + file.filename;
+                                delete_path += '/' + file._id;
+                                let download_path = '/files/' + username + '/download/' + file._id;
                               %>
                               <table>
                                 <tr>

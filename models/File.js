@@ -38,7 +38,6 @@ module.exports.newFile = function(file, callback) {
     File.insert(file, callback);
 };
 
-module.exports.delete = function(filename, isDir, callback) {
-    if (isDir) File.findOneAndDelete({filepath: filename}, callback);
-    else File.findOneAndDelete({filename: filename}, callback);
+module.exports.delete = function(id, callback) {
+    File.findOneAndDelete({_id: id}, callback);
 };
