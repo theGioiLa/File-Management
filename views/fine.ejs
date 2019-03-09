@@ -68,7 +68,7 @@
                 },
             },
 
-            maxConnections: 5,
+            maxConnections: 2,
 
             // Upload Parallel
             chunking: {
@@ -79,8 +79,20 @@
 
 
                 success: {
-                    endpoint: '/fines/success'
+                    endpoint: '/fines/success',
+                    jsonPayload: true
                 }
+            },
+
+            deleteFile: {
+                enabled: true,
+                forceConfirm: true,
+                endpoint: '/fines/uploads',
+            },
+
+            resume: {
+                enabled: true,
+                recordsExpireIn: 1
             },
 
             retry: {
@@ -88,6 +100,20 @@
                 showButton: true
             },
 
+            cors: {
+                enabled: true
+            },
+
+            callbacks: {
+                onCancel: function(id, filename) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('DELETE', '/fines/cancel', true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send([this.getUuid(id)]);
+
+                    return true;
+                }
+            }
         });
 
         qq(document.getElementById("trigger-upload")).attach("click", function() {

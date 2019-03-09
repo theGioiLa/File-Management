@@ -2,12 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var FileSchema = new Schema({
+    uuid: String,
     filename: {
         type: String,
         trim: true,
     },
 
-    size: Number,
+    size: String,
     mimetype: String,
 
     filepath: {
@@ -37,7 +38,7 @@ module.exports.newFile = function(files, callback) {
     File.insertMany(files, callback);
 };
 
-module.exports.delete = function(filename, callback) {
-    File.findOneAndDelete({filename: filename}, callback);
-    File.findOneAndDelete({filepath: filepath}, callback);
-}
+module.exports.delete = function(filename, isDir, callback) {
+    if (isDir) File.findOneAndDelete({filepath: filename}, callback);
+    else File.findOneAndDelete({filename: filename}, callback);
+};

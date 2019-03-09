@@ -1,17 +1,23 @@
 {
-  "name": "fileupload",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "ejs": "~2.5.7",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
-  }
+    "name": "fileupload",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www",
+      "devstart": "nodemon ./bin/www"
+    },
+    "dependencies": {
+      "cookie-parser": "~1.4.3",
+      "debug": "~2.6.9",
+      "ejs": "~2.5.7",
+      "express": "~4.16.0",
+      "express-session": "~1.15.0",
+      "http-errors": "~1.6.2",
+      "morgan": "~1.9.0",
+      "bcryptjs": "~3.0.4",
+      "fine-uploader": "~5.16.2",
+      "mongoose": "~5.4.15",
+      "multiparty": "~4.2.0",
+      "session-file-store": "~1.2.0"
+    }
 }

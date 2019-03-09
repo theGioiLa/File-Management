@@ -1,5 +1,5 @@
 var mogoose = require('mongoose');
-const url = 'mongodb://localhost/FileUploadingSys'
+const url = 'mongodb://localhost/FileUploadingSys';
 var db = mogoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {

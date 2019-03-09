@@ -1,9 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var FileStorage = require('session-file-store')(session);
+var uuid = require('uuid/v4');
+var fs = require('fs');
 var db = require('./db');
 
 var UserModel = require('./models/User');
@@ -19,18 +21,42 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  key: 'user_sid',
-  secret: 'hhhhhs',
+    genid: function(req) {
+        return uuid();
+    },
+    secret: 'fine-uploader', 
+    resave: false,
+    saveUninitialized: true,
 }));
 
-app.use(cookieParser());
+app.use('/reset', function(req, res, next) {
+  var upload_dir = path.join(__dirname, 'uploads');
+  fs.readdir(upload_dir, function(err, files) {
+    if (err) throw err;
+    files.forEach(function(file) {
+      fs.unlink(path.join(upload_dir, file), function(err) {
+        if (err) throw err;
+      });
+    });
 
-app.use(express.static(path.join(__dirname, 'public')));
+    FileModel.remove({}, function(err) {
+      if (err) throw err;
+    });
+  });
+
+  UserModel.remove({}, function(err) {
+    if (err) throw err;
+    res.redirect('/user/login');
+  });
+
+});
 
 app.use('/user', require('./routes/users'));
 app.use('/files', require('./routes/files'));
+app.use('/fines', require('./routes/fines'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,13 +73,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.use('/reset', function(req, res, next) {
-  UserModel.remove({});
-  FileModel.remove({});
-  res.redirect('/users/login');
-});
-
 
 db.connect();
 
