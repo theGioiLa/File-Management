@@ -44,7 +44,7 @@ UserSchema.methods.comparePassword = function(candiatePass, cb) {
     bcrypt.compare(candiatePass, this.password, function(err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
-    })
+    });
 };
 
 function validateUser(user) {

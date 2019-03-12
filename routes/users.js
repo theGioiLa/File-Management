@@ -1,7 +1,8 @@
-var express = require('express');
-var UserModel = require('../models/User');
-var rimraf = require('rimraf');
-var router = express.Router();
+var express = require('express'),
+    UserModel = require('../models/User'),
+    rimraf = require('rimraf'),
+    router = express.Router(),
+    authen = require('../middleware/authen');
 
 /* GET users listing. */ 
 router.get('/login', function(req, res, next){
@@ -12,7 +13,7 @@ router.get('/register', function(req, res, next){
     res.render('register', {title: 'Register'});
 });
 
-router.get('/profile/:username', function(req, res) {
+router.get('/profile/:username', authen.authenticate, function(req, res) {
     res.render('user_profile', {title: 'File Manager', username: req.params.username});
 });
 

@@ -3,9 +3,10 @@ var rimraf = require('rimraf');
     FileModel = require('../models/File'),
     UserModel = require('../models/User'),
     multiparty = require('multiparty'),
-    uploader = require('./upload-utils');
+    uploader = require('./upload-utils'),
+    authen = require('../middleware/authen');
 
-router.use(auth);
+router.use(authen.authenticate);
 uploader.init({
     maxFileSize: 1e13, 
     uploadedFilesPath: __dirname + '/../uploads/'
@@ -189,11 +190,5 @@ function normalize(fileSizeInBytes) {
 
     return Math.max(fileSizeInBytes, 0.1).toFixed(2) + byteUnits[i];
 }
-
-function auth(req, res, next) {
-    if (req.session.isLogined) next();
-    else res.redirect('/user/login');
-}
-
 
 module.exports = router;

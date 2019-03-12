@@ -1,13 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var session = require('express-session');
-var FileStorage = require('session-file-store')(session);
-var uuid = require('uuid/v4');
-var fs = require('fs');
-var rimraf = require('rimraf');
-var db = require('./db');
+var createError = require('http-errors'),
+  express = require('express'),
+  path = require('path'),
+  logger = require('morgan'),
+  session = require('express-session'),
+  FileStorage = require('session-file-store')(session),
+  uuid = require('uuid/v4'),
+  rimraf = require('rimraf'),
+  db = require('./db');
 
 var UserModel = require('./models/User');
 var FileModel = require('./models/File');
@@ -24,13 +23,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+var storage_options = {
+  ttl: 1800 // 30 min
+};
+var store = new FileStorage();
+
 app.use(session({
     genid: function(req) {
+        console.log('Before', req.sessionID);
         return uuid();
     },
+    store: store,
     secret: 'fine-uploader', 
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
 }));
 
 app.use('/reset', function(req, res, next) {
@@ -50,7 +56,14 @@ app.use('/reset', function(req, res, next) {
 
 });
 
-app.use('/user', require('./routes/users'));
+app.use('/user', function(req, res, next) {
+    console.log('sessionID current',req.sessionID);
+  store.get(req.sessionID, function(err, session) {
+    console.log(session);
+    next();
+  });
+},
+  require('./routes/users'));
 app.use('/files', require('./routes/files'));
 
 // catch 404 and forward to error handler

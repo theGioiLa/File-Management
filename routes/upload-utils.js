@@ -55,7 +55,7 @@ module.exports = {
 
         file.name = fields.qqfilename;
         _currTotalParts++;
-        console.log('Id ', index, _currTotalParts);
+        //console.log('Id ', index, _currTotalParts);
 
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
