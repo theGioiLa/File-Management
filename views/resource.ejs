@@ -12,11 +12,9 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
   <link href="/assets/fonts/nucleo-outline.ttf" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/demo/demo.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-  <link href="/stylesheets/style.css" rel="stylesheet" />
 
     <!-- Fine Uploader New/Modern CSS file
     ====================================================================== -->
@@ -50,15 +48,15 @@
 
 </head>
 
-<body class="">
+<% let index = "/drive/" + username; %>
+<body>
   <div class="wrapper ">
-    <div class="sidebar" data-color="red">
+    <div class="sidebar" data-color="yellow">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <% let index = "/files/" + username; %>
-        <a href=<%- index %> class="simple-text logo-normal">
+        <a href="<%- index -%>" class="simple-text logo-normal">
           File Manager
         </a>
       </div>
@@ -71,205 +69,37 @@
             </a>
           </li>
           <li class="active ">
-            <a href="./tables.html">
+            <a href="<%- index -%>">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
+              <p>File Manager</p>
             </a>
           </li>
         </ul>
       </div>
     </div>
+
     <div class="main-panel" id="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="<%-index%>">Table List</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg d-md-block"><%- username %></span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href='/user/profile/<%- username %>'>Profile</a>
-                  <a class="dropdown-item" href="/user/logout">Log out</a>
-                  <a class="dropdown-item" href="/user/reset">Reset</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
-      <div class="panel-header panel-header-sm">
-      </div>
+      <%- include('navbar.ejs', {username: username, index: index}); %>
+    
       <div class="content">
+        <!-- show files -->
         <div class="row">
-          <!-- File Exploer-->
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Index of <b>~<%- username %>/</b></h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-sm">
-                    <thead class=" text-primary">
-                      <th class="text-center">
-                        STT
-                      </th>
-                      <th style="width: 20%">
-                        Name
-                      </th>
-                      <th>
-                        Size
-                      </th>
-                      <th>
-                        Mimetype
-                      </th>
-                      <th>
-                        Last Modified
-                      </th>
-                      <th class="text-right">
-                        Action
-                      </th>
-                    </thead>
-                    <tbody>
-                      <% 
-                        let stt = 1; 
-                        files.forEach(function(file) { 
-                      %>
-                        <tr>
-                          <td><%- stt %></td>
-                          <td>
-                            <% 
-                            if (file.filename) { 
-                              let preview_path = '/files/' + username + '/preview/' + file._id;
-                            %>
-                            <a href="<%-preview_path%>"><%- file.filename %></a>
-                            <% } else { %>
-                              <a href="#"><%- file.filepath%></a>
-                            <% } %>
-                          </td>
-                          <td>
-                            <%- file.size %> 
-                          </td>
-                          <td>
-                            <%- file.mimetype %>
-                          </td>
-                          <td>
-                            <%- file.createdAt %>
-                          </td>
-                          <td class="text-right">
-                            <% 
-                              let delete_path = '/files/' + username + '/delete';
-                              if (file.filename) {
-                                delete_path += '/' + file._id;
-                                let download_path = '/files/' + username + '/download/' + file._id;
-                              %>
-                              <table>
-                                <tr>
-                                  <tr><a href=<%- download_path %> >Download</a> </tr>/
-                                  <tr><a href=<%- delete_path %> >Delete</a></tr>
-
-                                </tr>
-
-                              </table>
-                            <%
-                              } else {
-                                delete_path += file.filepath;
-                            %>
-                              <!-- Directory -->
-                              <a href=<%- delete_path %> >Delete</a>
-                            <%
-                              } 
-                              stt++;
-                            %> 
-                          </td>
-                        </tr>
-                        <% }); %>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%- include('files.ejs', {username: username, currDir_path: currDir_path, parent: parent, files: childrend}); -%>
         </div>
-
-        <!--
-        <div class="row">
-          <%- include('upload_simple', {username: username}); %>
-        </div>
-        -->
-
-        
         <!-- upload by chunk: Pause/Resume, Parallel -->
         <div class="row">
-          <div class="col"></div>
           <div class="col-md-8">
             <%- include('upload_by_chunk', {username: username}); %>
           </div>
-          <div class="col"></div>
         </div>
+
+        <br>
+
       </div>
 
+      <!-- Footer -->
       <footer class="footer">
-        <div class="container-fluid">
-          <nav>
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="http://presentation.creative-tim.com">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright" id="copyright">
-            &copy;
-            <script>
-              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-          </div>
-        </div>
+        <%- include('footer.ejs'); %>
       </footer>
     </div>
   </div>
@@ -278,16 +108,10 @@
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap.min.js"></script>
   <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
-  <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="/assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
 
 </body>
 

@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var Joi = require('joi');
-const SALT_WORK_FACTOR = 10;
+const SALT_ROUNDS = 10;
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -17,7 +16,10 @@ var UserSchema = new Schema({
         require: true
     },
 
-    files: [{type: Schema.Types.ObjectId, ref: 'File'}],
+    home: {
+        type: Schema.Types.ObjectId, 
+        ref: 'File',
+    },
 
     createdAt: {
         type: Date, 
@@ -28,16 +30,17 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next) {
     var user = this;
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-        if (err) return next(err);
-    
-        bcrypt.hash(user.password, salt, function(err, hash) {
+    if (!bcrypt.getRounds(user.password)) { // Check hashed password
+        bcrypt.genSalt(SALT_ROUNDS, function(err, salt) {
             if (err) return next(err);
-    
-            user.password = hash;
-            next();
+        
+            bcrypt.hash(user.password, salt, function(err, hash) {
+                if (err) return next(err);
+                user.password = hash;
+                next();
+            });
         });
-    });
+    }
 });
 
 UserSchema.methods.comparePassword = function(candiatePass, cb) {
@@ -47,30 +50,12 @@ UserSchema.methods.comparePassword = function(candiatePass, cb) {
     });
 };
 
-function validateUser(user) {
-    const template = {
-        username: Joi.string().min(5).max(50).required(),
-        password: Joi.string().min.require()
-    };
-
-    return Joi.validate(user, template);
-}
-
-
-var User = module.exports = mongoose.model('User', UserSchema);
-module.exports.validate = validateUser;
-module.exports.getUserByName = function(name, callback) {
-   User.findOne({username: name}, callback);
-};
+module.exports = mongoose.model('User', UserSchema);
 
 module.exports.addUser = function(user, callback) {
     user.save(callback);
 };
 
-module.exports.get_all_files = function(userId, callback) {
-    User.findById(userId).populate('fileskk')
-    User.findById(userId, callback);
-};  
 
 
 

@@ -4,7 +4,7 @@
 
 <!-- Fine Uploader Thumbnails template w/ customization
 ====================================================================== -->
-<%- include('templates/simple-thumbnails.html'); %>
+<%- include('templates/simple-thumbnails.html', {username: username}); %>
 
 <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
 ====================================================================== -->
@@ -14,7 +14,7 @@
         template: 'qq-template-manual-trigger',
 
         request: {
-            endpoint: '/files/<%-username%>/upload',
+            endpoint: '/drive/<%-username%>/upload',
         },
         debug: true,
         autoUpload: false,
@@ -39,7 +39,7 @@
         deleteFile: {
             enabled: true,
             forceConfirm: true,
-            endpoint: '/files/<%-username%>/delete',
+            endpoint: '/drive/<%-username%>/delete',
         },
 
         resume: {
@@ -52,14 +52,15 @@
             showButton: true
         },
 
-        cors: {
-            enabled: true
-        },
-
         callbacks: {
+            onComplete: function(id, filename, resJson, xhr) {
+                var file = this.getFile(id);
+                console.log(file);
+            },
+            
             onCancel: function(id, filename) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('DELETE', '/files/<%-username%>/cancel', true);
+                xhr.open('DELETE', '/drive/<%-username%>/cancel', true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send(this.getUuid(id));
 
@@ -68,7 +69,7 @@
 
             onAllComplete: function(successedIds, failedIds) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('HEAD', '/files/<%-username%>/success');
+                xhr.open('HEAD', '/drive/<%-username%>/success');
                 xhr.setRequestHeader("OK", 1);
                 xhr.send();
                 console.log('AllComplete');
@@ -79,5 +80,4 @@
     qq(document.getElementById("trigger-upload")).attach("click", function() {
         manualUploader.uploadStoredFiles();
     });
-
 </script>

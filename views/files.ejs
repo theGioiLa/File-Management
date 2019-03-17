@@ -1,0 +1,125 @@
+<!-- File Exploer-->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"> Index of <b>~<%- currDir_path -%></b></h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class=" text-primary">
+                        <th class="text-center">
+                        #
+                        </th>
+                        <th style="width: 20%">
+                        Name
+                        </th>
+                        <th>
+                        Size
+                        </th>
+                        <th>
+                        Mimetype
+                        </th>
+                        <th>
+                        Last Modified
+                        </th>
+                        <th class="text-center">
+                        Actions
+                        </th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <% let back_path = '/drive/' + username + '/view/' + parent; %>
+                                <a href="<%- back_path %>">
+                                    Back
+                                </a>
+                            </td>
+                        </tr>
+                        <% 
+                        let stt = 1; 
+                        files.forEach(function(file) { 
+                        %>
+                        <tr>
+                            <td><%- stt %></td>
+                            <td>
+                            <% 
+                            let view_path = '/drive/' + username + '/view/' + file._id;
+                            %> 
+                            <a href="<%- view_path -%>">
+                            <% if (file.isFolder) { %>
+                                <i class="now-ui-icons files_box"></i>
+                            <% } else { %>
+                                <i class="now-ui-icons files_paper"></i>
+                            <% } %>
+                                <%- file.filename -%>
+                            </a>
+                            </td>
+                            <td>
+                            <% 
+                            if (file.size) {
+                                var size = normalizeSize(file.size); 
+                            %> 
+                            <%- size -%>
+                            <% } %>
+                            </td>
+                            <td>
+                            <%- file.mimetype -%>
+                            </td>
+                            <td>
+                            <%- file.createdAt -%>
+                            </td>
+                            <td class="td-actions text-center">
+                            <% 
+                                let delete_path = '/drive/' + username + '/delete/' +  file._id;
+                                let share_path = '/drive/' + username + '/share/' + file._id;
+                                if (!file.isFolder) {
+                                    let download_path = '/drive/' + username + '/download/' + file._id;
+                            %>
+                                <button type="button" class="btn btn-info bnt-fab btn-round btn-icon"> 
+                                    <a href="<%- share_path %>">
+                                    <i class="now-ui-icons arrows-1_share-66"></i>
+                                    </a>
+                                </button>
+                                
+                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon"> 
+                                    <a href=<%- download_path %> >
+                                    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                                    </a>
+                                </button>
+
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon"> 
+                                    <a href=<%- delete_path %> >
+                                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                                    </a>
+                                </button>
+                            <%
+                                } else {
+                            %>
+                                <!-- Directory -->
+                                <button type="button" class="btn btn-info bnt-fab btn-round btn-icon"> 
+                                    <a href="<%- share_path %>">
+                                    <i class="now-ui-icons arrows-1_share-66"></i>
+                                    </a>
+                                </button>
+
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon"> 
+                                    <a href="<%- delete_path %>">
+                                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                                    </a>
+                                </button>
+                            <%
+                                } 
+                                stt++;
+                            %> 
+                            </td>
+                        </tr>
+                        <% }); %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

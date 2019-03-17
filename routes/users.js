@@ -1,5 +1,6 @@
 var express = require('express'),
     UserModel = require('../models/User'),
+    FileModel = require('../models/File'),
     rimraf = require('rimraf'),
     router = express.Router(),
     authen = require('../middleware/authen');
@@ -22,7 +23,6 @@ router.post('/login', function(req, res, next) {
     UserModel.findOne({username: req.body.username}, function(err, user) {
         if (err) throw err;
         if (user) {
-
             user.comparePassword(req.body.password, function(err, isMatch) {
                 if (err) throw err;
 
@@ -33,7 +33,7 @@ router.post('/login', function(req, res, next) {
                         username: user.username,
                         files: user.files
                     };
-                    res.redirect('/files/' + user.username);
+                    res.redirect('/drive/' + user.username);
                 } else {
                     res.redirect('login');
                 }
@@ -45,16 +45,26 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-    console.log(req.body.username);
-    var user = new UserModel({ 
-        username: req.body.username,
-        password: req.body.password
+    const home = new FileModel({
+        filename: req.body.username,
+        filepath: '/' + req.body.username,
+        isFolder:  true,
     });
 
-    UserModel.addUser(user, function(err, user) {
-        if (err) throw err;
-        res.redirect('login');
-    });
+    home.save(function(err, home) {
+        var user = new UserModel({
+            username: req.body.username,
+            password: req.body.password,
+            home: home._id,
+        });
+
+        user.save(function(err, user) {
+            home.parent = home._id;
+            home.owner = user._id;
+            home.save();
+            res.redirect('/user/login');
+        });
+    })
 });
 
 router.get('/logout', function(req, res) {
@@ -65,35 +75,21 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/reset', function(req, res) {
-    UserModel.findById(req.session.user.id).populate('files').exec(function(err, user) {
+    UserModel.findById(req.session.user.id).populate('home').exec(function(err, user) {
         if (err) throw err;
 
-        let filesId = [];
         var upload_dir = __dirname + '/../uploads/' + user.username;
-        console.log(upload_dir);
 
         rimraf(upload_dir, function(err) {
-            console.log(upload_dir);
             if (err) throw err;
         });
 
-        user.files.forEach(element => {
-            filesId.push(element._id);
-            element.remove(function(err, file) {
-                if (err) throw err;
-            });
+        FileModel.deleteMany({owner: user._id, _id: {$ne: user.home._id}}, function(err) {
+            if (err) throw err;
         });
 
-        UserModel.update(
-            { _id: user._id},
-            {$pullAll: {files: filesId}},
-            {multi: true}, 
-
-            function(err, raw) {
-                if (err) throw err;
-
-            }
-        );
+        user.home.files = [];
+        user.home.save();
 
         res.redirect('/user/logout');
     });

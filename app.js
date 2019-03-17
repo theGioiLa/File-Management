@@ -18,7 +18,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,17 +26,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 var storage_options = {
   ttl: 1800 // 30 min
 };
-var store = new FileStorage();
+
+var session_store = new FileStorage(storage_options);
 
 app.use(session({
     genid: function(req) {
-        console.log('Before', req.sessionID);
         return uuid();
     },
-    store: store,
+    store: session_store,
     secret: 'fine-uploader', 
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
 }));
 
 app.use('/reset', function(req, res, next) {
@@ -56,15 +56,8 @@ app.use('/reset', function(req, res, next) {
 
 });
 
-app.use('/user', function(req, res, next) {
-    console.log('sessionID current',req.sessionID);
-  store.get(req.sessionID, function(err, session) {
-    console.log(session);
-    next();
-  });
-},
-  require('./routes/users'));
-app.use('/files', require('./routes/files'));
+app.use('/user', require('./routes/users'));
+app.use('/drive', require('./routes/files'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

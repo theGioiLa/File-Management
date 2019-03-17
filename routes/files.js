@@ -14,35 +14,57 @@ uploader.init({
 
 router.get('/:username', function(req, res) {
     if (req.session.user.username === req.params.username) {
-        UserModel.findById(req.session.user.id).populate('files').exec(function(err, user) {
-            if (err) throw err;
-            res.render('resource', {title: 'File Manager', username: req.params.username, files: user.files});
-        });
+        UserModel.findById(req.session.user.id)
+            .populate({
+                path: 'home',
+                populate: {path: 'files'}
+            })
+            .exec(function(err, user) {
+                if (err) throw err;
+                req.session.currFolder = {
+                    id: user.home._id,
+                    path: user.home.filepath,
+                };
+
+                console.log(user.home.filepath);
+
+                res.render('resource', {
+                    title: 'File Manager', 
+                    username: req.params.username, 
+                    currDir_path: user.home.filepath,
+                    parent: user.home.parent,
+                    childrend: user.home.files,
+                    normalizeSize: normalize}
+                );
+            });
     } else res.redirect('/user/login');
 });
 
 //New Folder
 router.post('/:username/newFolder', function(req, res) {
     var folder = new FileModel({
-        filepath: '/' + req.body.newFolder,
+        filename: req.body.newFolder,
+        filepath: req.session.currFolder.path + '/' + req.body.newFolder,
+        parent: req.session.currFolder.id,
+        isFolder: true,
         owner: req.session.user.id
     });
 
     FileModel.newFolder(folder, function(err, folder) {
         if (err) throw err;
-        UserModel.update(
-            {_id: req.session.user.id},
+        FileModel.updateOne(
+            {_id: req.session.currFolder.id},
             {$push: {files: folder._id}},
             function(err, raw) {
                 if (err) throw err;
-                res.redirect('/files/' + req.session.user.username);
+                res.redirect('/drive/' + req.params.username + '/view/' + req.session.currFolder.id);
             }
         );
     });
 });
 
 //Upload File
-router.post('/:username/upload/', (req, res) => {
+router.post('/:username/upload', (req, res) => {
     var form = new multiparty.Form();
 
     form.parse(req, function(err, fields, files) {
@@ -68,15 +90,15 @@ router.post('/:username/upload/', (req, res) => {
         var doc = new FileModel({
             uuid: file.uuid,
             filename: file.name,
-            size: normalize(file.size),
+            size: file.size,
             mimetype: file.mimetype,
-            filepath: req.originalUrl,
+            parent: req.session.currFolder.id,
             owner: req.session.user.id
         });
 
         doc.save().then(function(file) {
-            UserModel.update(
-                {_id: req.session.user.id},
+            FileModel.updateOne(
+                {_id: file.parent},
                 {$push: {files: file._id}},
                 function(err, raw) {
                     if (err) throw err;
@@ -89,40 +111,66 @@ router.post('/:username/upload/', (req, res) => {
 router.get('/:username/download/:id', function(req, res) {
     FileModel.findById(req.params.id, 'filename', function(err, file) {
         if (err) throw err;
-        let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
-        res.download(upload_dir + file.filename);
+        if (!file.isFolder) {
+            let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
+            res.download(upload_dir + file.filename);
+        } else {
+            res.end('Cannot donwload this folder!');
+        }
     });
 });
 
-router.get('/:username/preview/:id', function(req, res) {
-    FileModel.findById(req.params.id, 'filename', function(err, file) {
+router.get('/:username/view/:id', function(req, res) {
+    FileModel.findById(req.params.id).populate('files').exec(function(err, file) {
         if (err) throw err;
-        let upload_dir = __dirname + '/../uploads/' + req.params.username;
-        res.sendFile(file.filename, {root: upload_dir});
+        if (file) {
+            if (!file.isFolder) { // view File
+                let upload_dir = __dirname + '/../uploads/' + req.params.username;
+                res.set({
+                    'Content-Type': file.mimetype,
+                    'Content-Length': file.size,
+                });
+                res.sendFile(file.filename, {root: upload_dir});
+            } else { // view Folder
+                req.session.currFolder.path = file.filepath;
+                req.session.currFolder.id = file._id;
+
+                res.render('resource', {
+                    title: 'File Manager', 
+                    username: req.params.username, 
+                    currDir_path: file.filepath, 
+                    parent: file.parent, 
+                    childrend: file.files, 
+                    normalizeSize: normalize}
+                );
+            }
+        } else res.redirect('/user/login');
     });
 });
 
 router.get('/:username/delete/:id', function(req, res) {
-    FileModel.findOneAndDelete({_id: req.params.id}, function(err, file) {
-        if (err) throw err;
-        let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
-        let filepath = upload_dir + file.filename;
+    FileModel.delete(req.params.id, 
+        // delete file in the folder
+        function(err, filename) {
+            let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
+            let filepath = upload_dir + filename;
 
-        if (file.filename) {
             rimraf(filepath, function(err) {
                 if (err) throw err;
             });
-        }
+        },
 
-        UserModel.update(
-            {_id: file.owner}, 
-            {$pull: {files: file._id}}, 
-            function(err, raw) {
-                if (err)  throw err;
-                res.redirect('/files/' + req.params.username);
-            }
-        );
-    });
+        // deleting successfully
+        function(file) {
+            FileModel.updateOne(
+                {_id: file.parent},
+                {$pull: {files: file._id}},
+                function(err, raw) {
+                    res.redirect('/drive/' + req.params.username + '/view/' + req.session.currFolder.id);
+                }
+            );
+        }
+    );
 });
 
 router.delete('/:username/delete/:uuid', function(req, res) {
@@ -132,14 +180,12 @@ router.delete('/:username/delete/:uuid', function(req, res) {
             let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
             let filepath = upload_dir + file.filename;
 
-            if (file.filename) {
-                rimraf(filepath, function(err) {
-                    if (err) throw err;
-                });
-            }
+            rimraf(filepath, function(err) {
+                if (err) throw err;
+            });
 
-            UserModel.update(
-                {_id: file.owner}, 
+            FileModel.updateOne(
+                {_id: file.parent}, 
                 {$pull: {files: file._id}}, 
                 function(err, raw) {
                     if (err)  throw err;
@@ -148,7 +194,7 @@ router.delete('/:username/delete/:uuid', function(req, res) {
                 }
             );
         } else {
-            res.status(204);
+            res.status(500);
             res.end();
         }
     });
@@ -173,8 +219,6 @@ router.head('/:username/success', function(req, res) {
         res.end('Failed onAllComplete callback!');
     }
     */
-
-    console.log(req.get('OK'));
     res.redirect('/user/login');
     // res.end('Done');
 });

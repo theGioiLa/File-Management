@@ -1,9 +1,9 @@
 var rimraf = require('rimraf'),
     mkdirp = require('mkdirp'),
+    fileType = require('file-type'),
     fs = require('fs');
 
 var _maxFileSize, _uploadedFilesPath, _chunkDirName; 
-var _currTotalParts = 0;
 
 module.exports = {
     init: function(option) {
@@ -25,7 +25,7 @@ module.exports = {
                 success: false
             };
 
-        file.name = fields.qqfilename;
+        file.name = fields.qqfilename + file.uuid;
 
         if (isValid(file.size)) {
             moveUploadedFile(file, uuid, owner, function() {
@@ -53,26 +53,36 @@ module.exports = {
                 success: false
             };
 
-        file.name = fields.qqfilename;
-        _currTotalParts++;
-        //console.log('Id ', index, _currTotalParts);
-
+        file.name = fields.qqfilename + uuid;
+        
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
                 // success
                 function() {
-                    if (index < totalParts - 1 && _currTotalParts < totalParts) {
+                    var destinationDir = _uploadedFilesPath + owner + '/' + uuid + "/" + _chunkDirName;
+                    var partsNo = fs.readdirSync(destinationDir).length;
+                    if (index < totalParts - 1 && partsNo < totalParts) {
                         responseData.success = true;
                         res.send(responseData);
-                    }
-                    else {
-                        if (_currTotalParts == totalParts) {
-                            combineChunks(file, uuid, owner, function() {
-                                    _currTotalParts = 0;
-                                    onSaved(file);
+                    } else {
+                        if (partsNo == totalParts) {
+                            combineChunks(file, uuid, owner, 
+                                // success
+                                function() {
+
+                                    (async () => {
+                                        const read = fs.createReadStream(_uploadedFilesPath + owner + '/' + file.name);
+                                    
+                                        const stream = await fileType.stream(read);
+                                    
+                                        file.mimetype = stream.fileType.mime;
+                                        onSaved(file);
+                                    })();
+
                                     responseData.success = true;
                                     res.send(responseData);
                                 },
+                                // failure
                                 function() {
                                     responseData.error = "Problem conbining the chunks!";
                                     res.send(responseData);
