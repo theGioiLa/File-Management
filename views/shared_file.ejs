@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,17 +62,6 @@
         <div class="row">
           <%- include('files.ejs', {username: username, currDir_path: currDir_path, parent: parent, files: childrend}); -%>
         </div>
-
-        <hr>
-        <!-- upload by chunk: Pause/Resume, Parallel -->
-        <div class="row">
-          <div class="col-md-8">
-            <%- include('upload_by_chunk', {username: username}); %>
-          </div>
-        </div>
-
-        <br>
-
       </div>
 
       <!-- Footer -->

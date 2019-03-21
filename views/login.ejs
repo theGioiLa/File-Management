@@ -10,33 +10,36 @@
       <%- title %>
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <!--
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  -->
   <link href="/assets/fonts/nucleo-outline.ttf" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="/assets/js/core/jquery.min.js"></script>
 </head>
 <body class="" background="/images/bg.webp">
+
   <div id="container" class="container">
       <div class="row text-white">
           <div class="col-sm-6 offset-sm-3">
+              <% if (message) {%>
+              <div class="alert alert-<%-message.type %> alert-dismissible fade show" role="alert" on>
+                <strong>"<%- message.msg %> !"</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <% } %>
+
               <h1 class="display-4 text-center"><b>File Manager _ Login</b></h1>
               <div class="info-form">
                   <form action="/user/login" method="POST" class="form-inlin justify-content-center">
                       <div class="form-group">
-                          <label for="usr">Username</label>
-                          <input type="text" class="form-control" name="username">
+                          <input type="text" class="form-control" placeholder="Username" name="username">
                       </div>
                       <div class="form-group">
-                          <label for="pwd">Password</label>
-                          <input type="password" class="form-control" name="password">
+                          <input type="password" class="form-control" placeholder="Password" name="password">
                       </div>
 
                         <button type="submit" class="btn btn-primary">Login</button>
-
                   </form>
                   <br>
 
@@ -53,6 +56,13 @@
           </div>
       </div>
   </div>
+  <script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 4000);
+  </script>
 </body>
 
 </html>

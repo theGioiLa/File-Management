@@ -1,20 +1,37 @@
 <script type="text/template" id="qq-template-manual-trigger">
     <div class="qq-uploader-selector">
-        
-            <div class="dropdown">
-                <a class="btn btn-secondary btn-round dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-flex flex-row">
+            <button type="button" class="btn btn-secondary btn-round" data-toggle="modal" data-target="#new_folder">
                     New Folder
-                </a>
-                
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <form method="POST" action="/drive/<%- username %>/newFolder" class="dropdown-item">
-                        <input type="text" placeholder="folder" name="newFolder">
-                        <button type="submit" class="btn btn-round">Create</button>
-                    </form>
-            </div>
+            </button>
             <button type="button" class="qq-upload-button-selector btn btn-info btn-round">Select File</button>
-            <button type="button" id="trigger-upload" class="btn btn-primary btn-round">Upload</button>
+            <button type="button" class="btn btn-primary btn-round" id="trigger-upload"> Upload</button>
+        </div>
+                
+            <!-- The New Folder Modal -->
+            <div class="modal fade" id="new_folder">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+            
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">New Folder</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form method="POST" action="/drive/<%- username %>/newFolder">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="folder name" name="newFolder">
+                                    <button type="submit" class="btn btn-round">Create</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+        
 
 
             <span class="qq-drop-processing-selector qq-drop-processing">
@@ -40,28 +57,33 @@
                 </li>
             </ul>
 
-        <dialog class="qq-alert-dialog-selector">
-            <div class="qq-dialog-message-selector"></div>
-            <div class="qq-dialog-buttons">
-                <button type="button" class="qq-cancel-button-selector btn btn-round">Close</button>
-            </div>
-        </dialog>
+            <!--
 
-        <dialog class="qq-confirm-dialog-selector">
-            <div class="qq-dialog-message-selector"></div>
-            <div class="qq-dialog-buttons">
-                <button type="button" class="qq-cancel-button-selector btn btn-round">No</button>
-                <button type="button" class="qq-ok-button-selector btn btn-round">Yes</button>
-            </div>
-        </dialog>
+            <dialog class="qq-alert-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector btn btn-round">Close</button>
+                </div>
+            </dialog>
 
-        <dialog class="qq-prompt-dialog-selector">
-            <div class="qq-dialog-message-selector"></div>
-            <input type="text">
-            <div class="qq-dialog-buttons">
-                <button type="button" class="qq-cancel-button-selector">Cancel</button>
-                <button type="button" class="qq-ok-button-selector">Ok</button>
-            </div>
-        </dialog>
+            <dialog class="qq-confirm-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector btn btn-round">No</button>
+                    <button type="button" class="qq-ok-button-selector btn btn-round">Yes</button>
+                </div>
+            </dialog>
+
+            <dialog class="qq-prompt-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <input type="text">
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+                    <button type="button" class="qq-ok-button-selector">Ok</button>
+                </div>
+            </dialog>
+
+
+            -->
     </div>
 </script>

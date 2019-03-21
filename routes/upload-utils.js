@@ -25,7 +25,7 @@ module.exports = {
                 success: false
             };
 
-        file.name = fields.qqfilename + file.uuid;
+        file.name = fields.qqfilename; 
 
         if (isValid(file.size)) {
             moveUploadedFile(file, uuid, owner, function() {

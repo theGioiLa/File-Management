@@ -1,10 +1,27 @@
-var rimraf = require('rimraf');
+const rimraf = require('rimraf');
     router = require('express').Router(),
     FileModel = require('../models/File'),
     UserModel = require('../models/User'),
+    TokenModel = require('../models/Token'),
     multiparty = require('multiparty'),
     uploader = require('./upload-utils'),
+    nodemailer = require('nodemailer'),
+    config = require('../config'),
+    jws = require('jws'),
     authen = require('../middleware/authen');
+
+let transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port:  587,
+    auth: {
+        user: process.env.ETHEREAL_USER, 
+        pass: process.env.ETHEREAL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
 
 router.use(authen.authenticate);
 uploader.init({
@@ -26,7 +43,6 @@ router.get('/:username', function(req, res) {
                     path: user.home.filepath,
                 };
 
-                console.log(user.home.filepath);
 
                 res.render('resource', {
                     title: 'File Manager', 
@@ -87,23 +103,28 @@ router.post('/:username/upload', (req, res) => {
     });
 
     function onSaved(file) {
-        var doc = new FileModel({
-            uuid: file.uuid,
-            filename: file.name,
-            size: file.size,
-            mimetype: file.mimetype,
-            parent: req.session.currFolder.id,
-            owner: req.session.user.id
-        });
+        FileModel.find({filename: file.name}, function(err, files) {
+            if (files.length == 0) {
+                var doc = new FileModel({
+                    uuid: file.uuid,
+                    filename: file.name,
+                    size: file.size,
+                    mimetype: file.mimetype,
+                    parent: req.session.currFolder.id,
+                    owner: req.session.user.id
+                });
 
-        doc.save().then(function(file) {
-            FileModel.updateOne(
-                {_id: file.parent},
-                {$push: {files: file._id}},
-                function(err, raw) {
-                    if (err) throw err;
-                }
-            );
+                doc.save().then(function(file) {
+                    FileModel.updateOne(
+                        {_id: file.parent},
+                        {$push: {files: file._id}},
+                        function(err, raw) {
+                            if (err) throw err;
+                        }
+                    );
+                });
+
+            }
         });
     }
 });
@@ -151,12 +172,19 @@ router.get('/:username/view/:id', function(req, res) {
 router.get('/:username/delete/:id', function(req, res) {
     FileModel.delete(req.params.id, 
         // delete file in the folder
-        function(err, filename) {
+        function(err, file) {
             let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
-            let filepath = upload_dir + filename;
+            let filepath = upload_dir + file.filename;
 
             rimraf(filepath, function(err) {
                 if (err) throw err;
+            });
+
+            TokenModel.deleteOne({owner: file._id}, function(err) {
+                if (err) {
+                    console.error(err.message);
+                    return;
+                }
             });
         },
 
@@ -184,6 +212,13 @@ router.delete('/:username/delete/:uuid', function(req, res) {
                 if (err) throw err;
             });
 
+            TokenModel.deleteOne({owner: file._id}, function(err) {
+                if (err) {
+                    console.error(err.message);
+                    return;
+                }
+            });
+
             FileModel.updateOne(
                 {_id: file.parent}, 
                 {$pull: {files: file._id}}, 
@@ -200,6 +235,47 @@ router.delete('/:username/delete/:uuid', function(req, res) {
     });
 });
 
+router.post('/:username/share/:id', function(req, res) {
+    FileModel.findById(req.params.id, function(err, file) {
+        if (!file.token) {
+            let data = JSON.stringify({
+                id: req.params.id,
+                expireIn: parseInt(req.body.expireIn), // seconds
+                owner: req.params.username
+            });
+
+            //let token = jwt.sign({id: req.params.id, owner: req.params.username}, process.env.SECRET, options);
+            let token = jws.sign({
+                header: {alg: config.algorithm},
+                payload: data,
+                secret: config.secret
+            });
+
+            file.token = token;
+            file.expireIn = parseInt(req.body.expireIn);
+            file.save();
+
+            let mailOptions = {
+                from: process.env.ETHEREAL_USER,
+                to: 'quangquyK60@gmail.com',
+                subject: 'File Sharing',
+                html: `<p>You can access this file <a href='${process.env.DOMAIN || 'localhost'}:3000/share/file/${token}'>Link</a></p>`
+            }
+
+            transporter.sendMail(mailOptions, function(err, info) {
+                if (err) {
+                    console.error(err);
+                    return;
+                } 
+                console.log('Email sent: ' + info.response);
+                res.status(200).end();
+            });
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+
 router.delete('/:username/cancel', function(req, res) {
     uploader.deleteTempChunkedFile(req.params.username, Object.keys(req.body)[0], function(err) {
         if (err) {
@@ -210,19 +286,6 @@ router.delete('/:username/cancel', function(req, res) {
         res.end('Be canceled!'); 
     });
 });
-
-router.head('/:username/success', function(req, res) {
-    /*
-    if (req.get('OK')) res.redirect('/files/' + req.params.username);
-    else {
-        res.status(500);
-        res.end('Failed onAllComplete callback!');
-    }
-    */
-    res.redirect('/user/login');
-    // res.end('Done');
-});
-
 
 function normalize(fileSizeInBytes) {
     let i = -1;

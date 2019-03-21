@@ -66,14 +66,6 @@
 
                 return true;
             },
-
-            onAllComplete: function(successedIds, failedIds) {
-                var xhr = new XMLHttpRequest();
-                xhr.open('HEAD', '/drive/<%-username%>/success');
-                xhr.setRequestHeader("OK", 1);
-                xhr.send();
-                console.log('AllComplete');
-            }
         }
     });
 

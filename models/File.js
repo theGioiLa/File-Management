@@ -33,6 +33,12 @@ var FileSchema = new Schema({
         ref: 'User'
     },
 
+    token: String,
+    expireIn: Number,
+    lastAccess: {
+
+    }
+
     createdAt: {
         type: Date, 
         default: Date.now()
@@ -68,7 +74,7 @@ function removeFolder(id, onRemoveFile) {
                     removeFolder(child, onRemoveFile);
                 });
             } else {
-                onRemoveFile(error, file.filename);
+                onRemoveFile(error, file);
             }
         }
     });

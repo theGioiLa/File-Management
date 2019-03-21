@@ -1,0 +1,38 @@
+<div class="sidebar" data-color="yellow">
+    <!--
+    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+-->
+    <div class="logo">
+    <a href="<%- index -%>" class="simple-text logo-normal">
+        File Manager
+    </a>
+    </div>
+    <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <ul class="nav">
+        <li>
+        <a href="/user/profile/<%- username %>">
+            <i class="now-ui-icons users_single-02"></i>
+            <p>User Profile</p>
+        </a>
+        </li>
+        <li class="active ">
+        <a href="<%- index -%>">
+            <i class="now-ui-icons design_bullet-list-67"></i>
+            <p>File Manager</p>
+        </a>
+        </li>
+        <li>
+        <a href="/file/:username/shared_files">
+            <i class="now-ui-icons design_bullet-list-67"></i>
+            <p>Shared Files</p>
+        </a>
+        </li>
+        <li>
+        <a href="/file/:username/shared_with_me">
+            <i class="now-ui-icons design_bullet-list-67"></i>
+            <p>Shared With Me</p>
+        </a>
+        </li>
+    </ul>
+    </div>
+</div>

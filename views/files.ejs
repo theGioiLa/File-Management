@@ -1,3 +1,5 @@
+<% let view_paths = []; %>
+<% let share_paths = []; %>
 <!-- File Exploer-->
 <div class="col-md-12">
     <div class="card">
@@ -46,19 +48,21 @@
                             <td>
                             <% 
                             let view_path = '/drive/' + username + '/view/' + file._id;
+                            view_paths.push(view_path);
                             %> 
-                            <a href="<%- view_path -%>">
                             <% if (file.isFolder) { %>
+                            <a href="<%- view_path %>" data-toggle="tooltip" title="Preview">
                                 <i class="now-ui-icons files_box"></i>
                             <% } else { %>
-                                <i class="now-ui-icons files_paper"></i>
+                            <a id="preivewFile_<%-stt-%>" href="#preview_modal" data-toggle="tooltip" title="Preview">
+                                <i id="test" class="now-ui-icons files_paper"></i>
                             <% } %>
                                 <%- file.filename -%>
                             </a>
                             </td>
                             <td>
                             <% 
-                            if (file.size) {
+                            if (!file.isFolder) {
                                 var size = normalizeSize(file.size); 
                             %> 
                             <%- size -%>
@@ -74,43 +78,31 @@
                             <% 
                                 let delete_path = '/drive/' + username + '/delete/' +  file._id;
                                 let share_path = '/drive/' + username + '/share/' + file._id;
+                                share_paths.push(share_path);
+                            %>
+                                <button id="btnShare_<%-stt-%>" type="button" class="btn btn-info btn-fab btn-round btn-icon btn-share-file" data-file="<%-stt%>" data-toggle="tooltip" title="Share">
+                                    <i class="now-ui-icons arrows-1_share-66"></i>
+                                </button>
+                            <%
                                 if (!file.isFolder) {
                                     let download_path = '/drive/' + username + '/download/' + file._id;
                             %>
-                                <button type="button" class="btn btn-info bnt-fab btn-round btn-icon"> 
-                                    <a href="<%- share_path %>">
-                                    <i class="now-ui-icons arrows-1_share-66"></i>
-                                    </a>
-                                </button>
                                 
-                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon"> 
-                                    <a href=<%- download_path %> >
-                                    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                                    </a>
-                                </button>
-
-                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon"> 
-                                    <a href=<%- delete_path %> >
-                                    <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </a>
-                                </button>
-                            <%
-                                } else {
-                            %>
-                                <!-- Directory -->
-                                <button type="button" class="btn btn-info bnt-fab btn-round btn-icon"> 
-                                    <a href="<%- share_path %>">
-                                    <i class="now-ui-icons arrows-1_share-66"></i>
-                                    </a>
-                                </button>
-
-                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon"> 
-                                    <a href="<%- delete_path %>">
-                                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon" data-toggle="tooltip" title="Download"> 
+                                    <a href=<%- download_path -%> >
+                                        <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                                     </a>
                                 </button>
                             <%
                                 } 
+                            %>
+
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon" data-toggle="tooltip" title="Delete"> 
+                                    <a href=<%- delete_path -%> >
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                                    </a>
+                                </button>
+                            <%
                                 stt++;
                             %> 
                             </td>
@@ -123,3 +115,123 @@
         </div>
     </div>
 </div>
+
+<!-- Preview Dialog -->
+<div class="modal fade" id="preview_modal">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="view_content" class="embed-responsive-item" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Share Option Dialog -->
+<div class="modal fade" id="share_modal">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Share File Options</strong></h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <h3 id="shareFilename"></h3>
+                <form id="shareOption">
+                    <div class="container">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="expireIn" class="col-form-label">Expire In</label>
+                        <div class="form-control">
+                            <input type="number" name="expireInMonth" id="expireInMonth" min="0" max="5" value="0">
+                            <label class="col-form-label">Months</label>
+
+                            <input type="number" name="expireInDay" id="expireInDay" min="0" max="15" value="0">
+                            <label class="col-form-label">Days</label>
+
+                            <input type="number" name="expireInHour" id="expireInHour" min="0" max="24" value="0">
+                            <label class="col-form-label">Hours</label>
+
+                            <input type="number" name="expireInMin" id="expireInMin" min="0" max="60" value="0">
+                            <label class="col-form-label">Mins</label>
+
+                            <input type="number" name="expireInSecond" id="expireInSecond" min="0" max="60" value="30">
+                            <label class="col-form-label">Seconds</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ipAddress" class="col-form-label">Ip Address Range</label>
+                        <input type="range" min="0" max="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="col-form-label">Location</label>
+                        <input type="range" min="0" max="100">
+                        <select>
+                            <option>
+                                Test
+                            </option>
+                            <option>
+                                Test
+                            </option>
+                        </select>
+                    </div>
+
+                    <button id="shareBtn" type="submit" class="btn btn-danger btn-round" data-dismiss="modal">Share</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        var files = JSON.parse('<%-JSON.stringify(files);%>');
+        var view_paths = JSON.parse('<%-JSON.stringify(view_paths);%>');
+        var share_paths = JSON.parse('<%-JSON.stringify(share_paths);%>');
+
+        $(".btn-share-file").on("click", function() {
+            var self = $(this);
+            var fileId = self.attr("data-file") - 1;
+
+            $("#share_modal").modal("show");
+
+            $("#share_modal").on('shown.bs.modal', function(event) {
+                $("#shareFilename").text(files[fileId].filename);
+            });
+
+            $("#share_modal").on('hide.bs.modal', function() {
+                $("#shareBtn").off('click');
+            })
+
+            $("#shareBtn").on('click', function(event) {
+                let month = parseInt($("#expireInMonth").val());
+                let day = parseInt($("#expireInDay").val());
+                let hour = parseInt($("#expireInHour").val());
+                let min = parseInt($("#expireInMin").val());
+                let second = parseInt($("#expireInSecond").val());
+                let expireIn = (month*30 + day)*24*3600 + hour*3600 + min*60 + second;
+
+                var data = {
+                    expireIn: expireIn,
+                };
+
+                console.log(data.expireIn);
+
+                $.post(share_paths[fileId], data, function(data, status, xhr) {
+                    console.log(status);
+                });
+            });
+        });
+    });
+</script>
