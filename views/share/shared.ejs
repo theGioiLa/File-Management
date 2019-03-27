@@ -1,0 +1,56 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Shared files </h4> 
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered">
+                    <thead class=" text-primary">
+                        <th class="text-center" scope="col"> # </th>
+                        <th style="width: 30%" scope="col"> Name </th>
+                        <th style="width: 20%" scope="col"> ExpireIn </th>
+                        <th style="width: 35%" scope="col"> With </th>
+                        <th class="text-center" scope="col" style="width: 10%">Total Views</th>
+                    </thead>
+
+                    <tbody>
+                        <% 
+                        let index = 1; 
+                        let today = new Date(Date.now());
+                        sharedFiles.forEach(file => { 
+                        %>
+                            <tr>
+                                <th class="text-center" scope="row"><%- index %></th>
+                                <td><%- file.filename %></td>
+                                <td><%- file.expireIn.toLocaleString(); %></td>
+                                <td class="text-left">
+                                    <ul class="list-group list-group-flush">
+                                        <% file.sharedWith.forEach(email => { %>
+                                            <li class="list-group-item"><%- email %></li>
+                                        <%
+                                        });
+                                        %>
+                                    </ul>
+                                </td>   
+                                <td class="text-center">
+                                    <% 
+                                    let countViews = 0;
+                                    file.views.forEach(view => {
+                                        countViews += view.visits;
+                                    });
+                                    %>
+                                    <%- countViews %>
+                                </td>
+                            </tr>
+                        <%
+                        index++;
+                        });
+                        %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

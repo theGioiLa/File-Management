@@ -53,7 +53,7 @@ router.get('/:username', function(req, res) {
                     normalizeSize: normalize}
                 );
             });
-    } else res.redirect('/user/login');
+    } else res.redirect('/');
 });
 
 //New Folder
@@ -123,7 +123,6 @@ router.post('/:username/upload', (req, res) => {
                         }
                     );
                 });
-
             }
         });
     }
@@ -165,7 +164,7 @@ router.get('/:username/view/:id', function(req, res) {
                     normalizeSize: normalize}
                 );
             }
-        } else res.redirect('/user/login');
+        } else res.redirect('/');
     });
 });
 
@@ -180,12 +179,9 @@ router.get('/:username/delete/:id', function(req, res) {
                 if (err) throw err;
             });
 
-            TokenModel.deleteOne({owner: file._id}, function(err) {
-                if (err) {
-                    console.error(err.message);
-                    return;
-                }
-            });
+            if (file.token) {
+                file.token.remove();
+            }
         },
 
         // deleting successfully
@@ -202,7 +198,7 @@ router.get('/:username/delete/:id', function(req, res) {
 });
 
 router.delete('/:username/delete/:uuid', function(req, res) {
-    FileModel.findOneAndDelete({uuid: req.params.uuid}, function(err, file) {
+    FileModel.findOneAndDelete({uuid: req.params.uuid}).populate('token').exec(function(err, file) {
         if (err) throw err;
         if (file) {
             let upload_dir = __dirname + '/../uploads/' + req.params.username + '/';
@@ -212,12 +208,9 @@ router.delete('/:username/delete/:uuid', function(req, res) {
                 if (err) throw err;
             });
 
-            TokenModel.deleteOne({owner: file._id}, function(err) {
-                if (err) {
-                    console.error(err.message);
-                    return;
-                }
-            });
+            if (file.token) {
+                file.token.remove();
+            }
 
             FileModel.updateOne(
                 {_id: file.parent}, 
@@ -238,29 +231,49 @@ router.delete('/:username/delete/:uuid', function(req, res) {
 router.post('/:username/share/:id', function(req, res) {
     FileModel.findById(req.params.id, function(err, file) {
         if (!file.token) {
-            let data = JSON.stringify({
+            let mailList = req.body["mailList[]"];
+            let defaultDate = Date.now() + 86400000;
+            let data = {
                 id: req.params.id,
-                expireIn: parseInt(req.body.expireIn), // seconds
-                owner: req.params.username
-            });
+                expireIn: req.body.expireIn || defaultDate,
+                owner: req.params.username,
+            };
 
-            //let token = jwt.sign({id: req.params.id, owner: req.params.username}, process.env.SECRET, options);
-            let token = jws.sign({
+            let tokenStr = jws.sign({
                 header: {alg: config.algorithm},
-                payload: data,
+                payload: JSON.stringify(data),
                 secret: config.secret
             });
 
-            file.token = token;
-            file.expireIn = parseInt(req.body.expireIn);
-            file.save();
+            let acceptedLocation = [req.body.location];
+            let acceptedIp = [];
+
+            let token = new TokenModel({
+               tokenStr: tokenStr,
+               expireIn: new Date(data.expireIn),
+               belongTo: file._id,
+               sharedWith: mailList,
+               acceptedLocation: acceptedLocation,
+               acceptedIp: acceptedIp 
+            });
+
+            token.save().then(function(token) {
+                file.token = token._id;
+                file.save();
+
+            }).catch(function(err) {
+                console.error(err.message);
+            });
 
             let mailOptions = {
                 from: process.env.ETHEREAL_USER,
-                to: 'quangquyK60@gmail.com',
+                to: mailList,
                 subject: 'File Sharing',
-                html: `<p>You can access this file <a href='${process.env.DOMAIN || 'localhost'}:3000/share/file/${token}'>Link</a></p>`
-            }
+                html: `<p>
+                        You can access this file before ${token.expireIn.toLocaleString()}
+                        <a href="http://${process.env.DOMAIN || 'localhost:3000'}/share/file/${tokenStr}">Link</a>
+                        </p>`
+            };
 
             transporter.sendMail(mailOptions, function(err, info) {
                 if (err) {
@@ -276,6 +289,39 @@ router.post('/:username/share/:id', function(req, res) {
     });
 });
 
+router.get('/:username/shared_files', function(req, res) {
+    UserModel.findById(req.session.user.id)
+    .populate({
+        path: 'home',
+        populate: ({
+            path: 'files',
+            populate: {path: 'token'}
+        })
+    })
+    .exec(function(err, user) {
+        if (err) throw err;
+        let files = user.home.files;
+        let sharedFiles = [];
+
+        files.forEach(file => {
+            if (file.token) {
+                sharedFiles.push({
+                    filename: file.filename,
+                    expireIn: file.token.expireIn,
+                    sharedWith: file.token.sharedWith,
+                    views: file.token.views
+                });
+            }
+        });
+        
+        res.render('shared_file', {title: 'Shared files', username: req.params.username, sharedFiles: sharedFiles});
+    });
+});
+
+router.get('/:username/shared_with_me', function(req, res) {
+    res.render('shared_with_me', {title: 'Shared with me', username: req.params.username});
+});
+
 router.delete('/:username/cancel', function(req, res) {
     uploader.deleteTempChunkedFile(req.params.username, Object.keys(req.body)[0], function(err) {
         if (err) {
@@ -283,7 +329,7 @@ router.delete('/:username/cancel', function(req, res) {
             res.status(500);
         }
 
-        res.end('Be canceled!'); 
+        res.status(200).end('Be canceled!'); 
     });
 });
 

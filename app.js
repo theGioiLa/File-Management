@@ -3,7 +3,6 @@ var createError = require('http-errors'),
     path = require('path'),
     logger = require('morgan'),
     session = require('express-session'),
-  //  FileStorage = require('session-file-store')(session),
     uuid = require('uuid/v4'),
     rimraf = require('rimraf'),
     dotenv = require('dotenv'),
@@ -16,10 +15,12 @@ var UserModel = require('./models/User');
 var FileModel = require('./models/File');
 var TokenModel = require('./models/Token');
 
+
 var app = express();
 
 
 dotenv.config();
+app.enable('trust proxy');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -48,6 +49,11 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+app.get('/', function(req, res) {
+  res.render('index', {title: "Login", message: req.session.message});
+  // res.redirect('/user/login');
+});
+
 app.use('/reset', function(req, res, next) {
   var upload_dir = path.join(__dirname, 'uploads/*');
   rimraf(upload_dir, function(err) {
@@ -67,7 +73,7 @@ app.use('/reset', function(req, res, next) {
 
     req.session.destroy(function(err) {
         if (err) throw err;
-        res.redirect('/user/login');
+        res.redirect('/');
     });
   });
 });

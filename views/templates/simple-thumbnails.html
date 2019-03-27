@@ -1,11 +1,18 @@
 <script type="text/template" id="qq-template-manual-trigger">
     <div class="qq-uploader-selector">
         <div class="d-flex flex-row">
-            <button type="button" class="btn btn-secondary btn-round" data-toggle="modal" data-target="#new_folder">
-                    New Folder
+            <button type="button" class="qq-upload-button-selector btn btn-info btn-round btn-icons">
+                <i class="fas" style="font-size:15px"> Select File</i>
             </button>
-            <button type="button" class="qq-upload-button-selector btn btn-info btn-round">Select File</button>
-            <button type="button" class="btn btn-primary btn-round" id="trigger-upload"> Upload</button>
+            <button type="button" class="btn btn-primary btn-round btn-icons" id="trigger-upload"> 
+                <i class="fas fa-upload" style="font-size:15px"> Upload</i>
+            </button>
+
+            <hr>
+
+            <button type="button" class="btn btn-round btn-icons" data-toggle="modal" data-target="#new_folder">
+                <i class="fas fa-folder-plus" style="font-size:15px"> New folder</i>
+            </button>
         </div>
                 
             <!-- The New Folder Modal -->

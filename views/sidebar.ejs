@@ -9,26 +9,26 @@
     </div>
     <div class="sidebar-wrapper" id="sidebar-wrapper">
     <ul class="nav">
-        <li>
+        <li class="user-profile">
         <a href="/user/profile/<%- username %>">
             <i class="now-ui-icons users_single-02"></i>
             <p>User Profile</p>
         </a>
         </li>
-        <li class="active ">
+        <li class="file-manager">
         <a href="<%- index -%>">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>File Manager</p>
         </a>
         </li>
-        <li>
-        <a href="/file/:username/shared_files">
+        <li class="shared-file">
+        <a href="/drive/<%-username %>/shared_files">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>Shared Files</p>
         </a>
         </li>
-        <li>
-        <a href="/file/:username/shared_with_me">
+        <li class="shared-with-me">
+        <a href="/drive/<%-username %>/shared_with_me">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>Shared With Me</p>
         </a>
@@ -36,3 +36,11 @@
     </ul>
     </div>
 </div>
+
+<script>
+    $(function() {
+        let active = "<%- active %>";
+
+        $("." + active).addClass("active");
+    });
+</script>

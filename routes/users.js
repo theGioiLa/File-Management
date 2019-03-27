@@ -8,15 +8,15 @@ var express = require('express'),
 
 /* GET users listing. */ 
 router.get('/login', function(req, res){
-    res.render('login', {title: 'Login', message: req.session.message});
+    res.render('index', {title: 'Login', message: req.session.message});
 });
 
 router.get('/register', function(req, res, next){
-    res.render('register', {title: 'Register'});
+    res.render('registerF', {title: 'Register'});
 });
 
 router.get('/profile/:username', authen.authenticate, function(req, res) {
-    res.render('user_profile', {title: 'File Manager', username: req.params.username});
+    res.render('user_profile', {title: 'User profile', username: req.params.username});
 });
 
 router.post('/login', function(req, res, next) {
@@ -41,7 +41,7 @@ router.post('/login', function(req, res, next) {
                         msg: "Password incorrect",
                         type: "danger"
                     };
-                    res.redirect('login');
+                    res.redirect('/');
                 }
             });
         } else {
@@ -49,7 +49,7 @@ router.post('/login', function(req, res, next) {
                 msg: "Account doesn't exist",
                 type: "danger"
             };
-            res.redirect('login');
+            res.redirect('/');
         }
     });
 });
@@ -76,8 +76,7 @@ router.post('/register', function(req, res, next) {
                 msg: "Register Successfully",
                 type: "success"
             };
-            console.log(req.session, req.sessionID);
-            res.redirect('/user/login');
+            res.redirect('/');
         });
     })
 });
@@ -85,7 +84,7 @@ router.post('/register', function(req, res, next) {
 router.get('/logout', function(req, res) {
     req.session.destroy(function(err) {
         if (err) throw err;
-        res.redirect('login');
+        res.redirect('/');
     });
 });
 
@@ -101,7 +100,7 @@ router.get('/reset', function(req, res) {
 
         FileModel.find({owner: user._id, _id: {$ne: user.home._id}}, function(err, files) {
             files.forEach(function(file) {
-                TokenModel.deleteOne({owner: file._id}, function(err) {
+                TokenModel.deleteOne({belongTo: file._id}, function(err) {
                     if (err) {
                         console.err(err.message);
                         return;
@@ -111,12 +110,6 @@ router.get('/reset', function(req, res) {
                 file.remove();
             });
         });
-
-        /*
-        FileModel.deleteMany({owner: user._id, _id: {$ne: user.home._id}}, function(err) {
-            if (err) throw err;
-        });
-        */
 
         user.home.files = [];
         user.home.save();

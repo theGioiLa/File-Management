@@ -59,10 +59,18 @@
             },
             
             onCancel: function(id, filename) {
-                var xhr = new XMLHttpRequest();
-                xhr.open('DELETE', '/drive/<%-username%>/cancel', true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send(this.getUuid(id));
+                let uuid = this.getUuid(id);
+
+                $.ajax({
+                    url: '/drive/<%-username%>/cancel',
+                    type: 'DELETE',
+                    data: uuid, 
+                    contentType:'application/x-www-form-urlencoded',
+
+                    success: function(data, status, xhr) {
+                        console.log(status, data);
+                    },
+                });
 
                 return true;
             },

@@ -1,5 +1,3 @@
-<% let view_paths = []; %>
-<% let share_paths = []; %>
 <!-- File Exploer-->
 <div class="col-md-12">
     <div class="card">
@@ -46,16 +44,16 @@
                         <tr>
                             <td><%- stt %></td>
                             <td>
-                            <% 
+                            <%
                             let view_path = '/drive/' + username + '/view/' + file._id;
-                            view_paths.push(view_path);
                             %> 
                             <% if (file.isFolder) { %>
                             <a href="<%- view_path %>" data-toggle="tooltip" title="Preview">
                                 <i class="now-ui-icons files_box"></i>
                             <% } else { %>
-                            <a id="preivewFile_<%-stt-%>" href="#preview_modal" data-toggle="tooltip" title="Preview">
-                                <i id="test" class="now-ui-icons files_paper"></i>
+                            <a class="preview-file" href="#" data-file="<%- view_path %>" 
+                                data-toggle="tooltip" title="Preview">
+                                <i class="now-ui-icons files_paper"></i>
                             <% } %>
                                 <%- file.filename -%>
                             </a>
@@ -63,7 +61,7 @@
                             <td>
                             <% 
                             if (!file.isFolder) {
-                                var size = normalizeSize(file.size); 
+                                let size = normalizeSize(file.size); 
                             %> 
                             <%- size -%>
                             <% } %>
@@ -78,9 +76,11 @@
                             <% 
                                 let delete_path = '/drive/' + username + '/delete/' +  file._id;
                                 let share_path = '/drive/' + username + '/share/' + file._id;
-                                share_paths.push(share_path);
                             %>
-                                <button id="btnShare_<%-stt-%>" type="button" class="btn btn-info btn-fab btn-round btn-icon btn-share-file" data-file="<%-stt%>" data-toggle="tooltip" title="Share">
+                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon btn-share-file" 
+                                    share-path="<%- share_path %>" data-file="<%-stt%>" filename="<%- file.filename %>"
+                                    data-toggle="tooltip" title="Share"
+                                >
                                     <i class="now-ui-icons arrows-1_share-66"></i>
                                 </button>
                             <%
@@ -126,7 +126,7 @@
 
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-16by9">
-                        <iframe id="view_content" class="embed-responsive-item" allowfullscreen></iframe>
+                    <iframe id="view_content" class="embed-responsive-item" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -145,46 +145,43 @@
 
             <div class="modal-body">
                 <h3 id="shareFilename"></h3>
-                <form id="shareOption">
-                    <div class="container">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="expireIn" class="col-form-label">Expire In</label>
-                        <div class="form-control">
-                            <input type="number" name="expireInMonth" id="expireInMonth" min="0" max="5" value="0">
-                            <label class="col-form-label">Months</label>
-
-                            <input type="number" name="expireInDay" id="expireInDay" min="0" max="15" value="0">
-                            <label class="col-form-label">Days</label>
-
-                            <input type="number" name="expireInHour" id="expireInHour" min="0" max="24" value="0">
-                            <label class="col-form-label">Hours</label>
-
-                            <input type="number" name="expireInMin" id="expireInMin" min="0" max="60" value="0">
-                            <label class="col-form-label">Mins</label>
-
-                            <input type="number" name="expireInSecond" id="expireInSecond" min="0" max="60" value="30">
-                            <label class="col-form-label">Seconds</label>
+                <form>
+                    <div class="form-group row">
+                        <label for="expireIn" class="col-sm-4 col-form-label">Expire In</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="expireIn" id="expireIn" class="form-control">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="ipAddress" class="col-form-label">Ip Address Range</label>
-                        <input type="range" min="0" max="100">
+                    <div class="form-group row">
+                        <label for="expireIn" class="col-sm-4 col-form-label">Share with</label>
+                        <div class="col-sm-8" id="email-list">
+                            <input type="email" class="form-control" placeholder="name@example.com">
+                            <button type="button" class="btn btn-icon btn-round btn-sm" id="btn-add-email"> <i class="now-ui-icons ui-1_simple-add"></i> </button>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="location" class="col-form-label">Location</label>
-                        <input type="range" min="0" max="100">
-                        <select>
-                            <option>
-                                Test
-                            </option>
-                            <option>
-                                Test
-                            </option>
-                        </select>
+                    <div class="form-group row">
+                        <label for="ipAddress" class="col-sm-4 col-form-label">Ip Address Range</label>
+                        <div class="col-sm-8">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="location" class="col-sm-4 col-form-label">Location</label>
+                        <div class="col-sm-8">
+                            <select class="form-control form-control-sm location-data">
+                                <option>
+                                    Hanoi
+                                </option>
+                                <option>
+                                    Haiphong
+                                </option>
+                                <option>
+                                    Bacninh
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
                     <button id="shareBtn" type="submit" class="btn btn-danger btn-round" data-dismiss="modal">Share</button>
@@ -194,43 +191,82 @@
     </div>
 </div>
 
-<script>
-    $(function() {
-        var files = JSON.parse('<%-JSON.stringify(files);%>');
-        var view_paths = JSON.parse('<%-JSON.stringify(view_paths);%>');
-        var share_paths = JSON.parse('<%-JSON.stringify(share_paths);%>');
+<div class="alert alert-success alert-dismissible fade show" role="alert" hidden>
+    <strong id="message"></strong>   
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
-        $(".btn-share-file").on("click", function() {
-            var self = $(this);
-            var fileId = self.attr("data-file") - 1;
+<script>
+    $(function() { 
+        $(".preview-file").on('click', function() {
+            let self = $(this);
+
+            $("#preview_modal").modal("show");
+            $("#preview_modal").on('shown.bs.modal', function() {
+               $("#view_content").attr("src", `${self.attr("data-file")}`);
+            });
+        });
+
+        $(".btn-share-file").one("click", function() {
+            let self = $(this);
+            let fileId = self.attr("data-file") - 1;
 
             $("#share_modal").modal("show");
+            $(".alert").attr("hidden");
 
             $("#share_modal").on('shown.bs.modal', function(event) {
-                $("#shareFilename").text(files[fileId].filename);
+                $("#shareFilename").text(self.attr("filename"));
             });
 
             $("#share_modal").on('hide.bs.modal', function() {
                 $("#shareBtn").off('click');
+                $("#btn-add-email").off('click');
             })
 
             $("#shareBtn").on('click', function(event) {
-                let month = parseInt($("#expireInMonth").val());
-                let day = parseInt($("#expireInDay").val());
-                let hour = parseInt($("#expireInHour").val());
-                let min = parseInt($("#expireInMin").val());
-                let second = parseInt($("#expireInSecond").val());
-                let expireIn = (month*30 + day)*24*3600 + hour*3600 + min*60 + second;
+                let expireIn = $("#expireIn").val();
+                let mailList = [];
+                let location = $(".location-data").val();
 
-                var data = {
+                $("#email-list").children("input").toArray().forEach(function(input) {
+                    mailList.push(input.value);
+                });
+
+
+                let data = {
                     expireIn: expireIn,
+                    mailList: mailList,
+                    location: location,
                 };
 
-                console.log(data.expireIn);
+                $.post(self.attr("share-path"), data, function(data, status, xhr) {
+                    $(".alert").removeClass("alert-info");
+                    $(".alert").addClass("alert-success");
+                    $("#message").text(`Send status: ${status}`);
 
-                $.post(share_paths[fileId], data, function(data, status, xhr) {
-                    console.log(status);
+                    window.setTimeout(function() {
+                        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                            $(this).remove(); 
+                        });
+                    }, 1000);
                 });
+
+                $(".alert").removeClass("alert-success");
+                $(".alert").addClass("alert-info");
+                $(".alert").removeAttr("hidden");
+                let msg = 'Sending the email to ';
+                mailList.forEach(function(email) {
+                    msg += email + ' ';
+                });
+
+                $("#message").text(msg);
+            });
+
+            $("#btn-add-email").click(function() {
+                let input = `<input type="email" class="form-control" placeholder="name@example.com">`;
+                $("#email-list").prepend(input);
             });
         });
     });

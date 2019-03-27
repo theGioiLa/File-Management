@@ -2,16 +2,26 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TokenSchema = new Schema({
-    token: {
+    tokenStr: {
         type: String, 
         require: true
     },
 
-    owner: {
+    expireIn: Date, 
+    lastAccess: Date,
+    
+    views: [Schema.Types.Mixed],
+
+    acceptedLocation: [String],
+    acceptedIp: [String],
+
+    belongTo: {
         type: Schema.Types.ObjectId,
         require: true,
         ref: 'File'
     },
+
+    sharedWith: [{type: String}],
 
     createdAt: {
         type: Date, 

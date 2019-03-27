@@ -1,6 +1,7 @@
 var rimraf = require('rimraf'),
     mkdirp = require('mkdirp'),
     fileType = require('file-type'),
+    readChunk = require('read-chunk'),
     fs = require('fs');
 
 var _maxFileSize, _uploadedFilesPath, _chunkDirName; 
@@ -53,7 +54,7 @@ module.exports = {
                 success: false
             };
 
-        file.name = fields.qqfilename + uuid;
+        file.name = fields.qqfilename; 
         
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
@@ -69,15 +70,19 @@ module.exports = {
                             combineChunks(file, uuid, owner, 
                                 // success
                                 function() {
-
+                                    /*
                                     (async () => {
-                                        const read = fs.createReadStream(_uploadedFilesPath + owner + '/' + file.name);
-                                    
-                                        const stream = await fileType.stream(read);
+                                        const stream = await fileType.stream(fs.createReadStream(path));
                                     
                                         file.mimetype = stream.fileType.mime;
                                         onSaved(file);
                                     })();
+                                    */
+
+                                    const path = _uploadedFilesPath + owner + '/' + file.name;
+
+                                    file.mimetype = fileType(readChunk.sync(path, 0, fileType.minimumBytes)).mime;
+                                    onSaved(file);
 
                                     responseData.success = true;
                                     res.send(responseData);

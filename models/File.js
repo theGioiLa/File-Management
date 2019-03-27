@@ -33,11 +33,10 @@ var FileSchema = new Schema({
         ref: 'User'
     },
 
-    token: String,
-    expireIn: Number,
-    lastAccess: {
-
-    }
+    token: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Token'
+    },
 
     createdAt: {
         type: Date, 
@@ -57,17 +56,17 @@ module.exports.newFile = function(file, callback) {
 };
 
 module.exports.delete = function(id, onRemoveFile, onAllSuccess) {
-    File.findById(id, function(err, file) {
+    File.findById(id).populate('token').exec(function(err, file) {
         if (file) {
             if (err) throw err;
             removeFolder(id, onRemoveFile);
             onAllSuccess(file);
         }
-    })
+    });
 };
 
 function removeFolder(id, onRemoveFile) {
-    File.findByIdAndDelete(id).populate('files').exec(function(error, file) {
+    File.findByIdAndDelete(id).populate('files').populate('token').exec(function(error, file) {
         if (file) {
             if (file.isFolder) {
                 file.files.forEach(function(child) {
