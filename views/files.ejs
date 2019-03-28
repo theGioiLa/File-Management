@@ -49,11 +49,11 @@
                             %> 
                             <% if (file.isFolder) { %>
                             <a href="<%- view_path %>" data-toggle="tooltip" title="Preview">
-                                <i class="now-ui-icons files_box"></i>
+                                <i class="fas fa-folder"></i>
                             <% } else { %>
-                            <a class="preview-file" href="#" data-file="<%- view_path %>" 
+                            <a class="preview-file" href="#preview_file" data-file="<%- view_path %>" 
                                 data-toggle="tooltip" title="Preview">
-                                <i class="now-ui-icons files_paper"></i>
+                                <i class="fas fa-file"></i>
                             <% } %>
                                 <%- file.filename -%>
                             </a>
@@ -81,7 +81,7 @@
                                     share-path="<%- share_path %>" data-file="<%-stt%>" filename="<%- file.filename %>"
                                     data-toggle="tooltip" title="Share"
                                 >
-                                    <i class="now-ui-icons arrows-1_share-66"></i>
+                                    <i class="fas fa-share-alt"></i>
                                 </button>
                             <%
                                 if (!file.isFolder) {
@@ -90,7 +90,7 @@
                                 
                                 <button type="button" class="btn btn-info btn-fab btn-round btn-icon" data-toggle="tooltip" title="Download"> 
                                     <a href=<%- download_path -%> >
-                                        <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                                        <i class="fas fa-download"></i>
                                     </a>
                                 </button>
                             <%
@@ -99,7 +99,7 @@
 
                                 <button type="button" class="btn btn-default btn-fab btn-round btn-icon" data-toggle="tooltip" title="Delete"> 
                                     <a href=<%- delete_path -%> >
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </button>
                             <%

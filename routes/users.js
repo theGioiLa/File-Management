@@ -31,11 +31,11 @@ router.post('/login', function(req, res, next) {
                     req.session.isLogined = true;
                     req.session.user = {
                         id: user._id,
-                        username: user.username,
+                        username: user.username.split("@")[0],
                         files: user.files
                     };
 
-                    res.redirect('/drive/' + user.username);
+                    res.redirect('/drive/' + user.username.split("@")[0]);
                 } else {
                     req.session.message = {
                         msg: "Password incorrect",
@@ -56,8 +56,8 @@ router.post('/login', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
     const home = new FileModel({
-        filename: req.body.username,
-        filepath: '/' + req.body.username,
+        filename: req.body.username.split("@")[0],
+        filepath: '/' + req.body.username.split("@")[0],
         isFolder:  true,
     });
 
@@ -92,7 +92,7 @@ router.get('/reset', function(req, res) {
     UserModel.findById(req.session.user.id).populate('home').exec(function(err, user) {
         if (err) throw err;
 
-        var upload_dir = __dirname + '/../uploads/' + user.username;
+        var upload_dir = __dirname + '/../uploads/' + user.username.split("@")[0];
 
         rimraf(upload_dir, function(err) {
             if (err) throw err;
