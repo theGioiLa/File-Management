@@ -1,0 +1,23 @@
+<div class="col-md-8">
+    <form action="/S3/upload/stream" method="POST" enctype="multipart/form-data">
+        <input type="file" class="form-control-file file-selector" name="files" multiple />
+        <br>
+        <ul class="choosen-file list-group"></ul>
+        <button class="btn btn-round" type="submit">
+            <i class="fas fa-upload" style="font-size:15px"> Upload</i>
+        </button>
+    </form>
+
+</div>
+
+<script>
+    $(function() {
+        $(".file-selector").change(function(event) {
+            let files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                let list = `<li class="list-group-item d-flex justify-content-between align-items-center">${files[i].name} <span class="badge badge-info badge-pill">${files[i].size}</span></li>`;
+                $(".choosen-file").append(list);
+            }
+        });
+    });
+</script>

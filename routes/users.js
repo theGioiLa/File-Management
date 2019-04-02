@@ -35,7 +35,8 @@ router.post('/login', function(req, res, next) {
                         files: user.files
                     };
 
-                    res.redirect('/drive/' + user.username.split("@")[0]);
+                    // res.redirect('/drive/' + user.username.split("@")[0]);
+                    res.redirect('/S3');
                 } else {
                     req.session.message = {
                         msg: "Password incorrect",

@@ -18,7 +18,6 @@ var TokenModel = require('./models/Token');
 
 var app = express();
 
-
 dotenv.config();
 app.enable('trust proxy');
 // view engine setup
@@ -43,7 +42,7 @@ app.use(session({
     genid: function(req) {
         return uuid();
     },
-    store: session_store,
+//    store: session_store,
     secret: 'fine-uploader', 
     resave: false,
     saveUninitialized: true,
@@ -51,7 +50,6 @@ app.use(session({
 
 app.get('/', function(req, res) {
   res.render('index', {title: "Login", message: req.session.message});
-  // res.redirect('/user/login');
 });
 
 app.use('/reset', function(req, res, next) {
@@ -78,10 +76,10 @@ app.use('/reset', function(req, res, next) {
   });
 });
 
+app.use('/S3', require('./routes/S3_storage'));
 app.use('/user', require('./routes/users'));
 app.use('/drive', require('./routes/files'));
 app.use('/share', require('./routes/share'));
-app.use('/S3', require('./routes/S3_storage'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

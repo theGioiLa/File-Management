@@ -3,7 +3,7 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-    <a href="<%- index -%>" class="simple-text logo-normal">
+    <a href="/drive/<%- username-%>" class="simple-text logo-normal">
         File Manager
     </a>
     </div>
@@ -15,22 +15,32 @@
             <p>User Profile</p>
         </a>
         </li>
+
         <li class="file-manager">
-        <a href="<%- index -%>">
+        <a href="/drive/<%- username-%>">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>File Manager</p>
         </a>
         </li>
+
         <li class="shared-file">
         <a href="/drive/<%-username %>/shared_files">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>Shared Files</p>
         </a>
         </li>
+
         <li class="shared-with-me">
         <a href="/drive/<%-username %>/shared_with_me">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>Shared With Me</p>
+        </a>
+        </li>
+
+        <li class="s3-upload">
+        <a href="/S3/">
+            <i class="now-ui-icons design_bullet-list-67"></i>
+            <p>S3 Upload</p>
         </a>
         </li>
     </ul>
@@ -40,7 +50,6 @@
 <script>
     $(function() {
         let active = "<%- active %>";
-
         $("." + active).addClass("active");
     });
 </script>

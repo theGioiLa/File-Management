@@ -1,0 +1,45 @@
+<!-- File Exploer-->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"> Index of <b><%- username %></b></h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class=" text-primary">
+                        <th class="text-center">
+                        #
+                        </th>
+                        <th style="width: 20%">
+                        Name
+                        </th>
+                        <th>
+                        Size
+                        </th>
+                        <th>
+                        Mimetype
+                        </th>
+                        <th>
+                        Last Modified
+                        </th>
+                        <th class="text-center">
+                        Actions
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(function(file) { %>
+                            <tr>
+                                <td>0</td>
+                                <td><%- file.Key %></td>
+                                <td><%- file.Size %></td>
+                                <td><%- file.StorageClass %></td>
+                                <td><%- file.LastModified %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
