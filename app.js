@@ -3,6 +3,7 @@ var createError = require('http-errors'),
     path = require('path'),
     logger = require('morgan'),
     session = require('express-session'),
+    cookieParser = require('cookie-parser'),
     uuid = require('uuid/v4'),
     rimraf = require('rimraf'),
     dotenv = require('dotenv'),
@@ -25,6 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));

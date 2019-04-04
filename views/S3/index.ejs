@@ -29,14 +29,14 @@
       <div class="content">
         <!-- show files -->
         <div class="row">
-          <%- include('files.ejs', {username: username, data: data}); %>
+          <%- include('files.ejs', {username: username, data: data, prettySize: prettySize}); %>
         </div>
 
         <hr>
         <!-- upload by chunk: Pause/Resume, Parallel -->
         <div class="row">
             <div class="col"></div>
-            <%- include('upload.ejs', {username: username}); %>
+            <%- include('upload.ejs', {username: username, prettySize: prettySize}); %>
             <div class="col"></div>
         </div>
       </div>

@@ -8,7 +8,8 @@ const rimraf = require('rimraf');
     nodemailer = require('nodemailer'),
     config = require('../config'),
     jws = require('jws'),
-    authen = require('../middleware/authen');
+    authen = require('../middleware/authen'),
+    normalize = require('../normalize').normalizeSize;
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
@@ -30,8 +31,8 @@ uploader.init({
 });
 
 router.get('/:username', function(req, res) {
-    if (req.session.user.username === req.params.username) {
-        UserModel.findById(req.session.user.id)
+    if (req.user.username === req.params.username) {
+        UserModel.findById(req.user.id)
             .populate({
                 path: 'home',
                 populate: {path: 'files'}
@@ -63,7 +64,7 @@ router.post('/:username/newFolder', function(req, res) {
         filepath: req.session.currFolder.path + '/' + req.body.newFolder,
         parent: req.session.currFolder.id,
         isFolder: true,
-        owner: req.session.user.id
+        owner: req.user.id
     });
 
     FileModel.newFolder(folder, function(err, folder) {
@@ -111,7 +112,7 @@ router.post('/:username/upload', (req, res) => {
                     size: file.size,
                     mimetype: file.mimetype,
                     parent: req.session.currFolder.id,
-                    owner: req.session.user.id
+                    owner: req.user.id
                 });
 
                 doc.save().then(function(file) {
@@ -290,7 +291,7 @@ router.post('/:username/share/:id', function(req, res) {
 });
 
 router.get('/:username/shared_files', function(req, res) {
-    UserModel.findById(req.session.user.id)
+    UserModel.findById(req.user.id)
     .populate({
         path: 'home',
         populate: ({
@@ -332,16 +333,5 @@ router.delete('/:username/cancel', function(req, res) {
         res.status(200).end('Be canceled!'); 
     });
 });
-
-function normalize(fileSizeInBytes) {
-    let i = -1;
-    let byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
-    do {
-        fileSizeInBytes = fileSizeInBytes / 1000;
-        i++;
-    } while (fileSizeInBytes > 1000);
-
-    return Math.max(fileSizeInBytes, 0.1).toFixed(2) + byteUnits[i];
-}
 
 module.exports = router;

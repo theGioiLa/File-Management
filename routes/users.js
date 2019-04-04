@@ -4,6 +4,7 @@ var express = require('express'),
     TokenModel = require('../models/Token'),
     rimraf = require('rimraf'),
     router = express.Router(),
+    jws = require('jws'),
     authen = require('../middleware/authen');
 
 /* GET users listing. */ 
@@ -20,7 +21,6 @@ router.get('/profile/:username', authen.authenticate, function(req, res) {
 });
 
 router.post('/login', function(req, res, next) {
-    req.session.isLogined = false;
     UserModel.findOne({username: req.body.username}, function(err, user) {
         if (err) throw err;
         if (user) {
@@ -28,13 +28,18 @@ router.post('/login', function(req, res, next) {
                 if (err) throw err;
 
                 if (isMatch) {
-                    req.session.isLogined = true;
-                    req.session.user = {
+                    let payload = {
                         id: user._id,
                         username: user.username.split("@")[0],
-                        files: user.files
-                    };
+                    }
 
+                    let accessToken = jws.sign({
+                        header: {alg: config.algorithm},
+                        payload: JSON.stringify(payload),
+                        secret: config.secret
+                    });
+
+                    res.cookie('accessToken', accessToken, {expires: new Date(Date.now() + 86400000), httpOnly: true});
                     // res.redirect('/drive/' + user.username.split("@")[0]);
                     res.redirect('/S3');
                 } else {
@@ -90,7 +95,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/reset', function(req, res) {
-    UserModel.findById(req.session.user.id).populate('home').exec(function(err, user) {
+    UserModel.findById(req.user.id).populate('home').exec(function(err, user) {
         if (err) throw err;
 
         var upload_dir = __dirname + '/../uploads/' + user.username.split("@")[0];
