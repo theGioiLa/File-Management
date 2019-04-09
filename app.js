@@ -78,7 +78,8 @@ app.use('/reset', function(req, res, next) {
   });
 });
 
-app.use('/S3', require('./routes/S3_storage'));
+app.use('/S3', require('./routes/S3-storage'));
+app.use('/tus', require('./routes/tus-S3'));
 app.use('/user', require('./routes/users'));
 app.use('/drive', require('./routes/files'));
 app.use('/share', require('./routes/share'));

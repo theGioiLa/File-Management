@@ -39,6 +39,26 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/upload', function(req, res) {
+    let form = new multiparty.Form();
+
+    form.on('part', function(part) {
+        if (part.filename) {
+            s3Uploader.upload(part, BUCKET_NAME);
+        }
+    });
+
+    form.on('close', function() {
+        res.redirect('/S3');
+    });
+
+    form.on('error', function(err) {
+        console.error('Multiparty form error: ', err.message);
+    });
+
+    form.parse(req);
+});
+
 router.post('/upload/buffer', function(req, res) {
     let form = new multiparty.Form();
 
@@ -93,6 +113,24 @@ router.post('/upload/stream', function(req, res) {
     });
 
     form.parse(req);
+});
+
+router.post('/delete', function(req, res) {
+   let key = req.body.Key;
+
+   console.log(key);
+
+   let deleteParams = {
+       Bucket: BUCKET_NAME,
+       Key: key
+   };
+
+   s3Client.deleteObject(deleteParams, function(err, data) {
+       if (err) console.log('Delete Error: ', err.message);
+       else {
+           res.status(200).send('Delete Ok');
+       }
+   });
 });
 
 module.exports = router;

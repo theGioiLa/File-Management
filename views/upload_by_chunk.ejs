@@ -74,6 +74,10 @@
 
                 return true;
             },
+
+            onAllComplete: function(succeeded, failed) {
+                window.location = '/drive/<%-username%>';
+            }
         }
     });
 

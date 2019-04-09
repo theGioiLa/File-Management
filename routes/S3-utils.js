@@ -16,6 +16,7 @@ function S3Uploader(client) {
   this.s3Client = client;
 }
 
+
 S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
     let self = this;
     let s3Client = self.s3Client;
@@ -103,10 +104,6 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
             });
 
             part.on('end', function() {
-                console.log('multipart', multipart);
-                console.log('*** remainBuffer', receivedBuffersLength);
-                console.log('TotalLength', totalLength);
-
                 if (receivedBuffersLength > 0) {
                     let uploadBuffer = Buffer.concat(receivedBuffers, receivedBuffersLength);
                     receivedBuffers.length = 0;
@@ -120,6 +117,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
                         Body: uploadBuffer 
                     };
 
+                    console.log('--> uploading part', partNumber, uploadBuffer.length);
                     self.uploadPart(multipart, partParams, uploadEmitter);
                 }
             });
@@ -169,6 +167,26 @@ S3Uploader.prototype.uploadByBuffer = function(buffer, bucket, key, partSize) {
     });
 }
 
+S3Uploader.prototype.upload = function(part, bucket) {
+    let s3Client = this.s3Client;
+
+    let uploadParams = {
+        Bucket: bucket, 
+        Key: part.filename,
+        Body: part
+    };
+
+    let upload = s3Client.upload(uploadParams);
+    upload.on('httpUploadProgress', function(progress) {
+        console.log('Uploading', data);
+    });
+
+    upload.send(function (err, data) {
+        if (err) console.log("Error :", err.code, err.message);
+        else console.log('Uploaded ', data);
+      });
+}
+
 S3Uploader.prototype.uploadPart = function(multipart, partParams, uploadEmitter, tryNum) {
     let self = this;
     let s3Client = self.s3Client;
@@ -202,6 +220,7 @@ S3Uploader.prototype.uploadPart = function(multipart, partParams, uploadEmitter,
 
                 uploadEmitter.emit('part', _partId);
             } else { // be used for upload by buffer
+
                 multipart.multipartUpload.Parts[this.request.params.PartNumber - 1] = {
                     ETag: part.ETag,
                     PartNumber: this.request.params.PartNumber

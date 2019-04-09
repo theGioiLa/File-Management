@@ -18,13 +18,13 @@
   <script src="/assets/js/core/jquery.min.js"></script>
 </head>
 
-<% let index = "/S3/"; %>
+<% let index = "/tus/"; %>
 <body>
   <div class="wrapper ">
-    <%- include('../sidebar.ejs', {index: index, active: "s3-upload"}); %>
+    <%- include('../sidebar.ejs', {index: index, active: "tus-upload"}); %>
 
     <div class="main-panel" id="main-panel">
-      <%- include('../navbar.ejs', {section: 'S3 upload', username: username, index: index}); %>
+      <%- include('../navbar.ejs', {section: 'Tus upload', username: username, index: index}); %>
     
       <div class="content">
         <!-- show files -->
