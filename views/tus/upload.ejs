@@ -54,6 +54,15 @@
 
             let upload = new tus.Upload(file, options);
             upload.start();
+
+            $.ajax({
+                url: '/tus/files',
+                type: 'OPTIONS',
+                success: function(data, statusCode, xhr) {
+                    console.log(data, statusCode);
+                    console.log(xhr)
+                }
+            });
         });
 
         function prettySize(bytes) {

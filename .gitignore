@@ -1,4 +1,5 @@
 uploads
+files
 node_modules
 sessions
 .env
