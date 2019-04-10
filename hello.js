@@ -1,1 +1,1 @@
-let t = require('fs');
+let fs = require('fs');
