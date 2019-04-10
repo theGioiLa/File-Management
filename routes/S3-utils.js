@@ -125,7 +125,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
     });
 
     part.on('error', function(err) {
-        this.abortAllMultipartUpload();
+        self.abortAllMultipartUpload();
         console.error('Part Error:', err.message);
     });
 }

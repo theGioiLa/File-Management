@@ -105,6 +105,11 @@ router.post('/:username/upload', (req, res) => {
 
     function onSaved(file) {
         FileModel.find({filename: file.name}, function(err, files) {
+            if (err) {
+                console.error(err.message);
+                return;
+            }
+
             if (files.length == 0) {
                 var doc = new FileModel({
                     uuid: file.uuid,

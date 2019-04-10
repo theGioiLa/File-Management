@@ -28,9 +28,10 @@
                         </th>
                     </thead>
                     <tbody>
+                        <% let id = 1; %>
                         <% data.forEach(function(file) { %>
                             <tr>
-                                <td>0</td>
+                                <td><%- id++ %></td>
                                 <td><%- file.Key %></td>
                                 <td><%- prettySize(file.Size) %></td>
                                 <td><%- file.StorageClass %></td>
@@ -60,7 +61,6 @@
 
             $.post('/S3/delete', data, function(data, status, xhr) {
                 window.location = '/S3';
-                console.log('Delete Status', status);
             });
         });
     });

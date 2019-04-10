@@ -21,12 +21,12 @@ module.exports = {
     },
 
     onSimpleUpload: function(fields, file, owner, res, onSaved) {
-        var uuid = file.uuid = fields.qquuid,
+        var uuid = file.uuid = fields.qquuid[0],
             responseData = {
                 success: false
             };
 
-        file.name = fields.qqfilename; 
+        file.name = fields.qqfilename[0];
 
         if (isValid(file.size)) {
             moveUploadedFile(file, uuid, owner, function() {
@@ -47,14 +47,14 @@ module.exports = {
 
     onChunkedUpload: function(fields, file, owner, res, onSaved) {
         var size = file.size = parseInt(fields.qqtotalfilesize),
-            uuid = file.uuid = fields.qquuid,
+            uuid = file.uuid = fields.qquuid[0],
             index = fields.qqpartindex,
             totalParts = parseInt(fields.qqtotalparts),
             responseData = {
                 success: false
             };
 
-        file.name = fields.qqfilename; 
+        file.name = fields.qqfilename[0];
         
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
