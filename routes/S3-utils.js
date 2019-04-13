@@ -88,7 +88,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
 
                 sentBytes += part.Size;
 
-                console.log('<-- uploaded part', part.PartNumber, sentBytes);
+                console.log('<-- uploaded part', part.PartNumber, part.Size);
 
                 // complete multipart upload
                 if (sentBytes == totalLength) {
@@ -125,7 +125,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
     });
 
     part.on('error', function(err) {
-        self.abortAllMultipartUpload();
+        self.abortAllMultipartUpload(bucket);
         console.error('Part Error:', err.message);
     });
 }
@@ -263,9 +263,9 @@ S3Uploader.prototype.completeMultipartUpload = function(doneParams) {
     });
 }
 
-S3Uploader.prototype.abortAllMultipartUpload = function() {
+S3Uploader.prototype.abortAllMultipartUpload = function(bucket) {
     let s3Client = this.s3Client;
-    s3Client.listMultipartUploads({Bucket: this.bucket}, function(err, data) {
+    s3Client.listMultipartUploads({Bucket: bucket}, function(err, data) {
         data.Uploads.forEach(function(multipartUpload) {
             let abortParams = {
                 Bucket: data.Bucket,

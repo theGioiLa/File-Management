@@ -1,7 +1,8 @@
 <div class="col-md-8">
-    <input type="file" class="form-control-file file-selector" name="files[]" multiple />
+    <input type="file" class="file-selector" name="files[]" multiple/>
     <br>
-    <ul class="choosen-file list-group" name="list"></ul>
+    <br>
+    <ul class="choosen-file list-group"></ul>
     <button class="btn btn-round btn-upload">
         <i class="fas fa-upload" style="font-size:15px"> Upload</i>
     </button>
@@ -18,8 +19,12 @@
 
             for(let i = 0; i < files.length; i++) {
                 let file = files[i];
-                let list = `<li class="list-group-item d-flex justify-content-between align-items-center file-info">${file.name} <span class="badge badge-info badge-pill">${prettySize(file.size)}</span><span class="badge badge-info badge-pill progress-info"></span></li>`;
+                let list = `<li class="list-group-item justify-content-between file-info-${i}">${file.name}</li>`;
                 $(".choosen-file").append(list);
+
+                let sizeInfo = `<span class="badge badge-info badge-pill"> ${prettySize(file.size)} </span>
+                    <span class="badge badge primary progress-info-${i}"></span> `;
+                $(`.file-info-${i}`).append(sizeInfo);
                 choosen_files.push(file);
             };
         });
@@ -27,42 +32,40 @@
 
         $('.btn-upload').on('click', function(e) {
             e.preventDefault();
-            let file = choosen_files[0];
-            let options = {
-                endpoint: 'http://localhost:3000/tus',
-                retryDelays: [0, 1000, 3000],
-                chunkSize: 5000000,
-                resume: false,
-                metadata: {
-                    filename: file.name,
-                    filetype: file.type
-                },
+            let i = 0;
+            choosen_files.forEach(function(file) {
+                let options = {
+                    endpoint: 'http://localhost:3000/tus',
+                    retryDelays: [0, 1000, 3000],
+                    chunkSize: 5*1024*1024,
+                    resume: false,
+                    metadata: {
+                        id: i,
+                        filename: file.name,
+                        filetype: file.type
+                    },
 
-                onError: function(error) {
-                    console.log('Error:', error.message);
-                },
+                    onError: function(error) {
+                        console.log('Error:', error.message);
+                    },
 
-                onProgress: function(bytesUploaded, bytesTotal) {
-                   let percentage = ((bytesUploaded/bytesTotal) * 100).toFixed(2);
-                   $(".progress-info").text(percentage + '%');
-                },
+                    onChunkComplete: function(chunkSize, bytesUploaded, bytesTotal) {
+                        let id = this.metadata.id;
+                        let percentage = ((bytesUploaded/bytesTotal) * 100).toFixed(2);
+                        $(`.progress-info-${id}`).text('  |  ' + percentage + '%');
+                    },
 
-                onSuccess: function() {
-                    console.log('success');
-                }
-            };
+                    onSuccess: function() {
+                        // window.location = '/tus';
+                        console.log('success', upload.url);
+                    }
+                };
 
-            let upload = new tus.Upload(file, options);
-            upload.start();
+                let upload = new tus.Upload(file, options);
+                upload.start();
 
-            $.ajax({
-                url: '/tus/files',
-                type: 'OPTIONS',
-                success: function(data, statusCode, xhr) {
-                    console.log(data, statusCode);
-                    console.log(xhr)
-                }
-            });
+                i++;
+            })
         });
 
         function prettySize(bytes) {

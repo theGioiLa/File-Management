@@ -3,7 +3,6 @@ const AWS = require('aws-sdk'),
     multiparty = require('multiparty'),
     config = require('../config'),
     router = express.Router(),
-    fs = require('fs'),
     authen = require('../middleware/authen'),
     S3Uploader = require('./S3-utils'),
     normalizeSize = require('../normalize').normalizeSize;
@@ -30,6 +29,8 @@ router.get('/', function(req, res) {
     let options = {
         Bucket: BUCKET_NAME,
     };
+
+    // s3Uploader.abortAllMultipartUpload(BUCKET_NAME);
 
     s3Client.listObjects(options, function(err, data) {
         if (err) console.error(err);
@@ -104,7 +105,6 @@ router.post('/upload/stream', function(req, res) {
     });
 
     form.on('error', function(err) {
-        abortAllMultipartUpload();
         console.error('Form Error:', err.message);
     });
 
@@ -118,15 +118,13 @@ router.post('/upload/stream', function(req, res) {
 router.post('/delete', function(req, res) {
    let key = req.body.Key;
 
-   console.log(key);
-
    let deleteParams = {
        Bucket: BUCKET_NAME,
        Key: key
    };
 
    s3Client.deleteObject(deleteParams, function(err, data) {
-       if (err) console.log('Delete Error: ', err.message);
+       if (err) console.error('Delete Error: ', err.message);
        else {
            res.status(200).send('Delete Ok');
        }
