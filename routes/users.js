@@ -7,24 +7,34 @@ var express = require('express'),
     jws = require('jws'),
     authen = require('../middleware/authen');
 
-/* GET users listing. */ 
-router.get('/login', function(req, res){
-    res.render('index', {title: 'Login', message: req.session.message});
+/* GET users listing. */
+router.get('/login', function (req, res) {
+    res.render('index', {
+        title: 'Login',
+        message: req.session.message
+    });
 });
 
-router.get('/register', function(req, res, next){
-    res.render('registerF', {title: 'Register'});
+router.get('/register', function (req, res, next) {
+    res.render('registerF', {
+        title: 'Register'
+    });
 });
 
-router.get('/profile/:username', authen.authenticate, function(req, res) {
-    res.render('user_profile', {title: 'User profile', username: req.params.username});
+router.get('/profile/:username', authen.authenticate, function (req, res) {
+    res.render('user_profile', {
+        title: 'User profile',
+        username: req.params.username
+    });
 });
 
-router.post('/login', function(req, res, next) {
-    UserModel.findOne({username: req.body.username}, function(err, user) {
+router.post('/login', function (req, res, next) {
+    UserModel.findOne({
+        username: req.body.username
+    }, function (err, user) {
         if (err) throw err;
         if (user) {
-            user.comparePassword(req.body.password, function(err, isMatch) {
+            user.comparePassword(req.body.password, function (err, isMatch) {
                 if (err) throw err;
 
                 if (isMatch) {
@@ -34,12 +44,17 @@ router.post('/login', function(req, res, next) {
                     }
 
                     let accessToken = jws.sign({
-                        header: {alg: config.algorithm},
+                        header: {
+                            alg: config.algorithm
+                        },
                         payload: JSON.stringify(payload),
                         secret: config.secret
                     });
 
-                    res.cookie('accessToken', accessToken, {expires: new Date(Date.now() + 86400000), httpOnly: true});
+                    res.cookie('accessToken', accessToken, {
+                        expires: new Date(Date.now() + 86400000),
+                        httpOnly: true
+                    });
                     // res.redirect('/drive/' + user.username.split("@")[0]);
                     res.redirect('/S3');
                 } else {
@@ -60,21 +75,21 @@ router.post('/login', function(req, res, next) {
     });
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/register', function (req, res, next) {
     const home = new FileModel({
         filename: req.body.username.split("@")[0],
         filepath: '/' + req.body.username.split("@")[0],
-        isFolder:  true,
+        isFolder: true,
     });
 
-    home.save(function(err, home) {
+    home.save(function (err, home) {
         var user = new UserModel({
             username: req.body.username,
             password: req.body.password,
             home: home._id,
         });
 
-        user.save(function(err, user) {
+        user.save(function (err, user) {
             home.parent = home._id;
             home.owner = user._id;
             home.save();
@@ -87,26 +102,33 @@ router.post('/register', function(req, res, next) {
     })
 });
 
-router.get('/logout', function(req, res) {
-    req.session.destroy(function(err) {
+router.get('/logout', function (req, res) {
+    req.session.destroy(function (err) {
         if (err) throw err;
         res.redirect('/');
     });
 });
 
-router.get('/reset', function(req, res) {
-    UserModel.findById(req.user.id).populate('home').exec(function(err, user) {
+router.get('/reset', function (req, res) {
+    UserModel.findById(req.user.id).populate('home').exec(function (err, user) {
         if (err) throw err;
 
         var upload_dir = __dirname + '/../uploads/' + user.username.split("@")[0];
 
-        rimraf(upload_dir, function(err) {
+        rimraf(upload_dir, function (err) {
             if (err) throw err;
         });
 
-        FileModel.find({owner: user._id, _id: {$ne: user.home._id}}, function(err, files) {
-            files.forEach(function(file) {
-                TokenModel.deleteOne({belongTo: file._id}, function(err) {
+        FileModel.find({
+            owner: user._id,
+            _id: {
+                $ne: user.home._id
+            }
+        }, function (err, files) {
+            files.forEach(function (file) {
+                TokenModel.deleteOne({
+                    belongTo: file._id
+                }, function (err) {
                     if (err) {
                         console.err(err.message);
                         return;

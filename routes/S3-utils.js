@@ -5,26 +5,29 @@ const MAX_UPLOAD_TRIES = 3;
 module.exports = S3Uploader;
 
 function S3Uploader(client) {
-  if (this instanceof S3Uploader === false) {
-    return new S3Uploader(client);
-  }
+    if (this instanceof S3Uploader === false) {
+        return new S3Uploader(client);
+    }
 
-  if (!client) {
-    throw new Error('Must configure an S3 client before attempting to create an S3 upload stream.');
-  }
+    if (!client) {
+        throw new Error('Must configure an S3 client before attempting to create an S3 upload stream.');
+    }
 
-  this.s3Client = client;
+    this.s3Client = client;
 }
 
 
-S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
+S3Uploader.prototype.uploadByStream = function (part, bucket, partSize) {
     let self = this;
     let s3Client = self.s3Client;
 
     s3Client.createMultipartUpload({
         Bucket: bucket,
         Key: part.filename,
-    }, function(err, multipart) {
+        Metadata: {
+            'Content-Type': part.headers['content-type']
+        }
+    }, function (err, multipart) {
         if (err) {
             console.error('Fail when create multipart upload:', err.message);
         } else {
@@ -36,7 +39,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
             let totalLength = 0;
 
             let uploadEmitter = new events.EventEmitter();
-            let partNumber = 1; 
+            let partNumber = 1;
 
             let multipartUpload = {
                 Parts: []
@@ -44,7 +47,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
 
             console.log('<-- created upload id', multipart.UploadId, multipart.Key);
 
-            part.on('data', function(chunk) {
+            part.on('data', function (chunk) {
                 totalLength += chunk.length;
 
                 if (receivedBuffersLength < partSize) {
@@ -68,7 +71,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
 
                     let partParams = {
                         Bucket: multipart.Bucket,
-                        Key: multipart.Key, 
+                        Key: multipart.Key,
                         UploadId: multipart.UploadId,
                         PartNumber: partNumber,
                         Body: uploadBuffer
@@ -80,7 +83,7 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
                 }
             });
 
-            uploadEmitter.on('part', function(part) {
+            uploadEmitter.on('part', function (part) {
                 multipartUpload.Parts.push({
                     ETag: part.ETag,
                     PartNumber: part.PartNumber
@@ -93,17 +96,17 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
                 // complete multipart upload
                 if (sentBytes == totalLength) {
                     let doneParams = {
-                        Bucket: multipart.Bucket, 
+                        Bucket: multipart.Bucket,
                         Key: multipart.Key,
                         UploadId: multipart.UploadId,
                         MultipartUpload: multipartUpload
                     }
 
-                    self.completeMultipartUpload(doneParams);  
+                    self.completeMultipartUpload(doneParams);
                 }
             });
 
-            part.on('end', function() {
+            part.on('end', function () {
                 if (receivedBuffersLength > 0) {
                     let uploadBuffer = Buffer.concat(receivedBuffers, receivedBuffersLength);
                     receivedBuffers.length = 0;
@@ -111,10 +114,10 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
 
                     let partParams = {
                         Bucket: multipart.Bucket,
-                        Key: multipart.Key, 
+                        Key: multipart.Key,
                         UploadId: multipart.UploadId,
                         PartNumber: partNumber,
-                        Body: uploadBuffer 
+                        Body: uploadBuffer
                     };
 
                     console.log('--> uploading part', partNumber, uploadBuffer.length);
@@ -124,28 +127,31 @@ S3Uploader.prototype.uploadByStream = function(part, bucket, partSize) {
         }
     });
 
-    part.on('error', function(err) {
+    part.on('error', function (err) {
         self.abortAllMultipartUpload(bucket);
         console.error('Part Error:', err.message);
     });
 }
 
-S3Uploader.prototype.uploadByBuffer = function(buffer, bucket, key, partSize) {
+S3Uploader.prototype.uploadByBuffer = function (buffer, bucket, key, partSize, content_type) {
     let self = this;
     let s3Client = self.s3Client;
 
     s3Client.createMultipartUpload({
         Bucket: bucket,
-        Key: key, 
-    }, function(err, multipart) {
+        Key: key,
+        Metadata: {
+            'Content-Type': content_type
+        }
+    }, function (err, multipart) {
         if (err) {
             console.error('Fail when create multipart upload:', err.message);
         } else {
             console.log('Created multipart upload with UploadId: ', multipart.UploadId);
 
-            let partNumber = 1; 
+            let partNumber = 1;
 
-            multipart.pendingPartNum = Math.ceil(buffer.length/partSize);
+            multipart.pendingPartNum = Math.ceil(buffer.length / partSize);
             multipart.multipartUpload = {
                 Parts: []
             };
@@ -167,33 +173,36 @@ S3Uploader.prototype.uploadByBuffer = function(buffer, bucket, key, partSize) {
     });
 }
 
-S3Uploader.prototype.upload = function(part, bucket) {
+S3Uploader.prototype.upload = function (part, bucket) {
     let s3Client = this.s3Client;
 
     let uploadParams = {
-        Bucket: bucket, 
+        Bucket: bucket,
         Key: part.filename,
-        Body: part
+        Body: part,
+        Metadata: {
+            'Content-Type': part.headers['content-type']
+        }
     };
 
     let upload = s3Client.upload(uploadParams);
-    upload.on('httpUploadProgress', function(progress) {
+    upload.on('httpUploadProgress', function (progress) {
         console.log('Uploading', data);
     });
 
     upload.send(function (err, data) {
         if (err) console.log("Error :", err.code, err.message);
         else console.log('Uploaded ', data);
-      });
+    });
 }
 
-S3Uploader.prototype.uploadPart = function(multipart, partParams, uploadEmitter, tryNum) {
+S3Uploader.prototype.uploadPart = function (multipart, partParams, uploadEmitter, tryNum) {
     let self = this;
     let s3Client = self.s3Client;
 
     tryNum = tryNum || 1;
-    
-    s3Client.uploadPart(partParams, function(partErr, part) {
+
+    s3Client.uploadPart(partParams, function (partErr, part) {
         if (partErr) {
             console.error('upload part error: ', partErr.message);
             if (tryNum < MAX_UPLOAD_TRIES) {
@@ -228,26 +237,26 @@ S3Uploader.prototype.uploadPart = function(multipart, partParams, uploadEmitter,
 
                 console.log('uploaded part', this.request.params.PartNumber, this.request.params.Key, this.request.params.Body.length);
 
-                if (--multipart.pendingPartNum > 0) return;   
+                if (--multipart.pendingPartNum > 0) return;
 
                 // Completed multipart upload request
                 let doneParams = {
-                    Bucket: multipart.Bucket, 
+                    Bucket: multipart.Bucket,
                     Key: multipart.Key,
                     UploadId: multipart.UploadId,
                     MultipartUpload: multipart.multipartUpload
                 }
 
-                self.completeMultipartUpload(doneParams); 
+                self.completeMultipartUpload(doneParams);
             }
         }
     });
 };
 
-S3Uploader.prototype.completeMultipartUpload = function(doneParams) {
+S3Uploader.prototype.completeMultipartUpload = function (doneParams) {
     let self = this;
     let s3Client = self.s3Client;
-    s3Client.completeMultipartUpload(doneParams, function(err, data) {
+    s3Client.completeMultipartUpload(doneParams, function (err, data) {
         if (err) {
             let abortParams = {
                 Bucket: doneParams.Bucket,
@@ -263,10 +272,12 @@ S3Uploader.prototype.completeMultipartUpload = function(doneParams) {
     });
 }
 
-S3Uploader.prototype.abortAllMultipartUpload = function(bucket) {
+S3Uploader.prototype.abortAllMultipartUpload = function (bucket) {
     let s3Client = this.s3Client;
-    s3Client.listMultipartUploads({Bucket: bucket}, function(err, data) {
-        data.Uploads.forEach(function(multipartUpload) {
+    s3Client.listMultipartUploads({
+        Bucket: bucket
+    }, function (err, data) {
+        data.Uploads.forEach(function (multipartUpload) {
             let abortParams = {
                 Bucket: data.Bucket,
                 Key: multipartUpload.Key,
@@ -278,13 +289,11 @@ S3Uploader.prototype.abortAllMultipartUpload = function(bucket) {
     });
 }
 
-S3Uploader.prototype.abortMultipartUpload = function(abortParams) {
+S3Uploader.prototype.abortMultipartUpload = function (abortParams) {
     let s3Client = this.s3Client;
     s3Client.abortMultipartUpload(abortParams)
-        .on('complete', function(res) {
+        .on('complete', function (res) {
             console.log('Freed uploaded Parts in', abortParams.UploadId);
         })
         .send();
 }
-
-

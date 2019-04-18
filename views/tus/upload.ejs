@@ -1,5 +1,5 @@
 <div class="col-md-8">
-    <input type="file" class="file-selector" name="files[]" multiple/>
+    <input type="file" class="file-selector" name="files[]" multiple />
     <br>
     <br>
     <ul class="choosen-file list-group"></ul>
@@ -10,63 +10,89 @@
 
 <script src="/javascripts/tus/tus.js"></script>
 <script>
-    $(function() {
+    $(function () {
         let choosen_files = [];
-        $(".file-selector").change(function(event) {
+        let uploadQueue = [];
+
+        $(".file-selector").change(function (event) {
             let files = event.target.files;
             $(".choosen-file").empty();
             choosen_files.length = 0;
 
-            for(let i = 0; i < files.length; i++) {
+            for (let i = 0; i < files.length; i++) {
                 let file = files[i];
-                let list = `<li class="list-group-item justify-content-between file-info-${i}">${file.name}</li>`;
+                let list =
+                    `<li class="list-group-item justify-content-between file-info-${i}">${file.name}</li>`;
                 $(".choosen-file").append(list);
 
                 let sizeInfo = `<span class="badge badge-info badge-pill"> ${prettySize(file.size)} </span>
-                    <span class="badge badge primary progress-info-${i}"></span> `;
+                    <span class="badge badge primary progress-info-${i}"></span> 
+                    <button class="btn btn-pause" file-id="${i}" hidden>Pause</button>
+                    `;
                 $(`.file-info-${i}`).append(sizeInfo);
                 choosen_files.push(file);
             };
+
+            $(".btn-pause").on("click", function (e) {
+                e.preventDefault();
+                let self = $(this);
+
+                let id = self.attr("file-id");
+
+                if (self.text() == "Pause") {
+                    self.text("Resume");
+                    uploadQueue[id].abort();
+                } else if (self.text() == "Resume") {
+                    self.text("Pause");
+                    uploadQueue[id].start();
+                }
+            });
         });
 
-
-        $('.btn-upload').on('click', function(e) {
+        $('.btn-upload').on('click', function (e) {
             e.preventDefault();
             let i = 0;
-            choosen_files.forEach(function(file) {
+            choosen_files.forEach(function (file) {
+                if (type === '') {
+                    type = 'undefined';
+                }
                 let options = {
-                    endpoint: 'http://localhost:3000/tus',
+                    endpoint: '/tus',
                     retryDelays: [0, 1000, 3000],
-                    chunkSize: 5*1024*1024,
+                    chunkSize: 5 * 1024 * 1024,
                     resume: false,
                     metadata: {
                         id: i,
                         filename: file.name,
-                        filetype: file.type
+                        filetype: type 
                     },
 
-                    onError: function(error) {
+                    onError: function (error) {
                         console.log('Error:', error.message);
                     },
 
-                    onChunkComplete: function(chunkSize, bytesUploaded, bytesTotal) {
+                    onChunkComplete: function (chunkSize, bytesUploaded, bytesTotal) {
                         let id = this.metadata.id;
-                        let percentage = ((bytesUploaded/bytesTotal) * 100).toFixed(2);
+                        let percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(
+                            2);
                         $(`.progress-info-${id}`).text('  |  ' + percentage + '%');
                     },
 
-                    onSuccess: function() {
+                    onSuccess: function () {
                         // window.location = '/tus';
+                        $(".btn-pause").text("Success");
                         console.log('success', upload.url);
                     }
                 };
 
                 let upload = new tus.Upload(file, options);
+                uploadQueue[i] = upload;
                 upload.start();
-
+                $(".btn-pause").removeAttr("hidden");
                 i++;
             })
         });
+
 
         function prettySize(bytes) {
             let i = -1;

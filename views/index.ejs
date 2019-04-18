@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title><%- title %></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/favicon.ico"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/favicon.ico" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/login/css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
+
 <body>
 	<div class="limiter">
 		<% if (message) {%>
 		<div class="alert alert-<%-message.type %> alert-dismissible fade show" role="alert" on>
-		<strong>"<%- message.msg %> !"</strong> 
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
+			<strong>"<%- message.msg %> !"</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
 		<% } %>
 
@@ -41,10 +43,10 @@
 				<div class="login100-form validate-form">
 					<form action="/user/login" method="POST">
 						<span class="login100-form-title">
-							<h1>File Storage System</h1>    
+							<h1>File Storage System</h1>
 						</span>
 
-						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 							<input class="input100" type="text" name="username" placeholder="Email">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
@@ -52,14 +54,14 @@
 							</span>
 						</div>
 
-						<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<div class="wrap-input100 validate-input" data-validate="Password is required">
 							<input class="input100" type="password" name="password" placeholder="Password">
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
 								<i class="fa fa-lock" aria-hidden="true"></i>
 							</span>
 						</div>
-						
+
 						<div class="container-login100-form-btn">
 							<button class="login100-form-btn">
 								Login
@@ -82,29 +84,30 @@
 			</div>
 		</div>
 	</div>
-	
-<!--===============================================================================================-->	
+
+	<!--===============================================================================================-->
 	<script src="/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/login/vendor/bootstrap/js/popper.js"></script>
 	<script src="/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/login/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/login/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
+	<script>
 		$('.js-tilt').tilt({
 			scale: 1.1
 		});
 
-		window.setTimeout(function() {
-			$(".alert").fadeTo(500, 0).slideUp(500, function(){
-				$(this).remove(); 
+		window.setTimeout(function () {
+			$(".alert").fadeTo(500, 0).slideUp(500, function () {
+				$(this).remove();
 			});
 		}, 2000);
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/login/js/main.js"></script>
 
 </body>
+
 </html>

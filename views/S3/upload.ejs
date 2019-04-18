@@ -11,12 +11,13 @@
 </div>
 
 <script>
-    $(function() {
-        $(".file-selector").change(function(event) {
+    $(function () {
+        $(".file-selector").change(function (event) {
             let files = event.target.files;
             $(".choosen-file").empty();
             for (let i = 0; i < files.length; i++) {
-                let list = `<li class="list-group-item d-flex justify-content-between align-items-center">${files[i].name} <span class="badge badge-info badge-pill">${prettySize(files[i].size)}</span></li>`;
+                let list =
+                    `<li class="list-group-item d-flex justify-content-between align-items-center">${files[i].name} <span class="badge badge-info badge-pill">${prettySize(files[i].size)}</span></li>`;
                 $(".choosen-file").append(list);
             }
         });

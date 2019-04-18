@@ -3,59 +3,59 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-    <a href="/drive/<%- username-%>" class="simple-text logo-normal">
-        File Manager
-    </a>
+        <a href="/drive/<%- username-%>" class="simple-text logo-normal">
+            File Manager
+        </a>
     </div>
     <div class="sidebar-wrapper" id="sidebar-wrapper">
-    <ul class="nav">
-        <li class="user-profile">
-        <a href="/user/profile/<%- username %>">
-            <i class="now-ui-icons users_single-02"></i>
-            <p>User Profile</p>
-        </a>
-        </li>
+        <ul class="nav">
+            <li class="user-profile">
+                <a href="/user/profile/<%- username %>">
+                    <i class="now-ui-icons users_single-02"></i>
+                    <p>User Profile</p>
+                </a>
+            </li>
 
-        <li class="file-manager">
-        <a href="/drive/<%- username-%>">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>File Manager</p>
-        </a>
-        </li>
+            <li class="file-manager">
+                <a href="/drive/<%- username-%>">
+                    <i class="now-ui-icons design_bullet-list-67"></i>
+                    <p>File Manager</p>
+                </a>
+            </li>
 
-        <li class="shared-file">
-        <a href="/drive/<%-username %>/shared_files">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>Shared Files</p>
-        </a>
-        </li>
+            <li class="shared-file">
+                <a href="/drive/<%-username %>/shared_files">
+                    <i class="now-ui-icons design_bullet-list-67"></i>
+                    <p>Shared Files</p>
+                </a>
+            </li>
 
-        <li class="shared-with-me">
-        <a href="/drive/<%-username %>/shared_with_me">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>Shared With Me</p>
-        </a>
-        </li>
+            <li class="shared-with-me">
+                <a href="/drive/<%-username %>/shared_with_me">
+                    <i class="now-ui-icons design_bullet-list-67"></i>
+                    <p>Shared With Me</p>
+                </a>
+            </li>
 
-        <li class="s3-upload">
-        <a href="/S3/">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>S3 Upload</p>
-        </a>
-        </li>
+            <li class="s3-upload">
+                <a href="/S3/">
+                    <i class="now-ui-icons design_bullet-list-67"></i>
+                    <p>S3 Upload</p>
+                </a>
+            </li>
 
-        <li class="tus-upload">
-        <a href="/tus/">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>Tus Upload</p>
-        </a>
-        </li>
-    </ul>
+            <li class="tus-upload">
+                <a href="/tus/">
+                    <i class="now-ui-icons design_bullet-list-67"></i>
+                    <p>Tus Upload</p>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         let active = "<%- active %>";
         $("." + active).addClass("active");
     });

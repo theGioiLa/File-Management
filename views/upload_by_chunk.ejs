@@ -31,7 +31,7 @@
         // Upload Parallel
         chunking: {
             concurrent: {
-                enabled: true, 
+                enabled: true,
             },
             enabled: true,
         },
@@ -53,21 +53,21 @@
         },
 
         callbacks: {
-            onComplete: function(id, filename, resJson, xhr) {
+            onComplete: function (id, filename, resJson, xhr) {
                 var file = this.getFile(id);
                 console.log(file);
             },
-            
-            onCancel: function(id, filename) {
+
+            onCancel: function (id, filename) {
                 let uuid = this.getUuid(id);
 
                 $.ajax({
                     url: '/drive/<%-username%>/cancel',
                     type: 'DELETE',
-                    data: uuid, 
-                    contentType:'application/x-www-form-urlencoded',
+                    data: uuid,
+                    contentType: 'application/x-www-form-urlencoded',
 
-                    success: function(data, status, xhr) {
+                    success: function (data, status, xhr) {
                         console.log(status, data);
                     },
                 });
@@ -75,13 +75,13 @@
                 return true;
             },
 
-            onAllComplete: function(succeeded, failed) {
+            onAllComplete: function (succeeded, failed) {
                 window.location = '/drive/<%-username%>';
             }
         }
     });
 
-    qq(document.getElementById("trigger-upload")).attach("click", function() {
+    qq(document.getElementById("trigger-upload")).attach("click", function () {
         manualUploader.uploadStoredFiles();
     });
 </script>

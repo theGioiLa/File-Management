@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Shared files </h4> 
+            <h4 class="card-title">Shared files </h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,29 +20,29 @@
                         let today = new Date(Date.now());
                         sharedFiles.forEach(file => { 
                         %>
-                            <tr>
-                                <th class="text-center" scope="row"><%- index %></th>
-                                <td><%- file.filename %></td>
-                                <td><%- file.expireIn.toLocaleString(); %></td>
-                                <td class="text-left">
-                                    <ul class="list-group list-group-flush">
-                                        <% file.sharedWith.forEach(email => { %>
-                                            <li class="list-group-item"><%- email %></li>
-                                        <%
+                        <tr>
+                            <th class="text-center" scope="row"><%- index %></th>
+                            <td><%- file.filename %></td>
+                            <td><%- file.expireIn.toLocaleString(); %></td>
+                            <td class="text-left">
+                                <ul class="list-group list-group-flush">
+                                    <% file.sharedWith.forEach(email => { %>
+                                    <li class="list-group-item"><%- email %></li>
+                                    <%
                                         });
                                         %>
-                                    </ul>
-                                </td>   
-                                <td class="text-center">
-                                    <% 
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                <% 
                                     let countViews = 0;
                                     file.views.forEach(view => {
                                         countViews += view.visits;
                                     });
                                     %>
-                                    <%- countViews %>
-                                </td>
-                            </tr>
+                                <%- countViews %>
+                            </td>
+                        </tr>
                         <%
                         index++;
                         });

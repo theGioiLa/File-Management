@@ -4,23 +4,23 @@ var rimraf = require('rimraf'),
     readChunk = require('read-chunk'),
     fs = require('fs');
 
-var _maxFileSize, _uploadedFilesPath, _chunkDirName; 
+var _maxFileSize, _uploadedFilesPath, _chunkDirName;
 
 module.exports = {
-    init: function(option) {
+    init: function (option) {
         if (option) {
             _maxFileSize = option.maxFileSize || 1e12;
             _uploadedFilesPath = option.uploadedFilesPath || __dirname + '/../tmp/';
             _chunkDirName = option.chunkDirName || 'chunks';
-        } 
+        }
     },
 
-    deleteTempChunkedFile:  function(owner, uuid, callback) {
+    deleteTempChunkedFile: function (owner, uuid, callback) {
         var dirToDelete = _uploadedFilesPath + owner + '/' + uuid;
         rimraf(dirToDelete, callback);
     },
 
-    onSimpleUpload: function(fields, file, owner, res, onSaved) {
+    onSimpleUpload: function (fields, file, owner, res, onSaved) {
         var uuid = file.uuid = fields.qquuid[0],
             responseData = {
                 success: false
@@ -29,23 +29,22 @@ module.exports = {
         file.name = fields.qqfilename[0];
 
         if (isValid(file.size)) {
-            moveUploadedFile(file, uuid, owner, function() {
+            moveUploadedFile(file, uuid, owner, function () {
                     onSaved(file);
                     responseData.success = true;
                     res.send(responseData);
                 },
-                function() {
+                function () {
                     responseData.error = "Problem copying the file!";
                     res.send(responseData);
                 });
-        }
-        else {
+        } else {
             failWithTooBigFile(responseData, res);
         }
 
     },
 
-    onChunkedUpload: function(fields, file, owner, res, onSaved) {
+    onChunkedUpload: function (fields, file, owner, res, onSaved) {
         var size = file.size = parseInt(fields.qqtotalfilesize),
             uuid = file.uuid = fields.qquuid[0],
             index = fields.qqpartindex,
@@ -55,11 +54,11 @@ module.exports = {
             };
 
         file.name = fields.qqfilename[0];
-        
+
         if (isValid(size)) {
             storeChunk(file, uuid, index, totalParts, owner,
                 // success
-                function() {
+                function () {
                     var destinationDir = _uploadedFilesPath + owner + '/' + uuid + "/" + _chunkDirName;
                     var partsNo = fs.readdirSync(destinationDir).length;
                     if (index < totalParts - 1 && partsNo < totalParts) {
@@ -67,18 +66,9 @@ module.exports = {
                         res.send(responseData);
                     } else {
                         if (partsNo == totalParts) {
-                            combineChunks(file, uuid, owner, 
+                            combineChunks(file, uuid, owner,
                                 // success
-                                function() {
-                                    /*
-                                    (async () => {
-                                        const stream = await fileType.stream(fs.createReadStream(path));
-                                    
-                                        file.mimetype = stream.fileType.mime;
-                                        onSaved(file);
-                                    })();
-                                    */
-
+                                function () {
                                     const path = _uploadedFilesPath + owner + '/' + file.name;
 
                                     file.mimetype = fileType(readChunk.sync(path, 0, fileType.minimumBytes)).mime;
@@ -88,7 +78,7 @@ module.exports = {
                                     res.send(responseData);
                                 },
                                 // failure
-                                function() {
+                                function () {
                                     responseData.error = "Problem conbining the chunks!";
                                     res.send(responseData);
                                 }
@@ -101,14 +91,13 @@ module.exports = {
                 },
 
                 //failure
-                function(reset) {
+                function (reset) {
                     responseData.error = "Problem storing the chunk!";
                     responseData.reset = reset;
                     res.send(responseData);
                 }
             );
-        }
-        else {
+        } else {
             failWithTooBigFile(responseData, res);
         }
     }
@@ -125,24 +114,23 @@ function isValid(size) {
 }
 
 function moveFile(destinationDir, sourceFile, destinationFile, success, failure) {
-    mkdirp(destinationDir, function(error) {
+    mkdirp(destinationDir, function (error) {
         var sourceStream, destStream;
 
         if (error) {
             console.error("Problem creating directory " + destinationDir + ": " + error);
             failure();
-        }
-        else {
+        } else {
             sourceStream = fs.createReadStream(sourceFile);
             destStream = fs.createWriteStream(destinationFile);
 
             sourceStream
-                .on("error", function(error) {
+                .on("error", function (error) {
                     console.error("Problem copying file: " + error.stack);
                     destStream.end();
                     failure();
                 })
-                .on("end", function(){
+                .on("end", function () {
                     destStream.end();
                     success();
                 })
@@ -167,30 +155,31 @@ function storeChunk(file, uuid, index, numChunks, owner, success, failure) {
 
 function combineChunks(file, uuid, owner, success, failure) {
     var chunksDir = _uploadedFilesPath + owner + '/' + uuid + "/" + _chunkDirName + "/",
-        destinationDir = _uploadedFilesPath + owner + '/' + uuid; 
-        fileDestination = _uploadedFilesPath + owner + '/' + file.name;
+        destinationDir = _uploadedFilesPath + owner + '/' + uuid;
+    fileDestination = _uploadedFilesPath + owner + '/' + file.name;
 
 
-    fs.readdir(chunksDir, function(err, fileNames) {
+    fs.readdir(chunksDir, function (err, fileNames) {
         var destFileStream;
 
         if (err) {
             console.error("Problem listing chunks! " + err);
             failure();
-        }
-        else {
+        } else {
             fileNames.sort();
-            destFileStream = fs.createWriteStream(fileDestination, {flags: "a"});
+            destFileStream = fs.createWriteStream(fileDestination, {
+                flags: "a"
+            });
 
-            appendToStream(destFileStream, chunksDir, fileNames, 0, function() {
-                rimraf(destinationDir, function(rimrafError) {
-                    if (rimrafError) {
-                        console.log("Problem deleting chunks dir! " + rimrafError);
-                    }
-                });
-                success();
-            },
-            failure);
+            appendToStream(destFileStream, chunksDir, fileNames, 0, function () {
+                    rimraf(destinationDir, function (rimrafError) {
+                        if (rimrafError) {
+                            console.log("Problem deleting chunks dir! " + rimrafError);
+                        }
+                    });
+                    success();
+                },
+                failure);
         }
     });
 }
@@ -198,17 +187,18 @@ function combineChunks(file, uuid, owner, success, failure) {
 function appendToStream(destStream, srcDir, srcFilesnames, index, success, failure) {
     if (index < srcFilesnames.length) {
         fs.createReadStream(srcDir + srcFilesnames[index])
-            .on("end", function() {
+            .on("end", function () {
                 appendToStream(destStream, srcDir, srcFilesnames, index + 1, success, failure);
             })
-            .on("error", function(error) {
+            .on("error", function (error) {
                 console.error("Problem appending chunk! " + error);
                 destStream.end();
                 failure();
             })
-            .pipe(destStream, {end: false});
-    }
-    else {
+            .pipe(destStream, {
+                end: false
+            });
+    } else {
         destStream.end();
         success();
     }
@@ -220,4 +210,3 @@ function getChunkFilename(index, count) {
 
     return (zeros + index).slice(-digits);
 }
-

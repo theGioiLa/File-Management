@@ -9,22 +9,22 @@
                 <table class="table table-sm">
                     <thead class=" text-primary">
                         <th class="text-center">
-                        #
+                            #
                         </th>
                         <th style="width: 20%">
-                        Name
+                            Name
                         </th>
                         <th>
-                        Size
+                            Size
                         </th>
                         <th>
-                        Mimetype
+                            Mimetype
                         </th>
                         <th>
-                        Last Modified
+                            Last Modified
                         </th>
                         <th class="text-center">
-                        Actions
+                            Actions
                         </th>
                     </thead>
 
@@ -44,67 +44,68 @@
                         <tr>
                             <td><%- stt %></td>
                             <td>
-                            <%
+                                <%
                             let view_path = '/drive/' + username + '/view/' + file._id;
-                            %> 
-                            <% if (file.isFolder) { %>
-                            <a href="<%- view_path %>" data-toggle="tooltip" title="Preview">
-                                <i class="fas fa-folder"></i>
-                            <% } else { %>
-                            <a class="preview-file" href="#preview_file" data-file="<%- view_path %>" 
-                                data-toggle="tooltip" title="Preview">
-                                <i class="fas fa-file"></i>
-                            <% } %>
-                                <%- file.filename -%>
-                            </a>
+                            %>
+                                <% if (file.isFolder) { %>
+                                <a href="<%- view_path %>" data-toggle="tooltip" title="Preview">
+                                    <i class="fas fa-folder"></i>
+                                    <% } else { %>
+                                    <a class="preview-file" href="#preview_file" data-file="<%- view_path %>"
+                                        data-toggle="tooltip" title="Preview">
+                                        <i class="fas fa-file"></i>
+                                        <% } %>
+                                        <%- file.filename -%>
+                                    </a>
                             </td>
                             <td>
-                            <% 
+                                <% 
                             if (!file.isFolder) {
                                 let size = normalizeSize(file.size); 
-                            %> 
-                            <%- size -%>
-                            <% } %>
+                            %>
+                                <%- size -%>
+                                <% } %>
                             </td>
                             <td>
-                            <%- file.mimetype -%>
+                                <%- file.mimetype -%>
                             </td>
                             <td>
-                            <%- file.createdAt -%>
+                                <%- file.createdAt -%>
                             </td>
                             <td class="td-actions text-center">
-                            <% 
+                                <% 
                                 let delete_path = '/drive/' + username + '/delete/' +  file._id;
                                 let share_path = '/drive/' + username + '/share/' + file._id;
                             %>
-                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon btn-share-file" 
+                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon btn-share-file"
                                     share-path="<%- share_path %>" data-file="<%-stt%>" filename="<%- file.filename %>"
-                                    data-toggle="tooltip" title="Share"
-                                >
+                                    data-toggle="tooltip" title="Share">
                                     <i class="fas fa-share-alt"></i>
                                 </button>
-                            <%
+                                <%
                                 if (!file.isFolder) {
                                     let download_path = '/drive/' + username + '/download/' + file._id;
                             %>
-                                
-                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon" data-toggle="tooltip" title="Download"> 
-                                    <a href=<%- download_path -%> >
+
+                                <button type="button" class="btn btn-info btn-fab btn-round btn-icon"
+                                    data-toggle="tooltip" title="Download">
+                                    <a href=<%- download_path -%>>
                                         <i class="fas fa-download"></i>
                                     </a>
                                 </button>
-                            <%
+                                <%
                                 } 
                             %>
 
-                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon" data-toggle="tooltip" title="Delete"> 
-                                    <a href=<%- delete_path -%> >
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon"
+                                    data-toggle="tooltip" title="Delete">
+                                    <a href=<%- delete_path -%>>
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </button>
-                            <%
+                                <%
                                 stt++;
-                            %> 
+                            %>
                             </td>
                         </tr>
                         <% }); %>
@@ -140,7 +141,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><strong>Share File Options</strong></h4>
-                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <div class="modal-body">
@@ -157,7 +158,8 @@
                         <label for="expireIn" class="col-sm-4 col-form-label">Share with</label>
                         <div class="col-sm-8" id="email-list">
                             <input type="email" class="form-control" placeholder="name@example.com">
-                            <button type="button" class="btn btn-icon btn-round btn-sm" id="btn-add-email"> <i class="now-ui-icons ui-1_simple-add"></i> </button>
+                            <button type="button" class="btn btn-icon btn-round btn-sm" id="btn-add-email"> <i
+                                    class="now-ui-icons ui-1_simple-add"></i> </button>
                         </div>
                     </div>
 
@@ -184,7 +186,8 @@
                         </div>
                     </div>
 
-                    <button id="shareBtn" type="submit" class="btn btn-danger btn-round" data-dismiss="modal">Share</button>
+                    <button id="shareBtn" type="submit" class="btn btn-danger btn-round"
+                        data-dismiss="modal">Share</button>
                 </form>
             </div>
         </div>
@@ -192,45 +195,45 @@
 </div>
 
 <div class="alert alert-success alert-dismissible fade show" role="alert" hidden>
-    <strong id="message"></strong>   
+    <strong id="message"></strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 
 <script>
-    $(function() { 
-        $(".preview-file").on('click', function() {
+    $(function () {
+        $(".preview-file").on('click', function () {
             let self = $(this);
 
             $("#preview_modal").modal("show");
-            $("#preview_modal").on('shown.bs.modal', function() {
-               $("#view_content").attr("src", `${self.attr("data-file")}`);
+            $("#preview_modal").on('shown.bs.modal', function () {
+                $("#view_content").attr("src", `${self.attr("data-file")}`);
             });
         });
 
-        $(".btn-share-file").one("click", function() {
+        $(".btn-share-file").one("click", function () {
             let self = $(this);
             let fileId = self.attr("data-file") - 1;
 
             $("#share_modal").modal("show");
             $(".alert").attr("hidden");
 
-            $("#share_modal").on('shown.bs.modal', function(event) {
+            $("#share_modal").on('shown.bs.modal', function (event) {
                 $("#shareFilename").text(self.attr("filename"));
             });
 
-            $("#share_modal").on('hide.bs.modal', function() {
+            $("#share_modal").on('hide.bs.modal', function () {
                 $("#shareBtn").off('click');
                 $("#btn-add-email").off('click');
             })
 
-            $("#shareBtn").on('click', function(event) {
+            $("#shareBtn").on('click', function (event) {
                 let expireIn = $("#expireIn").val();
                 let mailList = [];
                 let location = $(".location-data").val();
 
-                $("#email-list").children("input").toArray().forEach(function(input) {
+                $("#email-list").children("input").toArray().forEach(function (input) {
                     mailList.push(input.value);
                 });
 
@@ -241,14 +244,14 @@
                     location: location,
                 };
 
-                $.post(self.attr("share-path"), data, function(data, status, xhr) {
+                $.post(self.attr("share-path"), data, function (data, status, xhr) {
                     $(".alert").removeClass("alert-info");
                     $(".alert").addClass("alert-success");
                     $("#message").text(`Send status: ${status}`);
 
-                    window.setTimeout(function() {
-                        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                            $(this).remove(); 
+                    window.setTimeout(function () {
+                        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                            $(this).remove();
                         });
                     }, 1000);
                 });
@@ -257,15 +260,16 @@
                 $(".alert").addClass("alert-info");
                 $(".alert").removeAttr("hidden");
                 let msg = 'Sending the email to ';
-                mailList.forEach(function(email) {
+                mailList.forEach(function (email) {
                     msg += email + ' ';
                 });
 
                 $("#message").text(msg);
             });
 
-            $("#btn-add-email").click(function() {
-                let input = `<input type="email" class="form-control" placeholder="name@example.com">`;
+            $("#btn-add-email").click(function () {
+                let input =
+                    `<input type="email" class="form-control" placeholder="name@example.com">`;
                 $("#email-list").prepend(input);
             });
         });

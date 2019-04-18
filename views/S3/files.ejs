@@ -9,39 +9,45 @@
                 <table class="table table-sm">
                     <thead class=" text-primary">
                         <th class="text-center">
-                        #
+                            #
                         </th>
                         <th style="width: 20%">
-                        Name
+                            Name
                         </th>
                         <th>
-                        Size
+                            Size
                         </th>
                         <th>
-                        Mimetype
+                            Mimetype
                         </th>
                         <th>
-                        Last Modified
+                            Last Modified
                         </th>
                         <th class="text-center">
-                        Actions
+                            Actions
                         </th>
                     </thead>
                     <tbody>
                         <% let id = 1; %>
                         <% data.forEach(function(file) { %>
-                            <tr>
-                                <td><%- id++ %></td>
-                                <td><%- file.Key %></td>
-                                <td><%- prettySize(file.Size) %></td>
-                                <td><%- file.StorageClass %></td>
-                                <td><%- file.LastModified %></td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-default btn-fab btn-round btn-icon btn-delete" data-key="<%- file.Key %>" data-toggle="tooltip" title="Delete"> 
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><%- id++ %></td>
+                            <td><%- file.Key %></td>
+                            <td><%- prettySize(file.Size) %></td>
+                            <td><%- file.contentType %></td>
+                            <td><%- file.LastModified %></td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon btn-download"
+                                    data-key="<%- file.Key %>" data-toggle="tooltip" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-default btn-fab btn-round btn-icon btn-delete"
+                                    data-key="<%- file.Key %>" data-toggle="tooltip" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
                         <% }); %>
                     </tbody>
                 </table>
@@ -51,15 +57,28 @@
 </div>
 
 <script>
-    $(function() {
-        $(".btn-delete").on('click', function(event) {
+    $(function () {
+        $(".btn-download").on('click', function (event) {
             let self = $(this);
 
             let data = {
                 Key: self.attr('data-key')
             };
 
-            $.post('/S3/delete', data, function(data, status, xhr) {
+            $.post('/S3/download', data, function (data, status, xhr) {
+                // window.location = '/S3';
+                console.log(data);
+            });
+        });
+
+        $(".btn-delete").on('click', function (event) {
+            let self = $(this);
+
+            let data = {
+                Key: self.attr('data-key')
+            };
+
+            $.post('/S3/delete', data, function (data, status, xhr) {
                 window.location = '/S3';
             });
         });

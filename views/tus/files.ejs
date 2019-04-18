@@ -9,33 +9,33 @@
                 <table class="table table-sm">
                     <thead class=" text-primary">
                         <th class="text-center">
-                        #
+                            #
                         </th>
                         <th style="width: 20%">
-                        Name
+                            Name
                         </th>
                         <th>
-                        Size
+                            Size
                         </th>
                         <th>
-                        Mimetype
+                            Mimetype
                         </th>
                         <th>
-                        Last Modified
+                            Last Modified
                         </th>
                         <th class="text-center">
-                        Actions
+                            Actions
                         </th>
                     </thead>
                     <tbody>
                         <% data.forEach(function(file) { %>
-                            <tr>
-                                <td>0</td>
-                                <td><%- file.Key %></td>
-                                <td><%- prettySize(file.Size) %></td>
-                                <td><%- file.StorageClass %></td>
-                                <td><%- file.LastModified %></td>
-                            </tr>
+                        <tr>
+                            <td>0</td>
+                            <td><%- file.Key %></td>
+                            <td><%- prettySize(file.Size) %></td>
+                            <td><%- file.contentType %></td>
+                            <td><%- file.LastModified %></td>
+                        </tr>
                         <% }); %>
                     </tbody>
                 </table>

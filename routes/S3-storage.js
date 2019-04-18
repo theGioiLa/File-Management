@@ -24,7 +24,7 @@ const BUCKET_NAME = 'buckettest',
 
 let s3Uploader = S3Uploader(s3Client);
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
     let user = req.user;
     let options = {
         Bucket: BUCKET_NAME,
@@ -32,103 +32,147 @@ router.get('/', function(req, res) {
 
     // s3Uploader.abortAllMultipartUpload(BUCKET_NAME);
 
-    s3Client.listObjects(options, function(err, data) {
-        if (err) console.error(err);
+    s3Client.listObjects(options, function (err, data) {
+        if (err) {
+            console.error(err);
+            res.status(err.statusCode).end(err.message);
+        }
         else {
-            res.render('S3/index', {title: 'S3 Upload', username: user.username, data: data.Contents, prettySize: normalizeSize});
+            let body = [];
+            let headReqs = [];
+            data.Contents.forEach(function(_file) {
+                headReqs.push(
+                    s3Client.headObject({
+                        Bucket: BUCKET_NAME, 
+                        Key: _file.Key
+                    })
+                    .promise()
+                    .then(function(metadata) {
+                        let file = Object.assign({}, _file, {contentType: metadata.Metadata['content-type']});
+                        body.push(file);
+                    })
+                    .catch(function(err) {
+                        Console.error(err);
+                        res.status(err.statusCode).end(err.message);
+                    })
+                );
+            });
+
+            Promise.all(headReqs).then(function() {
+                res.render('S3/index', {
+                    title: 'S3 Upload',
+                    username: user.username,
+                    data: body,
+                    prettySize: normalizeSize
+                });
+            });
         }
     });
 });
 
-router.post('/upload', function(req, res) {
+router.post('/download/', function(req, res) {
+    let key = req.body.Key;
+
+    let getObjParams = {
+        Bucket: BUCKET_NAME,
+        Key: key
+    };
+
+    s3Client.getObject(getObjParams).createReadStream().pipe(res);
+    res.on('close', function() {
+        res.status(200).end();
+    })
+});
+
+router.post('/upload', function (req, res) {
     let form = new multiparty.Form();
 
-    form.on('part', function(part) {
+    form.on('part', function (part) {
         if (part.filename) {
             s3Uploader.upload(part, BUCKET_NAME);
         }
     });
 
-    form.on('close', function() {
+    form.on('close', function () {
         res.redirect('/S3');
     });
 
-    form.on('error', function(err) {
+    form.on('error', function (err) {
         console.error('Multiparty form error: ', err.message);
     });
 
     form.parse(req);
 });
 
-router.post('/upload/buffer', function(req, res) {
+router.post('/upload/buffer', function (req, res) {
     let form = new multiparty.Form();
 
-    form.on('part', function(part) {
+    form.on('part', function (part) {
         if (part.filename) {
             let receivedBuffers = [];
             let receivedBuffersLength = 0;
 
-            part.on('data', function(chunk) {
+            part.on('data', function (chunk) {
                 receivedBuffers.push(chunk);
                 receivedBuffersLength += chunk.length;
             });
 
-            part.on('end', function() {
+            part.on('end', function () {
                 let buffer = Buffer.concat(receivedBuffers, receivedBuffersLength);
-                s3Uploader.uploadByBuffer(buffer, BUCKET_NAME, part.filename, PART_SIZE);
+                s3Uploader.uploadByBuffer(buffer, BUCKET_NAME, part.filename, PART_SIZE, part.headers['content-type']);
             });
 
-            part.on('error', function(err) {
+            part.on('error', function (err) {
                 console.error('Part Error:', err.message);
             });
         }
     });
 
-    form.on('close', function() {
+    form.on('close', function () {
         res.redirect('/S3');
     });
 
-    form.on('error', function(err) {
+    form.on('error', function (err) {
         console.error('Form Error:', err.message);
     });
 
     form.parse(req);
 });
 
-router.post('/upload/stream', function(req, res) {
+router.post('/upload/stream', function (req, res) {
     let form = new multiparty.Form();
 
-    form.on('part', function(part) {
+    form.on('part', function (part) {
         if (part.filename) {
             s3Uploader.uploadByStream(part, BUCKET_NAME, PART_SIZE);;
         }
     });
 
-    form.on('error', function(err) {
+    form.on('error', function (err) {
         console.error('Form Error:', err.message);
     });
 
-    form.on('close', function() {
+    form.on('close', function () {
         res.redirect('/S3');
     });
 
     form.parse(req);
 });
 
-router.post('/delete', function(req, res) {
-   let key = req.body.Key;
+router.post('/delete', function (req, res) {
+    let key = req.body.Key;
 
-   let deleteParams = {
-       Bucket: BUCKET_NAME,
-       Key: key
-   };
+    let deleteParams = {
+        Bucket: BUCKET_NAME,
+        Key: key
+    };
 
-   s3Client.deleteObject(deleteParams, function(err, data) {
-       if (err) console.error('Delete Error: ', err.message);
-       else {
-           res.status(200).send('Delete Ok');
-       }
-   });
+    s3Client.deleteObject(deleteParams, function (err, data) {
+        if (err) console.error('Delete Error: ', err.message);
+        else {
+            res.status(200).send('Delete Ok');
+        }
+    });
 });
 
 module.exports = router;
