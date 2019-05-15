@@ -21,6 +21,8 @@ var UserSchema = new Schema({
         ref: 'File',
     },
 
+    streamKey: [String],
+
     createdAt: {
         type: Date, 
         default: Date.now()

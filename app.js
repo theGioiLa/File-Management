@@ -4,7 +4,7 @@ var createError = require('http-errors'),
   logger = require('morgan'),
   session = require('express-session'),
   cookieParser = require('cookie-parser'),
-  uuid = require('uuid/v4'),
+  uuidV4 = require('uuid/v4'),
   rimraf = require('rimraf'),
   dotenv = require('dotenv'),
   db = require('./db');
@@ -29,7 +29,7 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -44,7 +44,7 @@ var session_store = new RedisStore(storage_options);
 
 app.use(session({
   genid: function (req) {
-    return uuid();
+    return uuidV4();
   },
   //    store: session_store,
   secret: 'fine-uploader',
@@ -83,7 +83,7 @@ app.use('/reset', function (req, res, next) {
   });
 });
 
-app.use('/test', require('./routes/tus-test'));
+app.use('/video', require('./routes/video-stream'));
 app.use('/S3', require('./routes/S3-storage'));
 app.use('/tus', require('./routes/tus-S3'));
 app.use('/user', require('./routes/users'));

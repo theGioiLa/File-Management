@@ -11,6 +11,11 @@ function authenticate(req, res, next) {
         if (jws.verify(accessToken, config.algorithm, config.secret)) {
             req.user = JSON.parse(jws.decode(accessToken).payload);
             next();
-        } else res.redirect('/user/login');
-    } else res.redirect('/user/login');
+        } else {
+            res.redirect('/user/login');
+        }
+    } else {
+        res.redirect('/user/login');
+    }
+
 }

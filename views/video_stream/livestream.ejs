@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Online</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+
+    <link href="/assets/fonts/nucleo-outline.ttf" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+        integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+    <script src="/javascripts/fine-uploader.js"></script>
+    <script src="/assets/js/core/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper ">
+        <div class="main-panel" id="main-panel">
+            <div class="content">
+                <%- include('publish.ejs', {channels: channels, rtmpServer: rtmpServer}); %>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <%- include('../footer.ejs'); %>
+            </footer>
+        </div>
+    </div>
+
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+</body>
+
+</html>

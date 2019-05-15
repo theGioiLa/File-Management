@@ -53,6 +53,8 @@
             e.preventDefault();
             let i = 0;
             choosen_files.forEach(function (file) {
+                let type = file.type;
+                console.log('Uploading ... ', file.name, file.size);
                 if (type === '') {
                     type = 'undefined';
                 }
@@ -64,7 +66,7 @@
                     metadata: {
                         id: i,
                         filename: file.name,
-                        filetype: type 
+                        filetype: type
                     },
 
                     onError: function (error) {
@@ -74,14 +76,16 @@
                     onChunkComplete: function (chunkSize, bytesUploaded, bytesTotal) {
                         let id = this.metadata.id;
                         let percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(
-                            2);
+                        2);
+                        console.log(percentage);
                         $(`.progress-info-${id}`).text('  |  ' + percentage + '%');
                     },
 
                     onSuccess: function () {
                         // window.location = '/tus';
-                        $(".btn-pause").text("Success");
-                        console.log('success', upload.url);
+                        let id = this.metadata.id;
+                        $(`.btn-pause[file-id=${id}] `).text("Success");
+                        console.log('------------*-----------success', upload.url);
                     }
                 };
 

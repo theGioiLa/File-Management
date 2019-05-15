@@ -109,7 +109,7 @@ router.get('/logout', function (req, res) {
     });
 });
 
-router.get('/reset', function (req, res) {
+router.get('/reset', authen.authenticate, function (req, res) {
     UserModel.findById(req.user.id).populate('home').exec(function (err, user) {
         if (err) throw err;
 
@@ -141,6 +141,10 @@ router.get('/reset', function (req, res) {
 
         user.home.files = [];
         user.home.save();
+
+        user.update({
+            $poll: {streamKey: {}}
+        });
 
         res.redirect('/user/logout');
     });

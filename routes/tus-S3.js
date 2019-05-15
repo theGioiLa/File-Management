@@ -1,11 +1,9 @@
 const AWS = require('aws-sdk'),
-    tus = require('tus-node-server'),
     fs = require('fs'),
     express = require('express'),
     config = require('../config'),
     authen = require('../middleware/authen'),
     normalizeSize = require('../normalize').normalizeSize,
-    zlib = require('zlib'),
     router = express.Router();
 
 const PART_SIZE = 5 * 1024 * 1024,

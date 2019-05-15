@@ -1,0 +1,1330 @@
+2019/05/09 10:57:24 [emerg] 864#0: invalid value "on" in ./nginx.conf:74
+2019/05/09 10:58:49 [emerg] 1285#0: invalid number of arguments in "record_suffix" directive in ./nginx.conf:79
+2019/05/09 10:59:41 [notice] 1496#0: signal process started
+2019/05/09 10:59:41 [notice] 19909#0: using the "epoll" event method
+2019/05/09 10:59:41 [notice] 19909#0: start worker processes
+2019/05/09 10:59:41 [notice] 19909#0: start worker process 1497
+2019/05/09 10:59:41 [notice] 19909#0: signal 17 (SIGCHLD) received from 20986
+2019/05/09 10:59:41 [notice] 19909#0: worker process 20986 exited with code 0
+2019/05/09 10:59:41 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 10:59:44 [info] 1497#0: *362 client connected '127.0.0.1'
+2019/05/09 10:59:44 [info] 1497#0: *362 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 10:59:44 [info] 1497#0: *362 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 10:59:44 [info] 1497#0: *362 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:10:01 [info] 1497#0: *362 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:10:01 [info] 1497#0: *362 send() failed (32: Broken pipe), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:10:01 [info] 1497#0: *362 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:10:01 [info] 1497#0: *362 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:16:12 [info] 1497#0: *367 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:16:20 [info] 1497#0: *368 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:16:28 [info] 1497#0: *369 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:16:36 [info] 1497#0: *370 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:16:36 [info] 1497#0: *366 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:16:36 [info] 1497#0: *365 client 127.0.0.1 closed keepalive connection
+2019/05/09 11:23:25 [notice] 5533#0: signal process started
+2019/05/09 11:23:25 [notice] 19909#0: signal 1 (SIGHUP) received from 5533, reconfiguring
+2019/05/09 11:23:25 [notice] 19909#0: reconfiguring
+2019/05/09 11:23:25 [notice] 19909#0: using the "epoll" event method
+2019/05/09 11:23:25 [notice] 19909#0: start worker processes
+2019/05/09 11:23:25 [notice] 19909#0: start worker process 5534
+2019/05/09 11:23:25 [notice] 1497#0: gracefully shutting down
+2019/05/09 11:23:25 [notice] 1497#0: exiting
+2019/05/09 11:23:25 [notice] 1497#0: exit
+2019/05/09 11:23:25 [notice] 19909#0: signal 17 (SIGCHLD) received from 1497
+2019/05/09 11:23:25 [notice] 19909#0: worker process 1497 exited with code 0
+2019/05/09 11:23:25 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 11:23:30 [info] 5534#0: *371 client connected '127.0.0.1'
+2019/05/09 11:23:30 [info] 5534#0: *371 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:30 [info] 5534#0: *371 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:30 [info] 5534#0: *371 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:30 [info] 5534#0: *371 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:30 [info] 5534#0: *371 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:30 [info] 5534#0: *371 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 client connected '127.0.0.1'
+2019/05/09 11:23:35 [info] 5534#0: *373 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:23:35 [info] 5534#0: *373 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:44 [info] 5534#0: *375 client connected '127.0.0.1'
+2019/05/09 11:24:45 [info] 5534#0: *375 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:45 [info] 5534#0: *375 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:45 [info] 5534#0: *375 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:45 [info] 5534#0: *375 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:45 [info] 5534#0: *375 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:24:45 [info] 5534#0: *375 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 client connected '127.0.0.1'
+2019/05/09 11:29:09 [info] 5534#0: *378 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:09 [info] 5534#0: *378 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 client connected '127.0.0.1'
+2019/05/09 11:29:21 [info] 5534#0: *380 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *380 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 client connected '127.0.0.1'
+2019/05/09 11:29:21 [info] 5534#0: *382 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:21 [info] 5534#0: *382 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 client connected '127.0.0.1'
+2019/05/09 11:29:24 [info] 5534#0: *384 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:24 [info] 5534#0: *384 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 client connected '127.0.0.1'
+2019/05/09 11:29:33 [info] 5534#0: *386 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:33 [info] 5534#0: *386 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 client connected '127.0.0.1'
+2019/05/09 11:29:39 [info] 5534#0: *388 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:39 [info] 5534#0: *388 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 client connected '127.0.0.1'
+2019/05/09 11:29:41 [info] 5534#0: *390 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:41 [info] 5534#0: *390 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 client connected '127.0.0.1'
+2019/05/09 11:29:42 [info] 5534#0: *392 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:42 [info] 5534#0: *392 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 client connected '127.0.0.1'
+2019/05/09 11:29:44 [info] 5534#0: *394 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:29:44 [info] 5534#0: *394 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 client connected '127.0.0.1'
+2019/05/09 11:31:45 [info] 5534#0: *396 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:31:45 [info] 5534#0: *396 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 client connected '127.0.0.1'
+2019/05/09 11:35:24 [info] 5534#0: *398 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:35:24 [info] 5534#0: *398 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:37:19 [info] 5534#0: *400 client connected '127.0.0.1'
+2019/05/09 11:37:19 [info] 5534#0: *400 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:37:19 [info] 5534#0: *400 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:37:19 [info] 5534#0: *400 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:37:19 [info] 5534#0: *400 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:28 [info] 5534#0: *402 client connected '127.0.0.1'
+2019/05/09 11:43:28 [info] 5534#0: *402 connect: app='myapp/stream' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp/stream' tc_url='rtmp://localhost:1935/myapp/stream' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:28 [info] 5534#0: *402 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:28 [info] 5534#0: *402 connect: application not found: 'myapp/stream', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:28 [info] 5534#0: *402 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:28 [info] 5534#0: *402 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:55 [info] 5534#0: *400 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:55 [info] 5534#0: *400 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:43:55 [info] 5534#0: *400 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:44:35 [info] 5534#0: *404 client connected '127.0.0.1'
+2019/05/09 11:44:35 [info] 5534#0: *404 connect: app='myapp/stream' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp/stream' tc_url='rtmp://localhost:1935/myapp/stream' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:44:35 [info] 5534#0: *404 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:44:35 [info] 5534#0: *404 connect: application not found: 'myapp/stream', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:44:35 [info] 5534#0: *404 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:44:35 [info] 5534#0: *404 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:09 [info] 5534#0: *406 client connected '127.0.0.1'
+2019/05/09 11:45:09 [info] 5534#0: *406 connect: app='myapp/stream' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp/stream' tc_url='rtmp://localhost:1935/myapp/stream' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:09 [info] 5534#0: *406 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:09 [info] 5534#0: *406 connect: application not found: 'myapp/stream', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:09 [info] 5534#0: *406 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:09 [info] 5534#0: *406 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:36 [info] 5534#0: *409 client connected '127.0.0.1'
+2019/05/09 11:45:36 [info] 5534#0: *409 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:36 [info] 5534#0: *409 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:37 [info] 5534#0: *409 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:37 [info] 5534#0: *409 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:41 [info] 5534#0: *411 client connected '127.0.0.1'
+2019/05/09 11:45:41 [info] 5534#0: *411 connect: app='myapp/stream' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp/stream' tc_url='rtmp://localhost:1935/myapp/stream' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:41 [info] 5534#0: *411 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:41 [info] 5534#0: *411 connect: application not found: 'myapp/stream', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:41 [info] 5534#0: *411 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:41 [info] 5534#0: *411 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:55 [info] 5534#0: *413 client connected '127.0.0.1'
+2019/05/09 11:45:55 [info] 5534#0: *413 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:55 [info] 5534#0: *413 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:56 [info] 5534#0: *413 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:45:56 [info] 5534#0: *413 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:47:53 [info] 5534#0: *409 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:54 [info] 5534#0: *413 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:54 [info] 5534#0: *413 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:54 [info] 5534#0: *413 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:55 [info] 5534#0: *415 client connected '127.0.0.1'
+2019/05/09 11:52:55 [info] 5534#0: *415 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:55 [info] 5534#0: *415 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:55 [error] 5534#0: recv() failed (111: Connection refused)
+2019/05/09 11:52:55 [info] 5534#0: *415 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:55 [info] 5534#0: *415 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:52:55 [info] 5534#0: *415 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:53:02 [info] 5534#0: *417 client connected '127.0.0.1'
+2019/05/09 11:53:02 [info] 5534#0: *417 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:53:02 [info] 5534#0: *417 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:53:02 [info] 5534#0: *417 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:53:02 [info] 5534#0: *417 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:54:39 [info] 5534#0: *419 client connected '127.0.0.1'
+2019/05/09 11:54:39 [info] 5534#0: *419 connect: app='myapp' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:54:39 [info] 5534#0: *419 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:54:39 [error] 5534#0: recv() failed (111: Connection refused)
+2019/05/09 11:54:39 [info] 5534#0: *419 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:54:39 [info] 5534#0: *419 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:54:39 [info] 5534#0: *419 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:08 [info] 5534#0: *421 client connected '127.0.0.1'
+2019/05/09 11:55:08 [info] 5534#0: *421 connect: app='myapp' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:08 [info] 5534#0: *421 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:08 [info] 5534#0: *421 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:08 [info] 5534#0: *421 play: name='stream' args='' start=-2000 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:23 [info] 5534#0: *421 recv() failed (104: Connection reset by peer), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:23 [info] 5534#0: *421 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:55:23 [info] 5534#0: *421 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:56:06 [info] 5534#0: *417 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:56:06 [info] 5534#0: *417 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:56:06 [info] 5534#0: *417 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:56:16 [notice] 9496#0: signal process started
+2019/05/09 11:56:16 [notice] 19909#0: signal 1 (SIGHUP) received from 9496, reconfiguring
+2019/05/09 11:56:16 [notice] 19909#0: reconfiguring
+2019/05/09 11:56:16 [notice] 19909#0: using the "epoll" event method
+2019/05/09 11:56:16 [notice] 19909#0: start worker processes
+2019/05/09 11:56:16 [notice] 19909#0: start worker process 9497
+2019/05/09 11:56:16 [notice] 19909#0: start cache manager process 9498
+2019/05/09 11:56:16 [notice] 5534#0: gracefully shutting down
+2019/05/09 11:57:46 [info] 9497#0: *425 client connected '127.0.0.1'
+2019/05/09 11:57:46 [info] 9497#0: *425 connect: app='myapp' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:57:46 [info] 9497#0: *425 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:57:46 [info] 9497#0: *425 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:57:47 [info] 9497#0: *425 play: name='stream' args='' start=-2000 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:00 [info] 5534#0: *409 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:00 [info] 5534#0: *409 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:00 [notice] 5534#0: exiting
+2019/05/09 11:58:00 [notice] 5534#0: exit
+2019/05/09 11:58:00 [notice] 19909#0: signal 17 (SIGCHLD) received from 5534
+2019/05/09 11:58:00 [notice] 19909#0: worker process 5534 exited with code 0
+2019/05/09 11:58:00 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 11:58:02 [info] 9497#0: *427 client connected '127.0.0.1'
+2019/05/09 11:58:02 [info] 9497#0: *427 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:02 [info] 9497#0: *427 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:02 [info] 9497#0: *427 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 11:58:02 [info] 9497#0: *427 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:03:15 [info] 9497#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 12:03:15 [info] 9498#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 12:04:44 [info] 9497#0: *429 client connected '127.0.0.1'
+2019/05/09 12:04:44 [info] 9497#0: *429 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:04:44 [info] 9497#0: *429 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:04:44 [info] 9497#0: *429 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:04:44 [info] 9497#0: *429 publish: name='test@1234' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:00 [info] 9497#0: *427 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:00 [info] 9497#0: *427 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:02 [info] 9497#0: *432 client connected '127.0.0.1'
+2019/05/09 12:05:02 [info] 9497#0: *432 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/index.html' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:02 [info] 9497#0: *432 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:02 [info] 9497#0: *432 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:02 [info] 9497#0: *432 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:53 [info] 9497#0: *429 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:53 [info] 9497#0: *429 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:05:53 [info] 9497#0: *429 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:05 [info] 9497#0: *434 client connected '127.0.0.1'
+2019/05/09 12:06:05 [info] 9497#0: *434 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:05 [info] 9497#0: *434 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:05 [info] 9497#0: *434 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:05 [info] 9497#0: *434 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:14 [info] 9497#0: *434 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:14 [info] 9497#0: *434 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:06:14 [info] 9497#0: *434 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:49:56 [info] 9497#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 12:49:56 [info] 9498#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 12:50:58 [info] 9497#0: *432 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:50:59 [info] 9497#0: *432 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:38 [info] 9497#0: *436 client connected '127.0.0.1'
+2019/05/09 12:52:38 [info] 9497#0: *436 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:38 [info] 9497#0: *436 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:38 [info] 9497#0: *436 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:38 [info] 9497#0: *436 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:47 [info] 9497#0: *436 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:47 [info] 9497#0: *436 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:47 [info] 9497#0: *436 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:55 [info] 9497#0: *425 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:52:55 [info] 9497#0: *425 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:53:38 [info] 9497#0: *438 client connected '127.0.0.1'
+2019/05/09 12:53:38 [info] 9497#0: *438 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:53:38 [info] 9497#0: *438 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:53:38 [info] 9497#0: *438 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:53:38 [info] 9497#0: *438 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:05 [info] 9497#0: *438 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:05 [info] 9497#0: *438 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:05 [info] 9497#0: *438 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:50 [info] 9497#0: *440 client connected '127.0.0.1'
+2019/05/09 12:56:50 [info] 9497#0: *440 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:50 [info] 9497#0: *440 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:50 [info] 9497#0: *440 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:56:50 [info] 9497#0: *440 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:23 [info] 9497#0: *440 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:23 [info] 9497#0: *440 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:23 [info] 9497#0: *440 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:47 [info] 9497#0: *442 client connected '127.0.0.1'
+2019/05/09 12:57:47 [info] 9497#0: *442 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:47 [info] 9497#0: *442 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:47 [info] 9497#0: *442 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:57:47 [info] 9497#0: *442 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:05 [info] 9497#0: *442 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:05 [info] 9497#0: *442 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:05 [info] 9497#0: *442 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:35 [info] 9497#0: *444 client connected '127.0.0.1'
+2019/05/09 12:58:35 [info] 9497#0: *444 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:35 [info] 9497#0: *444 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:35 [info] 9497#0: *444 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:58:35 [info] 9497#0: *444 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:59:07 [info] 9497#0: *447 client connected '127.0.0.1'
+2019/05/09 12:59:07 [info] 9497#0: *447 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:59:07 [info] 9497#0: *447 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:59:07 [info] 9497#0: *447 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 12:59:07 [info] 9497#0: *447 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:22 [info] 9497#0: *432 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:22 [info] 9497#0: *432 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:24 [info] 9497#0: *447 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:24 [info] 9497#0: *447 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:29 [info] 9497#0: *444 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:29 [info] 9497#0: *444 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 13:08:29 [info] 9497#0: *444 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:04:23 [info] 9497#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 14:04:23 [info] 9498#0: epoll_wait() failed (4: Interrupted system call)
+2019/05/09 14:06:33 [info] 9497#0: *450 client connected '127.0.0.1'
+2019/05/09 14:06:34 [info] 9497#0: *450 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:06:34 [info] 9497#0: *450 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:06:34 [info] 9497#0: *450 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:06:34 [info] 9497#0: *450 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:07:03 [info] 9497#0: *450 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:07:03 [info] 9497#0: *450 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:07:03 [info] 9497#0: *450 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:10:56 [info] 9497#0: *452 client connected '127.0.0.1'
+2019/05/09 14:10:56 [info] 9497#0: *452 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:10:56 [info] 9497#0: *452 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:10:56 [info] 9497#0: *452 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:10:56 [info] 9497#0: *452 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:02 [info] 9497#0: *452 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:02 [info] 9497#0: *452 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:02 [info] 9497#0: *452 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:18 [notice] 18730#0: signal process started
+2019/05/09 14:16:18 [notice] 19909#0: signal 1 (SIGHUP) received from 18730, reconfiguring
+2019/05/09 14:16:18 [notice] 19909#0: reconfiguring
+2019/05/09 14:16:18 [notice] 19909#0: using the "epoll" event method
+2019/05/09 14:16:18 [notice] 19909#0: start worker processes
+2019/05/09 14:16:18 [notice] 19909#0: start worker process 18731
+2019/05/09 14:16:18 [notice] 19909#0: start cache manager process 18732
+2019/05/09 14:16:18 [notice] 9497#0: gracefully shutting down
+2019/05/09 14:16:18 [notice] 9498#0: exiting
+2019/05/09 14:16:18 [notice] 9497#0: exiting
+2019/05/09 14:16:18 [notice] 9497#0: exit
+2019/05/09 14:16:18 [notice] 19909#0: signal 17 (SIGCHLD) received from 9498
+2019/05/09 14:16:18 [notice] 19909#0: cache manager process 9498 exited with code 0
+2019/05/09 14:16:18 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 14:16:18 [notice] 19909#0: signal 17 (SIGCHLD) received from 9497
+2019/05/09 14:16:18 [notice] 19909#0: worker process 9497 exited with code 0
+2019/05/09 14:16:18 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 14:16:22 [info] 18731#0: *454 client connected '127.0.0.1'
+2019/05/09 14:16:22 [info] 18731#0: *454 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:22 [info] 18731#0: *454 notify: connect 'localhost:3000/video/connect?pid=$pid', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:22 [info] 18731#0: *454 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:16:22 [info] 18731#0: *454 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:17:50 [notice] 18971#0: signal process started
+2019/05/09 14:17:50 [notice] 19909#0: signal 1 (SIGHUP) received from 18971, reconfiguring
+2019/05/09 14:17:50 [notice] 19909#0: reconfiguring
+2019/05/09 14:17:50 [notice] 19909#0: using the "epoll" event method
+2019/05/09 14:17:50 [notice] 19909#0: start worker processes
+2019/05/09 14:17:50 [notice] 19909#0: start worker process 18972
+2019/05/09 14:17:50 [notice] 19909#0: start cache manager process 18973
+2019/05/09 14:17:50 [notice] 18731#0: gracefully shutting down
+2019/05/09 14:17:50 [notice] 18732#0: exiting
+2019/05/09 14:17:50 [notice] 18731#0: exiting
+2019/05/09 14:17:50 [notice] 18731#0: exit
+2019/05/09 14:17:50 [notice] 19909#0: signal 17 (SIGCHLD) received from 18732
+2019/05/09 14:17:50 [notice] 19909#0: cache manager process 18732 exited with code 0
+2019/05/09 14:17:50 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 14:17:50 [notice] 19909#0: signal 17 (SIGCHLD) received from 18731
+2019/05/09 14:17:50 [notice] 19909#0: worker process 18731 exited with code 0
+2019/05/09 14:17:50 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 14:17:56 [info] 18972#0: *456 client connected '127.0.0.1'
+2019/05/09 14:17:56 [info] 18972#0: *456 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:17:56 [info] 18972#0: *456 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:17:56 [info] 18972#0: *456 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:17:56 [info] 18972#0: *456 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:18:21 [info] 18972#0: *458 client connected '127.0.0.1'
+2019/05/09 14:18:21 [info] 18972#0: *458 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:18:21 [info] 18972#0: *458 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:18:21 [info] 18972#0: *458 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:18:21 [info] 18972#0: *458 publish: name='stream' args='name=stdio' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:28:38 [info] 18972#0: *458 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:28:38 [info] 18972#0: *458 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:28:38 [info] 18972#0: *458 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:30 [info] 18972#0: *460 client connected '127.0.0.1'
+2019/05/09 14:58:30 [info] 18972#0: *460 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:30 [info] 18972#0: *460 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:30 [error] 18972#0: recv() failed (111: Connection refused)
+2019/05/09 14:58:30 [info] 18972#0: *460 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:30 [info] 18972#0: *460 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:30 [info] 18972#0: *460 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:43 [info] 18972#0: *462 client connected '127.0.0.1'
+2019/05/09 14:58:43 [info] 18972#0: *462 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:43 [info] 18972#0: *462 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:43 [info] 18972#0: *462 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:58:43 [info] 18972#0: *462 publish: name='stream' args='name=stdio' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:59:57 [info] 18972#0: *466 client connected '127.0.0.1'
+2019/05/09 14:59:57 [info] 18972#0: *466 connect: app='test' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/test' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:59:57 [info] 18972#0: *466 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:59:57 [info] 18972#0: *466 connect: application not found: 'test', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:59:57 [info] 18972#0: *466 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 14:59:57 [info] 18972#0: *466 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 client connected '127.0.0.1'
+2019/05/09 15:00:16 [info] 18972#0: *470 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 publish: name='test' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:00:16 [info] 18972#0: *470 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:21 [error] 18972#0: *472 open() "./hls/stream/1.ts" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /live/stream/1.ts HTTP/1.1", host: "localhost:8080"
+2019/05/09 15:01:39 [info] 18972#0: *475 client connected '127.0.0.1'
+2019/05/09 15:01:39 [info] 18972#0: *475 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 publish: name='test' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:01:39 [info] 18972#0: *475 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:09:00 [info] 18972#0: *462 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:09:00 [info] 18972#0: *462 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:09:00 [info] 18972#0: *462 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:57:35 [info] 18972#0: *478 client connected '127.0.0.1'
+2019/05/09 15:57:35 [info] 18972#0: *478 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:57:35 [info] 18972#0: *478 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:57:35 [info] 18972#0: *478 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:57:35 [info] 18972#0: *478 publish: name='stream' args='name=stdio' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:58:02 [info] 18972#0: *481 client connected '127.0.0.1'
+2019/05/09 15:58:02 [info] 18972#0: *481 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:58:02 [info] 18972#0: *481 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:58:02 [info] 18972#0: *481 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:58:02 [info] 18972#0: *481 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:59:31 [info] 18972#0: *481 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 15:59:31 [info] 18972#0: *481 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:07:52 [info] 18972#0: *478 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:07:52 [info] 18972#0: *478 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:07:52 [info] 18972#0: *478 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:58:21 [info] 18972#0: *484 client connected '127.0.0.1'
+2019/05/09 16:58:21 [info] 18972#0: *484 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:58:21 [info] 18972#0: *484 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:58:22 [info] 18972#0: *484 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 16:58:22 [info] 18972#0: *484 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:03 [info] 18972#0: *484 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:06 [info] 18972#0: *484 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:07 [info] 18972#0: *484 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:11 [info] 18972#0: *484 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:11 [info] 18972#0: *484 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:12 [info] 18972#0: *487 client connected '127.0.0.1'
+2019/05/09 17:00:12 [info] 18972#0: *487 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:12 [info] 18972#0: *487 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:12 [info] 18972#0: *487 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:12 [info] 18972#0: *487 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:57 [info] 18972#0: *487 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:00:57 [info] 18972#0: *487 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:01:01 [info] 18972#0: *489 client connected '127.0.0.1'
+2019/05/09 17:01:01 [info] 18972#0: *489 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:01:01 [info] 18972#0: *489 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:01:01 [info] 18972#0: *489 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:01:01 [info] 18972#0: *489 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:30 [notice] 1648#0: signal process started
+2019/05/09 17:06:30 [notice] 19909#0: signal 1 (SIGHUP) received from 1648, reconfiguring
+2019/05/09 17:06:30 [notice] 19909#0: reconfiguring
+2019/05/09 17:06:30 [notice] 19909#0: using the "epoll" event method
+2019/05/09 17:06:30 [notice] 19909#0: start worker processes
+2019/05/09 17:06:30 [notice] 19909#0: start worker process 1649
+2019/05/09 17:06:30 [notice] 19909#0: start cache manager process 1650
+2019/05/09 17:06:30 [notice] 18972#0: gracefully shutting down
+2019/05/09 17:06:30 [notice] 18973#0: exiting
+2019/05/09 17:06:30 [notice] 19909#0: signal 17 (SIGCHLD) received from 18973
+2019/05/09 17:06:30 [notice] 19909#0: cache manager process 18973 exited with code 0
+2019/05/09 17:06:30 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 17:06:40 [info] 1649#0: *491 client connected '127.0.0.1'
+2019/05/09 17:06:40 [info] 1649#0: *491 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 publish: name='stream' args='name=stdio' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 notify: publish 'localhost:3000/video/public', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:06:40 [info] 1649#0: *491 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:07:52 [notice] 2035#0: signal process started
+2019/05/09 17:07:52 [notice] 19909#0: signal 1 (SIGHUP) received from 2035, reconfiguring
+2019/05/09 17:07:52 [notice] 19909#0: reconfiguring
+2019/05/09 17:07:52 [notice] 19909#0: using the "epoll" event method
+2019/05/09 17:07:52 [notice] 19909#0: start worker processes
+2019/05/09 17:07:52 [notice] 19909#0: start worker process 2036
+2019/05/09 17:07:52 [notice] 19909#0: start cache manager process 2037
+2019/05/09 17:07:52 [notice] 1649#0: gracefully shutting down
+2019/05/09 17:07:52 [notice] 1650#0: exiting
+2019/05/09 17:07:52 [notice] 1649#0: exiting
+2019/05/09 17:07:52 [notice] 1649#0: exit
+2019/05/09 17:07:52 [notice] 19909#0: signal 17 (SIGCHLD) received from 1650
+2019/05/09 17:07:52 [notice] 19909#0: cache manager process 1650 exited with code 0
+2019/05/09 17:07:52 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 17:07:52 [notice] 19909#0: signal 17 (SIGCHLD) received from 1649
+2019/05/09 17:07:52 [notice] 19909#0: worker process 1649 exited with code 0
+2019/05/09 17:07:52 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 17:08:06 [info] 18972#0: *489 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:06 [info] 18972#0: *489 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:06 [notice] 18972#0: exiting
+2019/05/09 17:08:06 [notice] 18972#0: exit
+2019/05/09 17:08:06 [notice] 19909#0: signal 17 (SIGCHLD) received from 18972
+2019/05/09 17:08:06 [notice] 19909#0: worker process 18972 exited with code 0
+2019/05/09 17:08:06 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 17:08:08 [info] 2036#0: *495 client connected '127.0.0.1'
+2019/05/09 17:08:08 [info] 2036#0: *495 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:08 [info] 2036#0: *495 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:08 [info] 2036#0: *495 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:08 [info] 2036#0: *495 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:08:08 [info] 2036#0: *495 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:09:29 [info] 2036#0: *498 client connected '127.0.0.1'
+2019/05/09 17:09:29 [info] 2036#0: *498 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:09:29 [info] 2036#0: *498 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:09:29 [info] 2036#0: *498 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:09:29 [info] 2036#0: *498 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:09:29 [info] 2036#0: *498 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:10:08 [info] 2036#0: *495 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:10:15 [info] 2036#0: *495 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:10:15 [info] 2036#0: *495 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:10:39 [info] 2036#0: *495 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:05 [info] 2036#0: *498 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:05 [info] 2036#0: *498 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:05 [info] 2036#0: *498 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:36 [info] 2036#0: *502 client connected '127.0.0.1'
+2019/05/09 17:11:36 [info] 2036#0: *502 connect: app='myapp' args='key=stream' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/myapp?key=stream' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:36 [info] 2036#0: *502 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:36 [info] 2036#0: *502 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:36 [info] 2036#0: *502 publish: name='' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:11:36 [info] 2036#0: *502 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:33 [info] 2036#0: *502 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:33 [info] 2036#0: *502 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:33 [info] 2036#0: *502 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:47 [info] 2036#0: *505 client connected '127.0.0.1'
+2019/05/09 17:12:47 [info] 2036#0: *505 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:47 [info] 2036#0: *505 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:47 [info] 2036#0: *505 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:47 [info] 2036#0: *505 publish: name='stream' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:12:47 [info] 2036#0: *505 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:09 [info] 2036#0: *505 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:09 [info] 2036#0: *505 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:09 [info] 2036#0: *505 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:37 [info] 2036#0: *508 client connected '127.0.0.1'
+2019/05/09 17:13:38 [info] 2036#0: *508 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:38 [info] 2036#0: *508 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:38 [info] 2036#0: *508 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:38 [info] 2036#0: *508 publish: name='streamTest' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:13:38 [info] 2036#0: *508 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:03 [info] 2036#0: *508 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:03 [info] 2036#0: *508 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:03 [info] 2036#0: *508 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:05 [info] 2036#0: *511 client connected '127.0.0.1'
+2019/05/09 17:14:05 [info] 2036#0: *511 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:05 [info] 2036#0: *511 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:05 [info] 2036#0: *511 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:05 [info] 2036#0: *511 publish: name='streamTest' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:14:05 [info] 2036#0: *511 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:15:27 [info] 2036#0: *511 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:15:27 [info] 2036#0: *511 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:15:27 [info] 2036#0: *511 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:16:40 [info] 2036#0: *514 client connected '127.0.0.1'
+2019/05/09 17:16:40 [info] 2036#0: *514 connect: app='user/myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/user/myapp' tc_url='rtmp://localhost:1935/user/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:16:40 [info] 2036#0: *514 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:16:40 [info] 2036#0: *514 connect: application not found: 'user/myapp', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:16:40 [info] 2036#0: *514 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:16:40 [info] 2036#0: *514 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:17:11 [info] 2036#0: *516 client connected '127.0.0.1'
+2019/05/09 17:17:11 [info] 2036#0: *516 connect: app='myapp' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/myapp' tc_url='rtmp://localhost:1935/myapp' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:17:11 [info] 2036#0: *516 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:17:11 [info] 2036#0: *516 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:17:11 [info] 2036#0: *516 publish: name='streamTest' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:17:11 [info] 2036#0: *516 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:07 [info] 2036#0: *495 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:07 [info] 2036#0: *495 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:08 [info] 2036#0: *520 client connected '127.0.0.1'
+2019/05/09 17:18:08 [info] 2036#0: *520 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:08 [info] 2036#0: *520 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:09 [info] 2036#0: *520 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:09 [info] 2036#0: *520 play: name='stream' args='a=1&b=2' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:18:09 [info] 2036#0: *520 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:25 [info] 2036#0: *520 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:25 [info] 2036#0: *520 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:26 [info] 2036#0: *524 client connected '127.0.0.1'
+2019/05/09 17:21:26 [info] 2036#0: *524 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:26 [info] 2036#0: *524 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:26 [info] 2036#0: *524 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:26 [info] 2036#0: *524 play: name='stream' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:21:26 [info] 2036#0: *524 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:17 [info] 2036#0: *524 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:17 [info] 2036#0: *524 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:31 [info] 2036#0: *527 client connected '127.0.0.1'
+2019/05/09 17:22:31 [info] 2036#0: *527 connect: app='myapp' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:8080/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/myapp/' page_url='http://localhost:8080/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:31 [info] 2036#0: *527 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:31 [info] 2036#0: *527 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:31 [info] 2036#0: *527 play: name='streamTest' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:22:31 [info] 2036#0: *527 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:23:05 [info] 2036#0: *527 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 17:23:05 [info] 2036#0: *527 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:19:43 [info] 2036#0: *516 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:19:43 [info] 2036#0: *516 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:19:43 [info] 2036#0: *516 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 client connected '127.0.0.1'
+2019/05/09 18:20:06 [info] 2036#0: *531 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:06 [info] 2036#0: *531 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 client connected '127.0.0.1'
+2019/05/09 18:20:34 [info] 2036#0: *533 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 notify: connect redirect to '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 connect: application not found: '/user/login', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:20:34 [info] 2036#0: *533 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:22:52 [info] 2036#0: *535 client connected '127.0.0.1'
+2019/05/09 18:22:52 [info] 2036#0: *535 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:22:52 [info] 2036#0: *535 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:22:52 [info] 2036#0: *535 connect: application not found: 'live2', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:22:52 [info] 2036#0: *535 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:22:52 [info] 2036#0: *535 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:24:13 [notice] 14336#0: signal process started
+2019/05/09 18:24:13 [notice] 19909#0: signal 1 (SIGHUP) received from 14336, reconfiguring
+2019/05/09 18:24:13 [notice] 19909#0: reconfiguring
+2019/05/09 18:24:13 [notice] 19909#0: using the "epoll" event method
+2019/05/09 18:24:13 [notice] 19909#0: start worker processes
+2019/05/09 18:24:13 [notice] 19909#0: start worker process 14337
+2019/05/09 18:24:13 [notice] 19909#0: start cache manager process 14338
+2019/05/09 18:24:14 [notice] 2036#0: gracefully shutting down
+2019/05/09 18:24:14 [notice] 2037#0: exiting
+2019/05/09 18:24:14 [notice] 2036#0: exiting
+2019/05/09 18:24:14 [notice] 2036#0: exit
+2019/05/09 18:24:14 [notice] 19909#0: signal 17 (SIGCHLD) received from 2037
+2019/05/09 18:24:14 [notice] 19909#0: worker process 2036 exited with code 0
+2019/05/09 18:24:14 [notice] 19909#0: cache manager process 2037 exited with code 0
+2019/05/09 18:24:14 [notice] 19909#0: signal 29 (SIGIO) received
+2019/05/09 18:24:19 [info] 14337#0: *537 client connected '127.0.0.1'
+2019/05/09 18:24:19 [info] 14337#0: *537 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:24:19 [info] 14337#0: *537 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:24:19 [info] 14337#0: *537 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:24:19 [info] 14337#0: *537 publish: name='8276a87c-4b9c-4505-a0f6-0dd542251318' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:24:19 [info] 14337#0: *537 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:52 [info] 14337#0: *537 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:52 [info] 14337#0: *537 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:52 [info] 14337#0: *537 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:58 [info] 14337#0: *540 client connected '127.0.0.1'
+2019/05/09 18:26:58 [info] 14337#0: *540 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:58 [info] 14337#0: *540 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:58 [info] 14337#0: *540 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:58 [info] 14337#0: *540 publish: name='8130ae74-ec5d-4386-93d9-66246d21048f' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:26:58 [info] 14337#0: *540 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:31:13 [info] 14337#0: *543 client connected '127.0.0.1'
+2019/05/09 18:31:13 [info] 14337#0: *543 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:31:13 [info] 14337#0: *543 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:31:13 [info] 14337#0: *543 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:31:13 [info] 14337#0: *543 play: name='8130ae74-ec5d-4386-93d9-66246d21048f' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:31:13 [info] 14337#0: *543 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:35 [info] 14337#0: *540 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:35 [info] 14337#0: *540 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:35 [info] 14337#0: *540 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:36 [info] 14337#0: *546 client connected '127.0.0.1'
+2019/05/09 18:37:36 [info] 14337#0: *546 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:36 [info] 14337#0: *546 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:36 [info] 14337#0: *546 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:36 [info] 14337#0: *546 publish: name='8130ae74-ec5d-4386-93d9-66246d21048f' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:37:36 [info] 14337#0: *546 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:42:02 [info] 14337#0: *543 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:42:02 [info] 14337#0: *543 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:42:08 [info] 14337#0: *546 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:42:08 [info] 14337#0: *546 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/09 18:42:08 [info] 14337#0: *546 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:07:14 [notice] 24600#0: using the "epoll" event method
+2019/05/13 15:07:14 [notice] 24600#0: nginx/1.14.1
+2019/05/13 15:07:14 [notice] 24600#0: built by gcc 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) 
+2019/05/13 15:07:14 [notice] 24600#0: OS: Linux 4.15.0-48-generic
+2019/05/13 15:07:14 [notice] 24600#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+2019/05/13 15:07:14 [notice] 24601#0: start worker processes
+2019/05/13 15:07:14 [notice] 24601#0: start worker process 24602
+2019/05/13 15:07:14 [notice] 24601#0: start cache manager process 24603
+2019/05/13 15:07:20 [error] 24602#0: *1 open() "./www/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/05/13 15:09:25 [info] 24602#0: *2 client connected '127.0.0.1'
+2019/05/13 15:09:25 [info] 24602#0: *2 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:09:25 [info] 24602#0: *2 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:09:25 [info] 24602#0: *2 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:09:25 [info] 24602#0: *2 play: name='7062e78a-1239-4e28-a34d-a7c5ad13108f' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:09:25 [info] 24602#0: *2 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:09:29 [info] 24602#0: *2 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:10:02 [info] 24602#0: *2 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:10:02 [info] 24602#0: *2 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:30 [info] 24602#0: *5 client connected '127.0.0.1'
+2019/05/13 15:18:30 [info] 24602#0: *5 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:30 [info] 24602#0: *5 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:30 [info] 24602#0: *5 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:30 [info] 24602#0: *5 play: name='7062e78a-1239-4e28-a34d-a7c5ad13108f' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:30 [info] 24602#0: *5 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:46 [info] 24602#0: *8 client connected '127.0.0.1'
+2019/05/13 15:18:46 [info] 24602#0: *8 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:46 [info] 24602#0: *8 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:46 [info] 24602#0: *8 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:46 [info] 24602#0: *8 publish: name='8130ae74-ec5d-4386-93d9-66246d21048f' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:46 [info] 24602#0: *8 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:58 [info] 24602#0: *8 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:58 [info] 24602#0: *8 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:18:58 [info] 24602#0: *8 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:19:07 [info] 24602#0: *11 client connected '127.0.0.1'
+2019/05/13 15:19:07 [info] 24602#0: *11 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; FMSc/1.0)' swf_url='rtmp://localhost:1935/live2' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:19:07 [info] 24602#0: *11 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:19:07 [info] 24602#0: *11 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:19:07 [info] 24602#0: *11 publish: name='7062e78a-1239-4e28-a34d-a7c5ad13108f' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:19:07 [info] 24602#0: *11 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:21:08 [info] 24602#0: *11 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:21:08 [info] 24602#0: *11 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:21:08 [info] 24602#0: *11 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:32:08 [info] 24602#0: *5 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:32:08 [info] 24602#0: *5 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:01 [info] 24602#0: *14 client connected '127.0.0.1'
+2019/05/13 15:48:01 [info] 24602#0: *14 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:01 [info] 24602#0: *14 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:01 [info] 24602#0: *14 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:01 [info] 24602#0: *14 play: name='a7173fea-7743-452b-a3b6-825550de1f5b' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:01 [info] 24602#0: *14 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:02 [info] 24602#0: *14 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:05 [info] 24602#0: *14 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 15:48:05 [info] 24602#0: *14 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 16:56:21 [notice] 8338#0: signal process started
+2019/05/13 16:56:21 [notice] 24601#0: signal 1 (SIGHUP) received from 8338, reconfiguring
+2019/05/13 16:56:21 [notice] 24601#0: reconfiguring
+2019/05/13 16:56:21 [notice] 24601#0: using the "epoll" event method
+2019/05/13 16:56:21 [notice] 24601#0: start worker processes
+2019/05/13 16:56:21 [notice] 24601#0: start worker process 8339
+2019/05/13 16:56:21 [notice] 24601#0: start cache manager process 8340
+2019/05/13 16:56:21 [notice] 24602#0: gracefully shutting down
+2019/05/13 16:56:21 [notice] 24603#0: exiting
+2019/05/13 16:56:21 [notice] 24602#0: exiting
+2019/05/13 16:56:21 [notice] 24602#0: exit
+2019/05/13 16:56:21 [notice] 24601#0: signal 17 (SIGCHLD) received from 24603
+2019/05/13 16:56:21 [notice] 24601#0: cache manager process 24603 exited with code 0
+2019/05/13 16:56:21 [notice] 24601#0: signal 29 (SIGIO) received
+2019/05/13 16:56:21 [notice] 24601#0: signal 17 (SIGCHLD) received from 24602
+2019/05/13 16:56:21 [notice] 24601#0: worker process 24602 exited with code 0
+2019/05/13 16:56:21 [notice] 24601#0: signal 29 (SIGIO) received
+2019/05/13 17:11:36 [info] 8339#0: *17 client connected '127.0.0.1'
+2019/05/13 17:11:36 [info] 8339#0: *17 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:11:36 [info] 8339#0: *17 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:11:36 [info] 8339#0: *17 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:11:36 [info] 8339#0: *17 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:11:36 [info] 8339#0: *17 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:12:34 [info] 8339#0: *20 client connected '127.0.0.1'
+2019/05/13 17:12:34 [info] 8339#0: *20 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:12:34 [info] 8339#0: *20 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:12:35 [info] 8339#0: *20 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:12:35 [info] 8339#0: *20 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:12:35 [info] 8339#0: *20 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:21:53 [info] 8339#0: *17 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:21:53 [info] 8339#0: *17 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:21:53 [info] 8339#0: *17 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:32:44 [info] 8339#0: *23 client connected '127.0.0.1'
+2019/05/13 17:32:44 [info] 8339#0: *23 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:32:44 [info] 8339#0: *23 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:32:44 [info] 8339#0: *23 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:32:44 [info] 8339#0: *23 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:32:44 [info] 8339#0: *23 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:33:41 [info] 8339#0: *20 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:33:43 [info] 8339#0: *20 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:33:43 [info] 8339#0: *20 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:43:01 [info] 8339#0: *23 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:43:01 [info] 8339#0: *23 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 17:43:01 [info] 8339#0: *23 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 18:36:45 [info] 8339#0: *20 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/13 18:36:45 [info] 8339#0: *20 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:02:19 [notice] 16884#0: using the "epoll" event method
+2019/05/15 14:02:19 [notice] 16884#0: nginx/1.14.1
+2019/05/15 14:02:19 [notice] 16884#0: built by gcc 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) 
+2019/05/15 14:02:19 [notice] 16884#0: OS: Linux 4.15.0-48-generic
+2019/05/15 14:02:19 [notice] 16884#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+2019/05/15 14:02:19 [notice] 16885#0: start worker processes
+2019/05/15 14:02:19 [notice] 16885#0: start worker process 16886
+2019/05/15 14:02:19 [notice] 16885#0: start cache manager process 16887
+2019/05/15 14:02:25 [error] 16886#0: *1 open() "./www/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/stat"
+2019/05/15 14:02:37 [info] 16886#0: *2 client connected '127.0.0.1'
+2019/05/15 14:02:37 [info] 16886#0: *2 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:02:37 [info] 16886#0: *2 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:02:37 [error] 16886#0: recv() failed (111: Connection refused)
+2019/05/15 14:02:37 [info] 16886#0: *2 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:02:37 [info] 16886#0: *2 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:02:37 [info] 16886#0: *2 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:23 [info] 16886#0: *4 client connected '127.0.0.1'
+2019/05/15 14:05:23 [info] 16886#0: *4 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:23 [info] 16886#0: *4 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:23 [info] 16886#0: *4 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:23 [info] 16886#0: *4 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:23 [info] 16886#0: *4 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:27 [info] 16886#0: *7 client connected '127.0.0.1'
+2019/05/15 14:05:27 [info] 16886#0: *7 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:27 [info] 16886#0: *7 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:27 [info] 16886#0: *7 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:27 [info] 16886#0: *7 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:27 [info] 16886#0: *7 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:46 [info] 16886#0: *7 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:05:46 [info] 16886#0: *7 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:08 [info] 16886#0: *11 client connected '127.0.0.1'
+2019/05/15 14:06:08 [info] 16886#0: *11 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:08 [info] 16886#0: *11 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:08 [info] 16886#0: *11 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:08 [info] 16886#0: *11 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:08 [info] 16886#0: *11 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:16 [info] 16886#0: *11 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:16 [info] 16886#0: *11 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:06:16 [info] 16886#0: *11 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:07:39 [info] 16886#0: *11 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:10:23 [info] 16886#0: *11 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:10:23 [info] 16886#0: *11 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:10:34 [info] 16886#0: *11 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:10:37 [info] 16886#0: *11 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:10:37 [info] 16886#0: *11 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:11:14 [info] 16886#0: *11 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:15:40 [info] 16886#0: *4 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:15:40 [info] 16886#0: *4 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:15:40 [info] 16886#0: *4 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:00 [info] 16886#0: *11 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:00 [info] 16886#0: *11 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 client connected '127.0.0.1'
+2019/05/15 14:22:06 [info] 16886#0: *17 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:06 [info] 16886#0: *17 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 client connected '127.0.0.1'
+2019/05/15 14:22:43 [info] 16886#0: *20 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:22:43 [info] 16886#0: *20 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 client connected '127.0.0.1'
+2019/05/15 14:23:02 [info] 16886#0: *23 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:02 [info] 16886#0: *23 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 client connected '127.0.0.1'
+2019/05/15 14:23:26 [info] 16886#0: *26 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:23:26 [info] 16886#0: *26 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 client connected '127.0.0.1'
+2019/05/15 14:24:49 [info] 16886#0: *29 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:24:49 [info] 16886#0: *29 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 client connected '127.0.0.1'
+2019/05/15 14:25:11 [info] 16886#0: *32 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:25:11 [info] 16886#0: *32 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 client connected '127.0.0.1'
+2019/05/15 14:27:07 [info] 16886#0: *35 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:07 [info] 16886#0: *35 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 client connected '127.0.0.1'
+2019/05/15 14:27:43 [info] 16886#0: *38 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:27:43 [info] 16886#0: *38 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 client connected '127.0.0.1'
+2019/05/15 14:29:53 [info] 16886#0: *41 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:29:53 [info] 16886#0: *41 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:30 [info] 16886#0: *44 client connected '127.0.0.1'
+2019/05/15 14:30:30 [info] 16886#0: *44 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:30 [info] 16886#0: *44 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:31 [info] 16886#0: *44 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:31 [info] 16886#0: *44 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:31 [info] 16886#0: *44 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:31 [info] 16886#0: *44 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:30:31 [info] 16886#0: *44 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 client connected '127.0.0.1'
+2019/05/15 14:31:37 [info] 16886#0: *47 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:37 [info] 16886#0: *47 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 client connected '127.0.0.1'
+2019/05/15 14:31:46 [info] 16886#0: *50 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:31:46 [info] 16886#0: *50 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 client connected '127.0.0.1'
+2019/05/15 14:34:04 [info] 16886#0: *53 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:04 [info] 16886#0: *53 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 client connected '127.0.0.1'
+2019/05/15 14:34:54 [info] 16886#0: *56 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:34:54 [info] 16886#0: *56 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:20 [info] 16886#0: *59 client connected '127.0.0.1'
+2019/05/15 14:35:20 [info] 16886#0: *59 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:20 [info] 16886#0: *59 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:21 [info] 16886#0: *59 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:21 [info] 16886#0: *59 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:21 [info] 16886#0: *59 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:21 [info] 16886#0: *59 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:35:21 [info] 16886#0: *59 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 client connected '127.0.0.1'
+2019/05/15 14:36:02 [info] 16886#0: *62 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:02 [info] 16886#0: *62 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 client connected '127.0.0.1'
+2019/05/15 14:36:39 [info] 16886#0: *65 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:39 [info] 16886#0: *65 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:57 [info] 16886#0: *68 client connected '127.0.0.1'
+2019/05/15 14:36:58 [info] 16886#0: *68 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:36:58 [info] 16886#0: *68 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 client connected '127.0.0.1'
+2019/05/15 14:37:29 [info] 16886#0: *71 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:37:29 [info] 16886#0: *71 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 client connected '127.0.0.1'
+2019/05/15 14:38:39 [info] 16886#0: *74 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:38:39 [info] 16886#0: *74 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 client connected '127.0.0.1'
+2019/05/15 14:39:12 [info] 16886#0: *77 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:39:12 [info] 16886#0: *77 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 client connected '127.0.0.1'
+2019/05/15 14:41:11 [info] 16886#0: *80 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:11 [info] 16886#0: *80 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 client connected '127.0.0.1'
+2019/05/15 14:41:50 [info] 16886#0: *83 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:41:50 [info] 16886#0: *83 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 client connected '127.0.0.1'
+2019/05/15 14:42:18 [info] 16886#0: *86 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:18 [info] 16886#0: *86 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 client connected '127.0.0.1'
+2019/05/15 14:42:31 [info] 16886#0: *89 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:31 [info] 16886#0: *89 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:53 [info] 16886#0: *92 client connected '127.0.0.1'
+2019/05/15 14:42:53 [info] 16886#0: *92 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:53 [info] 16886#0: *92 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:54 [info] 16886#0: *92 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:54 [info] 16886#0: *92 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:54 [info] 16886#0: *92 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:54 [info] 16886#0: *92 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:42:54 [info] 16886#0: *92 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 client connected '127.0.0.1'
+2019/05/15 14:43:41 [info] 16886#0: *95 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:43:41 [info] 16886#0: *95 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:02 [info] 16886#0: *98 client connected '127.0.0.1'
+2019/05/15 14:44:02 [info] 16886#0: *98 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:02 [info] 16886#0: *98 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:02 [info] 16886#0: *98 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:03 [info] 16886#0: *98 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:03 [info] 16886#0: *98 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:03 [info] 16886#0: *98 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:03 [info] 16886#0: *98 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:34 [info] 16886#0: *101 client connected '127.0.0.1'
+2019/05/15 14:44:34 [info] 16886#0: *101 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:34 [info] 16886#0: *101 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:35 [info] 16886#0: *101 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:35 [info] 16886#0: *101 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:35 [info] 16886#0: *101 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:35 [info] 16886#0: *101 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:35 [info] 16886#0: *101 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:39 [info] 16886#0: *104 client connected '127.0.0.1'
+2019/05/15 14:44:39 [info] 16886#0: *104 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:39 [info] 16886#0: *104 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:40 [info] 16886#0: *104 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:40 [info] 16886#0: *104 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:40 [info] 16886#0: *104 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:40 [info] 16886#0: *104 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:44:40 [info] 16886#0: *104 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 client connected '127.0.0.1'
+2019/05/15 14:45:09 [info] 16886#0: *107 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:09 [info] 16886#0: *107 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:29 [info] 16886#0: *110 client connected '127.0.0.1'
+2019/05/15 14:45:29 [info] 16886#0: *110 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:29 [info] 16886#0: *110 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:29 [info] 16886#0: *110 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:30 [info] 16886#0: *110 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:30 [info] 16886#0: *110 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:30 [info] 16886#0: *110 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:45:30 [info] 16886#0: *110 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:43 [info] 16886#0: *113 client connected '127.0.0.1'
+2019/05/15 14:46:43 [info] 16886#0: *113 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:43 [info] 16886#0: *113 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:43 [info] 16886#0: *113 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:44 [info] 16886#0: *113 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:44 [info] 16886#0: *113 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:44 [info] 16886#0: *113 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:46:44 [info] 16886#0: *113 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:24 [info] 16886#0: *116 client connected '127.0.0.1'
+2019/05/15 14:48:24 [info] 16886#0: *116 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:24 [info] 16886#0: *116 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:24 [info] 16886#0: *116 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:24 [info] 16886#0: *116 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:24 [info] 16886#0: *116 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:50 [info] 16886#0: *119 client connected '127.0.0.1'
+2019/05/15 14:48:50 [info] 16886#0: *119 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:50 [info] 16886#0: *119 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:50 [info] 16886#0: *119 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:50 [info] 16886#0: *119 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:48:50 [info] 16886#0: *119 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:01 [info] 16886#0: *119 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:05 [info] 16886#0: *116 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:05 [info] 16886#0: *116 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:05 [info] 16886#0: *116 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 client connected '127.0.0.1'
+2019/05/15 14:49:14 [info] 16886#0: *122 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c72' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:14 [info] 16886#0: *122 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:58 [info] 16886#0: *119 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:49:58 [info] 16886#0: *119 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:18 [info] 16886#0: *125 client connected '127.0.0.1'
+2019/05/15 14:50:18 [info] 16886#0: *125 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:18 [info] 16886#0: *125 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:18 [info] 16886#0: *125 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:19 [info] 16886#0: *125 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c72' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:19 [info] 16886#0: *125 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:19 [info] 16886#0: *125 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 14:50:19 [info] 16886#0: *125 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 client connected '127.0.0.1'
+2019/05/15 15:44:08 [info] 16886#0: *128 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c72' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:08 [info] 16886#0: *128 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:21 [info] 16886#0: *131 client connected '127.0.0.1'
+2019/05/15 15:44:21 [info] 16886#0: *131 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:21 [info] 16886#0: *131 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:21 [info] 16886#0: *131 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:21 [info] 16886#0: *131 publish: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:21 [info] 16886#0: *131 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:23 [info] 16886#0: *134 client connected '127.0.0.1'
+2019/05/15 15:44:23 [info] 16886#0: *134 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:23 [info] 16886#0: *134 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:23 [info] 16886#0: *134 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:23 [info] 16886#0: *134 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:23 [info] 16886#0: *134 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:28 [info] 16886#0: *134 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:44:28 [info] 16886#0: *134 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:35 [info] 16886#0: *137 client connected '127.0.0.1'
+2019/05/15 15:45:35 [info] 16886#0: *137 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:35 [info] 16886#0: *137 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:35 [info] 16886#0: *137 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:35 [info] 16886#0: *137 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:35 [info] 16886#0: *137 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:44 [info] 16886#0: *137 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:45:44 [info] 16886#0: *137 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:24 [info] 16886#0: *140 client connected '127.0.0.1'
+2019/05/15 15:48:24 [info] 16886#0: *140 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:24 [info] 16886#0: *140 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:24 [info] 16886#0: *140 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:24 [info] 16886#0: *140 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:24 [info] 16886#0: *140 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:28 [info] 16886#0: *140 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:28 [info] 16886#0: *140 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:30 [info] 16886#0: *143 client connected '127.0.0.1'
+2019/05/15 15:48:30 [info] 16886#0: *143 connect: app='live' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:30 [info] 16886#0: *143 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:30 [info] 16886#0: *143 connect: application not found: 'live', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:30 [info] 16886#0: *143 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:30 [info] 16886#0: *143 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:33 [info] 16886#0: *145 client connected '127.0.0.1'
+2019/05/15 15:48:33 [info] 16886#0: *145 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:33 [info] 16886#0: *145 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:33 [info] 16886#0: *145 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:33 [info] 16886#0: *145 play: name='ef51472a-a76c-436a-8e4f-39dc8cb98c73' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:48:33 [info] 16886#0: *145 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:49:23 [info] 16886#0: *145 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:54:38 [info] 16886#0: *131 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:54:38 [info] 16886#0: *131 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 15:54:38 [info] 16886#0: *131 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:03:48 [info] 16886#0: *145 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:03:48 [info] 16886#0: *145 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:45 [info] 16886#0: *148 client connected '127.0.0.1'
+2019/05/15 16:36:46 [info] 16886#0: *148 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:46 [info] 16886#0: *148 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:46 [info] 16886#0: *148 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:46 [info] 16886#0: *148 publish: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:46 [info] 16886#0: *148 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:50 [info] 16886#0: *151 client connected '127.0.0.1'
+2019/05/15 16:36:50 [info] 16886#0: *151 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:50 [info] 16886#0: *151 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:50 [info] 16886#0: *151 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:50 [info] 16886#0: *151 publish: name='a90634f9-3a6d-41e8-8fca-014aac100e11' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:50 [info] 16886#0: *151 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:55 [info] 16886#0: *154 client connected '127.0.0.1'
+2019/05/15 16:36:55 [info] 16886#0: *154 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:55 [info] 16886#0: *154 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:55 [info] 16886#0: *154 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:55 [info] 16886#0: *154 play: name='undefined' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:36:55 [info] 16886#0: *154 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:04 [info] 16886#0: *157 client connected '127.0.0.1'
+2019/05/15 16:37:04 [info] 16886#0: *157 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:04 [info] 16886#0: *157 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:04 [info] 16886#0: *157 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:04 [info] 16886#0: *157 play: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:04 [info] 16886#0: *157 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:09 [info] 16886#0: *160 client connected '127.0.0.1'
+2019/05/15 16:37:09 [info] 16886#0: *160 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:09 [info] 16886#0: *160 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:09 [info] 16886#0: *160 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:09 [info] 16886#0: *160 play: name='undefined' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:37:09 [info] 16886#0: *160 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:38:08 [info] 16886#0: *160 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:38:08 [info] 16886#0: *160 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:38:08 [info] 16886#0: *154 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:38:08 [info] 16886#0: *154 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:27 [info] 16886#0: *163 client connected '127.0.0.1'
+2019/05/15 16:39:27 [info] 16886#0: *163 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:27 [info] 16886#0: *163 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:27 [info] 16886#0: *163 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:27 [info] 16886#0: *163 play: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:27 [info] 16886#0: *163 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:30 [info] 16886#0: *166 client connected '127.0.0.1'
+2019/05/15 16:39:30 [info] 16886#0: *166 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:30 [info] 16886#0: *166 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:30 [info] 16886#0: *166 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:30 [info] 16886#0: *166 play: name='a90634f9-3a6d-41e8-8fca-014aac100e11' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:30 [info] 16886#0: *166 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:39:34 [info] 16886#0: *157 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:19 [info] 16886#0: *157 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:19 [info] 16886#0: *157 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:52 [info] 16886#0: *170 client connected '127.0.0.1'
+2019/05/15 16:42:52 [info] 16886#0: *170 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:52 [info] 16886#0: *170 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:53 [info] 16886#0: *170 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:53 [info] 16886#0: *170 publish: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' type=live silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:53 [info] 16886#0: *170 notify: publish 'localhost:3000/video/publish', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:59 [info] 16886#0: *163 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:59 [info] 16886#0: *163 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:59 [info] 16886#0: *166 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:42:59 [info] 16886#0: *166 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *173 client connected '127.0.0.1'
+2019/05/15 16:43:04 [info] 16886#0: *173 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *173 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *173 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *173 play: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *173 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *176 client connected '127.0.0.1'
+2019/05/15 16:43:04 [info] 16886#0: *176 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:04 [info] 16886#0: *176 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:05 [info] 16886#0: *176 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:05 [info] 16886#0: *176 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:05 [info] 16886#0: *176 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:06 [info] 16886#0: *179 client connected '127.0.0.1'
+2019/05/15 16:43:06 [info] 16886#0: *179 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:06 [info] 16886#0: *179 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:06 [info] 16886#0: *179 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:06 [info] 16886#0: *179 play: name='a90634f9-3a6d-41e8-8fca-014aac100e11' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:43:06 [info] 16886#0: *179 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *179 recv() failed (104: Connection reset by peer), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *179 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *179 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *176 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *176 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *173 recv() failed (104: Connection reset by peer), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *173 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:44:04 [info] 16886#0: *173 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:40 [info] 16886#0: *183 client connected '127.0.0.1'
+2019/05/15 16:45:40 [info] 16886#0: *183 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:40 [info] 16886#0: *183 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:40 [info] 16886#0: *183 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:40 [info] 16886#0: *183 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:40 [info] 16886#0: *183 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:41 [info] 16886#0: *186 client connected '127.0.0.1'
+2019/05/15 16:45:41 [info] 16886#0: *186 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:41 [info] 16886#0: *186 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:41 [info] 16886#0: *186 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:41 [info] 16886#0: *186 play: name='a90634f9-3a6d-41e8-8fca-014aac100e11' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:41 [info] 16886#0: *186 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:42 [info] 16886#0: *189 client connected '127.0.0.1'
+2019/05/15 16:45:42 [info] 16886#0: *189 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:42 [info] 16886#0: *189 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:42 [info] 16886#0: *189 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:42 [info] 16886#0: *189 play: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:45:42 [info] 16886#0: *189 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:20 [info] 16886#0: *151 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:20 [info] 16886#0: *151 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:20 [info] 16886#0: *151 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:35 [info] 16886#0: *148 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:35 [info] 16886#0: *148 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:35 [info] 16886#0: *148 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:50 [info] 16886#0: *192 client connected '127.0.0.1'
+2019/05/15 16:46:51 [info] 16886#0: *192 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:51 [info] 16886#0: *192 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:51 [info] 16886#0: *192 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:51 [info] 16886#0: *192 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:51 [info] 16886#0: *192 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:55 [info] 16886#0: *192 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:55 [info] 16886#0: *192 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:56 [info] 16886#0: *195 client connected '127.0.0.1'
+2019/05/15 16:46:56 [info] 16886#0: *195 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:56 [info] 16886#0: *195 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:56 [info] 16886#0: *195 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:56 [info] 16886#0: *195 play: name='59ba7eee-af8f-44d6-8eba-db8569d7dda7' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:46:56 [info] 16886#0: *195 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:01 [info] 16886#0: *195 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:01 [info] 16886#0: *195 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:03 [info] 16886#0: *198 client connected '127.0.0.1'
+2019/05/15 16:47:03 [info] 16886#0: *198 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:03 [info] 16886#0: *198 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:03 [info] 16886#0: *198 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:03 [info] 16886#0: *198 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:03 [info] 16886#0: *198 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *186 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *186 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *189 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *189 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *183 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:49 [info] 16886#0: *183 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:51 [info] 16886#0: *201 client connected '127.0.0.1'
+2019/05/15 16:47:51 [info] 16886#0: *201 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:51 [info] 16886#0: *201 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:51 [info] 16886#0: *201 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:51 [info] 16886#0: *201 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:47:51 [info] 16886#0: *201 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:00 [info] 16886#0: *204 client connected '127.0.0.1'
+2019/05/15 16:48:00 [info] 16886#0: *204 connect: app='live2' args='' flashver='LNX 32,0,0,171' swf_url='http://localhost:3000/jwplayer/jwplayer.flash.swf' tc_url='rtmp://localhost:1935/live2/' page_url='http://localhost:3000/video/livestream' acodecs=3575 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:00 [info] 16886#0: *204 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:01 [info] 16886#0: *204 createStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:01 [info] 16886#0: *204 play: name='a90634f9-3a6d-41e8-8fca-014aac100e11' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:01 [info] 16886#0: *204 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:14 [info] 16886#0: *204 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:38 [info] 16886#0: *201 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:48:41 [info] 16886#0: *198 closeStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:53:10 [info] 16886#0: *170 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:53:10 [info] 16886#0: *170 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:53:10 [info] 16886#0: *170 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:54:59 [info] 16886#0: *201 play: name='5a96c693-900a-4412-b02c-f20dc4c15411' args='' start=0 duration=0 reset=0 silent=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/05/15 16:54:59 [info] 16886#0: *201 notify: play 'localhost:3000/video/play', client: 127.0.0.1, server: 0.0.0.0:1935
