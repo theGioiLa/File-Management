@@ -1,7 +1,13 @@
 <div class="col-md-8">
     <div class="card">
         <div class="card-header">
-            <h3>Preview</h3>
+            <div id="channel">
+                <lable>Stream: </lable>
+                <ul class="list-group">
+                    <li class="list-group-item server"></li>
+                    <li class="list-group-item key"></li>
+                </ul>
+            </div>
             <hr>
         </div>
 
@@ -13,30 +19,70 @@
     </div>
 </div>
 <div class="col-md-4">
-    <div class="card">
-        <div class="card-header">
-            <h3> Stream Config </h3>
-            <hr>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingLive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#livestream" aria-expanded="true"
+                        aria-controls="livestream">
+                        HLS
+                    </button>
+                </h5>
+            </div>
+
+            <div id="livestream" class="collapse show" aria-labelledby="headingLive" data-parent="#accordion">
+                <div class="card-body">
+                    <hr>
+                    <label class="server">Server</label>
+                    <select class="custom-select rtmpServer">
+                        <% rtmpServer.forEach(function(server) { %>
+                        <option value="<%-server%>"> <%-server%></option>
+                        <%}); %>
+                    </select>
+
+                    <hr>
+                    <label class="key">Stream key</label>
+                    <select class="custom-select streamKey">
+                        <% -streamKey.forEach(function(key) { %>
+                        <option value="<%-key%>"> <%-key%></option>
+                        <%}); %>
+                    </select>
+                    <br>
+                    <button id="btn_addKey"><i class="fas fa-plus-square"></i></button>
+                </div>
+            </div>
         </div>
-
-        <div class="card-body">
-            <label>Server</label>
-            <select class="custom-select rtmpServer">
-                <% rtmpServer.forEach(function(server) { %>
-                <option value="<%-server%>"> <%-server%></option>
-                <%}); %>
-            </select>
-
-            <hr>
-            <label>Stream key</label>
-
-            <select class="custom-select streamKey">
-                <% -streamKey.forEach(function(key) { %>
-                <option value="<%-key%>"> <%-key%></option>
-                <%}); %>
-            </select>
-            <br>
-            <button id="btn_addKey"><i class="fas fa-plus-square"></i></button>
+        <div class="card">
+            <div class="card-header" id="headingEvent">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#eventstream"
+                        aria-expanded="false" aria-controls="eventstream">
+                        MPEG-DASH
+                    </button>
+                </h5>
+            </div>
+            <div id="eventstream" class="collapse" aria-labelledby="headingEvent" data-parent="#accordion">
+                <div class="card-body">
+                    <hr>
+                    MPEG-DASH
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingVOD">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#vod"
+                        aria-expanded="false" aria-controls="vod">
+                        Video On Demand
+                    </button>
+                </h5>
+            </div>
+            <div id="vod" class="collapse" aria-labelledby="headingVOD" data-parent="#accordion">
+                <div class="card-body">
+                    <hr>
+                    VOD
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -48,15 +94,19 @@
     let rtmpServer = $(".rtmpServer").val();
     let streamKey = $(".streamKey").val();
 
+    load();
+
     $(".rtmpServer").change(function (e) {
         let self = $(this);
         rtmpServer = self.val();
+        $(".server").text(`Server: ${rtmpServer}`)
         load();
     });
 
     $(".streamKey").change(function (e) {
         let self = $(this);
         streamKey = self.val();
+        $(".key").text(`Stream key: ${streamKey}`)
 
         load();
     });
@@ -71,6 +121,9 @@
 
     function load() {
         console.log(rtmpServer, streamKey);
+        $("#channel .server").text(`Server: ${rtmpServer}`);
+        $("#channel .key").text(`Key: ${streamKey}`);
+
         player.setup({
             sources: [{
                 file: `${rtmpServer}/${streamKey}`,

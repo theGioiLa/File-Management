@@ -3,6 +3,8 @@ const express = require('express'),
     uuidV4 = require('uuid/v4'),
     authen = require('../middleware/authen'),
     config = require('../config'),
+    axios = require('axios'),
+    http = require('http'),
     router = express.Router();
 
 let user_stream_key = [];
@@ -27,19 +29,19 @@ router.get('/', authen.authenticate, function (req, res) {
             UserModel.updateOne({
                 _id: user.id
             }, {
-                $push: {
-                    streamKey: _streamKey
-                }
-            }, function (err, raw) {
-                if (err) throw err;
+                    $push: {
+                        streamKey: _streamKey
+                    }
+                }, function (err, raw) {
+                    if (err) throw err;
 
-                res.render('video_stream/index', {
-                    title: 'Video Stream',
-                    username: _user.username,
-                    streamKey: [_streamKey],
-                    rtmpServer: config.rtmpServer,
-                });
-            })
+                    res.render('video_stream/index', {
+                        title: 'Video Stream',
+                        username: _user.username,
+                        streamKey: [_streamKey],
+                        rtmpServer: config.rtmpServer,
+                    });
+                })
         }
     });
 });
@@ -52,13 +54,13 @@ router.get('/addKey', authen.authenticate, function (req, res) {
     UserModel.updateOne({
         _id: user.id
     }, {
-        $push: {
-            streamKey: _streamKey
-        }
-    }, function (err, raw) {
-        if (err) throw err;
-        res.status(200).send(_streamKey);
-    })
+            $push: {
+                streamKey: _streamKey
+            }
+        }, function (err, raw) {
+            if (err) throw err;
+            res.status(200).send(_streamKey);
+        })
 });
 
 router.post('/connect', function (req, res) {
@@ -97,25 +99,31 @@ router.post('/publish', function (req, res) {
 });
 
 router.get('/livestream', function (req, res) {
-    UserModel.find({}, function (err, users) {
-        if (err) console.error(err.message);
-        else {
-            let _channels = [];
+    let _cdnHostname = '';
+    axios.get(`${config.CDN_CONTROLLER_HOSTNAME}/cdnHostname`)
+        .then(_res => {
+            _cdnHostname = _res.data;
+            console.log(_cdnHostname);
 
-            users.forEach(function (user) {
-                let keys = user.streamKey;
-                _channels = _channels.concat(keys);
+            UserModel.find({}, function (err, users) {
+                if (err) console.error(err.message);
+                else {
+                    let _channels = [];
+
+                    users.forEach(function (user) {
+                        let keys = user.streamKey;
+                        _channels = _channels.concat(keys);
+                    });
+
+                    console.log(_channels);
+
+                    res.render('video_stream/livestream', {
+                        cdnHostname: _cdnHostname,
+                        channels: _channels
+                    });
+                }
             });
-
-            console.log(_channels);
-
-            res.render('video_stream/livestream', {
-                rtmpServer: config.rtmpServer[0],
-                channels: _channels
-            });
-        }
-    });
+        });
 });
-
 
 module.exports = router;

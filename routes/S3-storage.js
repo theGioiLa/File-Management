@@ -7,6 +7,8 @@ const AWS = require('aws-sdk'),
     S3Uploader = require('./S3-utils'),
     normalizeSize = require('../normalize').normalizeSize;
 
+const EventEmitter = require('events')
+
 router.use(authen.authenticate);
 
 let s3Client = new AWS.S3({
@@ -19,10 +21,10 @@ let s3Client = new AWS.S3({
     s3DisableBodySigning: true,
 });
 
-const BUCKET_NAME = 'buckettest',
-    PART_SIZE = 1024 * 1024 * 5;
+const BUCKET_NAME = config.S3.bucket,
+    PART_SIZE = config.S3.part_size
 
-let s3Uploader = S3Uploader(s3Client);
+let s3Uploader = new S3Uploader(s3Client);
 
 router.get('/', function (req, res) {
     let user = req.user;
@@ -40,25 +42,25 @@ router.get('/', function (req, res) {
         else {
             let body = [];
             let headReqs = [];
-            data.Contents.forEach(function(_file) {
+            data.Contents.forEach(function (_file) {
                 headReqs.push(
                     s3Client.headObject({
-                        Bucket: BUCKET_NAME, 
+                        Bucket: BUCKET_NAME,
                         Key: _file.Key
                     })
-                    .promise()
-                    .then(function(metadata) {
-                        let file = Object.assign({}, _file, {contentType: metadata.Metadata['content-type']});
-                        body.push(file);
-                    })
-                    .catch(function(err) {
-                        Console.error(err);
-                        res.status(err.statusCode).end(err.message);
-                    })
+                        .promise()
+                        .then(function (metadata) {
+                            let file = Object.assign({}, _file, { contentType: metadata.Metadata['content-type'] });
+                            body.push(file);
+                        })
+                        .catch(function (err) {
+                            Console.error(err);
+                            res.status(err.statusCode).end(err.message);
+                        })
                 );
             });
 
-            Promise.all(headReqs).then(function() {
+            Promise.all(headReqs).then(function () {
                 res.render('S3/index', {
                     title: 'S3 Upload',
                     username: user.username,
@@ -70,7 +72,7 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/download/', function(req, res) {
+router.post('/download/', function (req, res) {
     let key = req.body.Key;
 
     let getObjParams = {
@@ -78,8 +80,10 @@ router.post('/download/', function(req, res) {
         Key: key
     };
 
+    console.log(getObjParams);
+
     s3Client.getObject(getObjParams).createReadStream().pipe(res);
-    res.on('close', function() {
+    res.on('close', function () {
         res.status(200).end();
     })
 });
@@ -153,8 +157,16 @@ router.post('/upload/stream', function (req, res) {
     });
 
     form.on('close', function () {
-        res.redirect('/S3');
+        // res.redirect('/S3');
     });
+
+    s3Uploader.on('error', function (err) {
+        console.error('Upload Error: ', err.message)
+    })
+
+    s3Uploader.on('done', function (data) {
+        res.redirect('/S3')
+    })
 
     form.parse(req);
 });

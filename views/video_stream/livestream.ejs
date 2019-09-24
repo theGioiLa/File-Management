@@ -16,6 +16,8 @@
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
         integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
+    <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet">
+
     <script src="/javascripts/fine-uploader.js"></script>
     <script src="/assets/js/core/jquery.min.js"></script>
 </head>
@@ -23,8 +25,10 @@
 <body>
     <div class="wrapper ">
         <div class="main-panel" id="main-panel">
+
+            <%- include('../navbar.ejs', {section: 'Video Stream', username: 'test', index: '/test'}); %>
             <div class="content">
-                <%- include('publish.ejs', {channels: channels, rtmpServer: rtmpServer}); %>
+                <%- include('publish.ejs', {channels: channels, cdnHostname: cdnHostname}); %>
             </div>
 
             <!-- Footer -->

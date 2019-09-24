@@ -1,4 +1,5 @@
-const events = require('events');
+const EventEmitter = require('events');
+const util = require('util');
 
 const MAX_UPLOAD_TRIES = 3;
 
@@ -14,8 +15,16 @@ function S3Uploader(client) {
     }
 
     this.s3Client = client;
+    EventEmitter.call(this)
 }
 
+util.inherits(S3Uploader, EventEmitter)
+
+S3Uploader.prototype.done = function (err, data) {
+    let self = this
+    if (err) self.emit('error', error)
+    else self.emit('done', data)
+}
 
 S3Uploader.prototype.uploadByStream = function (part, bucket, partSize) {
     let self = this;
@@ -38,7 +47,6 @@ S3Uploader.prototype.uploadByStream = function (part, bucket, partSize) {
             let sentBytes = 0;
             let totalLength = 0;
 
-            let uploadEmitter = new events.EventEmitter();
             let partNumber = 1;
 
             let multipartUpload = {
@@ -78,12 +86,12 @@ S3Uploader.prototype.uploadByStream = function (part, bucket, partSize) {
                     };
 
                     console.log('--> uploading part', partNumber, uploadBuffer.length);
-                    self.uploadPart(multipart, partParams, uploadEmitter);
+                    self.uploadPart(multipart, partParams, true);
                     partNumber++;
                 }
             });
 
-            uploadEmitter.on('part', function (part) {
+            self.on('part', function (part) {
                 multipartUpload.Parts.push({
                     ETag: part.ETag,
                     PartNumber: part.PartNumber
@@ -121,7 +129,7 @@ S3Uploader.prototype.uploadByStream = function (part, bucket, partSize) {
                     };
 
                     console.log('--> uploading part', partNumber, uploadBuffer.length);
-                    self.uploadPart(multipart, partParams, uploadEmitter);
+                    self.uploadPart(multipart, partParams, true);
                 }
             });
         }
@@ -196,7 +204,7 @@ S3Uploader.prototype.upload = function (part, bucket) {
     });
 }
 
-S3Uploader.prototype.uploadPart = function (multipart, partParams, uploadEmitter, tryNum) {
+S3Uploader.prototype.uploadPart = function (multipart, partParams, byStream, tryNum) {
     let self = this;
     let s3Client = self.s3Client;
 
@@ -207,7 +215,7 @@ S3Uploader.prototype.uploadPart = function (multipart, partParams, uploadEmitter
             console.error('upload part error: ', partErr.message);
             if (tryNum < MAX_UPLOAD_TRIES) {
                 console.log('Retrying upload of part: #', partParams.PartNumber);
-                self.uploadPart(multipart, partParams, uploadEmitter, tryNum + 1);
+                self.uploadPart(multipart, partParams, true, tryNum + 1);
             } else {
                 let abortParams = {
                     Bucket: multipart.Bucket,
@@ -220,14 +228,14 @@ S3Uploader.prototype.uploadPart = function (multipart, partParams, uploadEmitter
                 // s3Client.abortMultipartUpload(abortParams).send();
             }
         } else {
-            if (uploadEmitter) { // used for upload by stream
+            if (byStream) { // used for upload by stream
                 let _partId = {
                     ETag: part.ETag,
                     PartNumber: this.request.params.PartNumber,
                     Size: this.request.params.Body.length
                 };
 
-                uploadEmitter.emit('part', _partId);
+                self.emit('part', _partId);
             } else { // be used for upload by buffer
 
                 multipart.multipartUpload.Parts[this.request.params.PartNumber - 1] = {
@@ -266,8 +274,15 @@ S3Uploader.prototype.completeMultipartUpload = function (doneParams) {
 
             self.abortMultipartUpload(abortParams);
             console.error('Complete Error: ', err.code, err.message);
+            self.done(err);
         } else {
             console.log('Completed upload', data.Key, 'in', data.Bucket);
+            self.done(null, {
+                data: {
+                    key: data.key,
+                    bucket: data.Bucket
+                }
+            });
         }
     });
 }
