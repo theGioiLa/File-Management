@@ -6109,3 +6109,83 @@
 2019/07/16 16:42:32 [info] 1487#0: *1 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
 2019/07/16 17:10:50 [info] 1487#0: *4 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
 2019/07/16 17:10:50 [info] 1487#0: *4 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:45:28 [notice] 832#0: using the "epoll" event method
+2019/10/10 10:45:28 [notice] 832#0: nginx/1.14.1
+2019/10/10 10:45:28 [notice] 832#0: built by gcc 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) 
+2019/10/10 10:45:28 [notice] 832#0: OS: Linux 4.15.0-65-generic
+2019/10/10 10:45:28 [notice] 832#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+2019/10/10 10:45:28 [notice] 833#0: start worker processes
+2019/10/10 10:45:28 [notice] 833#0: start worker process 834
+2019/10/10 10:45:28 [notice] 833#0: start cache manager process 835
+2019/10/10 10:46:15 [info] 834#0: *1 client connected '127.0.0.1'
+2019/10/10 10:46:15 [info] 834#0: *1 connect: app='vod' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/vod' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:15 [info] 834#0: *1 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:25 [info] 834#0: *1 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:25 [info] 834#0: *1 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:25 [info] 834#0: *1 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:50 [info] 834#0: *3 client connected '127.0.0.1'
+2019/10/10 10:46:50 [info] 834#0: *3 connect: app='vod' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/vod/' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:46:50 [info] 834#0: *3 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:00 [info] 834#0: *3 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:00 [info] 834#0: *3 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:00 [info] 834#0: *3 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:25 [notice] 1563#0: signal process started
+2019/10/10 10:47:25 [notice] 833#0: signal 1 (SIGHUP) received from 1563, reconfiguring
+2019/10/10 10:47:25 [notice] 833#0: reconfiguring
+2019/10/10 10:47:25 [notice] 833#0: using the "epoll" event method
+2019/10/10 10:47:25 [notice] 833#0: start worker processes
+2019/10/10 10:47:25 [notice] 833#0: start worker process 1566
+2019/10/10 10:47:25 [notice] 833#0: start cache manager process 1567
+2019/10/10 10:47:25 [notice] 834#0: gracefully shutting down
+2019/10/10 10:47:25 [notice] 835#0: exiting
+2019/10/10 10:47:25 [notice] 834#0: exiting
+2019/10/10 10:47:25 [notice] 834#0: exit
+2019/10/10 10:47:25 [notice] 833#0: signal 17 (SIGCHLD) received from 835
+2019/10/10 10:47:25 [notice] 833#0: cache manager process 835 exited with code 0
+2019/10/10 10:47:25 [notice] 833#0: signal 29 (SIGIO) received
+2019/10/10 10:47:25 [notice] 833#0: signal 17 (SIGCHLD) received from 834
+2019/10/10 10:47:25 [notice] 833#0: worker process 834 exited with code 0
+2019/10/10 10:47:25 [notice] 833#0: signal 29 (SIGIO) received
+2019/10/10 10:47:29 [info] 1566#0: *5 client connected '127.0.0.1'
+2019/10/10 10:47:29 [info] 1566#0: *5 connect: app='vod' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/vod/' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:29 [info] 1566#0: *5 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:39 [info] 1566#0: *5 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:39 [info] 1566#0: *5 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:47:39 [info] 1566#0: *5 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:48:22 [info] 1566#0: *7 client connected '127.0.0.1'
+2019/10/10 10:48:22 [info] 1566#0: *7 connect: app='vod' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/vod/' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:48:22 [info] 1566#0: *7 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:48:32 [info] 1566#0: *7 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:48:32 [info] 1566#0: *7 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:48:32 [info] 1566#0: *7 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:49:19 [info] 1566#0: *9 client connected '127.0.0.1'
+2019/10/10 10:49:19 [info] 1566#0: *9 connect: app='live2' args='' flashver='FMLE/3.0 (compatible; Lavf57.83' swf_url='' tc_url='rtmp://localhost:1935/live2' page_url='' acodecs=0 vcodecs=0 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:49:19 [info] 1566#0: *9 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:49:29 [info] 1566#0: *9 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:49:29 [info] 1566#0: *9 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:49:29 [info] 1566#0: *9 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:50:07 [info] 1566#0: *11 client connected '127.0.0.1'
+2019/10/10 10:50:07 [info] 1566#0: *11 connect: app='vod' args='' flashver='LNX 9,0,124,2' swf_url='' tc_url='rtmp://localhost:1935/vod/' page_url='' acodecs=4071 vcodecs=252 object_encoding=0, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:50:07 [info] 1566#0: *11 notify: connect 'localhost:3000/video/connect', client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:50:17 [info] 1566#0: *11 notify: empty or broken HTTP response, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:50:17 [info] 1566#0: *11 disconnect, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/10 10:50:17 [info] 1566#0: *11 deleteStream, client: 127.0.0.1, server: 0.0.0.0:1935
+2019/10/21 11:28:08 [emerg] 22946#0: unexpected "}" in ./cache.conf:25
+2019/10/21 11:28:22 [emerg] 23008#0: "proxy_cache" zone "mycache" is unknown in ./cache.conf:27
+2019/10/21 11:30:40 [emerg] 23251#0: "proxy_cache" zone "mycache" is unknown in ./cache.conf:27
+2019/10/21 11:30:53 [emerg] 23308#0: open() "./logs/cache/error.log" failed (2: No such file or directory)
+2019/10/21 11:36:02 [notice] 24450#0: signal process started
+2019/10/21 11:37:02 [notice] 24680#0: signal process started
+2019/10/21 11:37:29 [notice] 24751#0: signal process started
+2019/10/21 11:38:04 [notice] 24875#0: signal process started
+2019/10/21 11:38:42 [notice] 25083#0: signal process started
+2019/10/21 11:40:20 [notice] 25345#0: signal process started
+2019/10/22 10:10:20 [notice] 19854#0: signal process started
+2019/10/22 10:16:00 [emerg] 22321#0: invalid host in upstream "http://localhost:9000" in ./cache.conf:23
+2019/10/22 10:17:16 [notice] 22909#0: signal process started
+2019/10/22 11:00:47 [emerg] 11654#0: "proxy_cache_path" directive is not allowed here in ./cache.conf:16
+2019/10/22 11:06:14 [emerg] 13548#0: open() "./conf/nginx.conf" failed (2: No such file or directory)
+2019/10/22 11:06:26 [emerg] 13568#0: "proxy_cache_path" directive is not allowed here in ./cache.conf:20
+2019/10/22 11:06:47 [emerg] 13649#0: "proxy_cache" zone "metadata" is unknown in ./cache.conf:29
+2019/10/22 11:07:07 [emerg] 13730#0: "proxy_cache" zone "metadata" is unknown in ./cache.conf:29
+2019/10/22 11:07:18 [notice] 13809#0: signal process started

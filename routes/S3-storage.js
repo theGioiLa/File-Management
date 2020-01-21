@@ -5,9 +5,12 @@ const AWS = require('aws-sdk'),
     router = express.Router(),
     authen = require('../middleware/authen'),
     S3Uploader = require('./S3-utils'),
-    normalizeSize = require('../normalize').normalizeSize;
+    normalizeSize = require('../normalize').normalizeSize,
+    debug = require('debug');
 
-const EventEmitter = require('events')
+const log = debug('S3:log')
+log.log = console.info.bind(console)
+const error = debug('S3:error')
 
 router.use(authen.authenticate);
 
@@ -36,7 +39,7 @@ router.get('/', function (req, res) {
 
     s3Client.listObjects(options, function (err, data) {
         if (err) {
-            console.error(err);
+            error(err);
             res.status(err.statusCode).end(err.message);
         }
         else {
@@ -54,7 +57,7 @@ router.get('/', function (req, res) {
                             body.push(file);
                         })
                         .catch(function (err) {
-                            Console.error(err);
+                            error(err);
                             res.status(err.statusCode).end(err.message);
                         })
                 );
@@ -80,7 +83,7 @@ router.post('/download/', function (req, res) {
         Key: key
     };
 
-    console.log(getObjParams);
+    log(getObjParams);
 
     s3Client.getObject(getObjParams).createReadStream().pipe(res);
     res.on('close', function () {
@@ -102,7 +105,7 @@ router.post('/upload', function (req, res) {
     });
 
     form.on('error', function (err) {
-        console.error('Multiparty form error: ', err.message);
+        error('Multiparty form error: ', err.message);
     });
 
     form.parse(req);
@@ -127,7 +130,7 @@ router.post('/upload/buffer', function (req, res) {
             });
 
             part.on('error', function (err) {
-                console.error('Part Error:', err.message);
+                error('Part Error:', err.message);
             });
         }
     });
@@ -137,7 +140,7 @@ router.post('/upload/buffer', function (req, res) {
     });
 
     form.on('error', function (err) {
-        console.error('Form Error:', err.message);
+        error('Form Error:', err.message);
     });
 
     form.parse(req);
@@ -153,7 +156,7 @@ router.post('/upload/stream', function (req, res) {
     });
 
     form.on('error', function (err) {
-        console.error('Form Error:', err.message);
+        error('Form Error:', err.message);
     });
 
     form.on('close', function () {
@@ -161,7 +164,7 @@ router.post('/upload/stream', function (req, res) {
     });
 
     s3Uploader.on('error', function (err) {
-        console.error('Upload Error: ', err.message)
+        error('Upload Error: ', err.message)
     })
 
     s3Uploader.on('done', function (data) {
@@ -180,7 +183,7 @@ router.post('/delete', function (req, res) {
     };
 
     s3Client.deleteObject(deleteParams, function (err, data) {
-        if (err) console.error('Delete Error: ', err.message);
+        if (err) error('Delete Error: ', err.message);
         else {
             res.status(200).send('Delete Ok');
         }

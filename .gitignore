@@ -5,3 +5,5 @@ sessions
 .env
 test.js
 package-lock.json
+rtmpServer/videos
+rtmpServer/logs

@@ -6,7 +6,6 @@ var createError = require('http-errors'),
   cookieParser = require('cookie-parser'),
   uuidV4 = require('uuid/v4'),
   rimraf = require('rimraf'),
-  dotenv = require('dotenv'),
   db = require('./db');
 
 var redisClient = require('redis').createClient(),
@@ -19,7 +18,6 @@ var TokenModel = require('./models/Token');
 
 var app = express();
 
-dotenv.config();
 app.enable('trust proxy');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -106,7 +104,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 db.connect();
 

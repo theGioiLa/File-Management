@@ -5,7 +5,7 @@ for (i = 0; i < channels.length; i += 1) { %>
     <div class="card text-center">
         <div class="card-body">
             <video id="player<%-i%>" class="video-js" controls>
-                <source src="http://<%- cdnHostname %>/hls/<%-channels[i]%>/index.m3u8" type="application/x-mpegURL">
+                <source src="rtmp://fms.105.net/live/rmc1" type="application/x-mpegURL">
             </video>
         </div>
 

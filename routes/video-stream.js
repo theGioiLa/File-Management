@@ -126,4 +126,11 @@ router.get('/livestream', function (req, res) {
         });
 });
 
+router.get('/rtmp', (req, res) => {
+    res.render('video_stream/livestream', {
+        cdnHostname: 'test',
+        channels: 'ap'
+    });
+})
+
 module.exports = router;

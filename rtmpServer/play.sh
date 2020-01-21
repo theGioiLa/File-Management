@@ -1,1 +1,1 @@
-ffplay -loglevel verbose "rtmp://localhost:1935/vod/GCL_TQ.mp4"
+ffplay -loglevel verbose "rtmp://fms.105.net/live/rmc1"
